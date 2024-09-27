@@ -6,6 +6,6 @@ package entidades;
  *
  * @author mauri
  */
-public class coneccion {
+public class Conexion {
 
 }
