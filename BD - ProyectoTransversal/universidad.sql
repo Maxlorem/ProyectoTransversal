@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-09-2024 a las 20:36:32
+-- Tiempo de generación: 28-09-2024 a las 22:19:57
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -20,18 +20,20 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `universidad`
 --
+CREATE DATABASE IF NOT EXISTS `universidad` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `universidad`;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `alumno`
+-- Estructura de tabla para la tabla `alumnos`
 --
 
-CREATE TABLE `alumno` (
+CREATE TABLE `alumnos` (
   `idAlumno` int(11) NOT NULL,
   `dni` int(11) NOT NULL,
-  `nombre` varchar(100) NOT NULL,
   `apellido` varchar(100) NOT NULL,
+  `nombre` varchar(100) NOT NULL,
   `fechaNacimiento` date DEFAULT NULL,
   `estado` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -67,9 +69,9 @@ CREATE TABLE `materia` (
 --
 
 --
--- Indices de la tabla `alumno`
+-- Indices de la tabla `alumnos`
 --
-ALTER TABLE `alumno`
+ALTER TABLE `alumnos`
   ADD PRIMARY KEY (`idAlumno`),
   ADD UNIQUE KEY `dni` (`dni`);
 
@@ -93,9 +95,9 @@ ALTER TABLE `materia`
 --
 
 --
--- AUTO_INCREMENT de la tabla `alumno`
+-- AUTO_INCREMENT de la tabla `alumnos`
 --
-ALTER TABLE `alumno`
+ALTER TABLE `alumnos`
   MODIFY `idAlumno` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -118,7 +120,7 @@ ALTER TABLE `materia`
 -- Filtros para la tabla `inscripcion`
 --
 ALTER TABLE `inscripcion`
-  ADD CONSTRAINT `inscripcion_ibfk_1` FOREIGN KEY (`idAlumno`) REFERENCES `alumno` (`idAlumno`),
+  ADD CONSTRAINT `inscripcion_ibfk_1` FOREIGN KEY (`idAlumno`) REFERENCES `alumnos` (`idAlumno`),
   ADD CONSTRAINT `inscripcion_ibfk_2` FOREIGN KEY (`idMateria`) REFERENCES `materia` (`idMateria`);
 COMMIT;
 
