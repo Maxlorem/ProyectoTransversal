@@ -10,6 +10,8 @@ import java.sql.ResultSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.sql.Statement;
+import java.util.List;
+import java.util.ArrayList;
 
 public class alumnoData {
 
@@ -53,4 +55,31 @@ public class alumnoData {
     SQLExeption por si hay algun error en los datos ingresados.
     Cuando hacemos ps.Set y pedimos (#, getDATO) estamos obteniendo los datos del alumno en JAVA para convertirlos en SQL.*/
 
+    
+    public Alumno buscarAlumno(int idAlumno){
+        try {
+            Alumno a = null;
+            
+            String query = "SELECT FROM alumnos WHERE idAlumno = ?";
+            
+            PreparedStatement ps;
+            
+            ps = conexionAlumoData.prepareStatement(query);
+            ps.setInt(1, idAlumno);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+               a = new Alumno();
+               a.setIdAlumno(rs.getInt("idAlumno"));
+               a.setDni(rs.getLong("dni"));
+               a.setApellido(rs.getString("apellido"));
+               a.setNombre(rs.getString("nombre"));
+               a.setFechaNac(rs.getDate("fechaNacimiento").toLocalDate());
+               a.setEstado(rs.getBoolean("estado"));
+            }
+              ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(alumnoData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return a;
+    }  
 }
