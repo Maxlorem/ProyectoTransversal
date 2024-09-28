@@ -56,16 +56,16 @@ public class alumnoData {
     Cuando hacemos ps.Set y pedimos (#, getDATO) estamos obteniendo los datos del alumno en JAVA para convertirlos en SQL.*/
 
     
-    public Alumno buscarAlumno(int idAlumno){
-        try {
+    public Alumno buscarAlumno(int id){
+        
             Alumno a = null;
             
             String query = "SELECT FROM alumnos WHERE idAlumno = ?";
-            
+        try {   
             PreparedStatement ps;
             
             ps = conexionAlumoData.prepareStatement(query);
-            ps.setInt(1, idAlumno);
+            ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
                a = new Alumno();
@@ -79,6 +79,7 @@ public class alumnoData {
               ps.close();
         } catch (SQLException ex) {
             Logger.getLogger(alumnoData.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Error, no se pudo encontrar el registro!");
         }
         return a;
     }  
