@@ -1,11 +1,8 @@
-
-
 package vistas;
 
-/**
- *
- * @author mauri
- */
 public class prueba {
 
+    public static void main(String args[]) {
+        
+    }
 }

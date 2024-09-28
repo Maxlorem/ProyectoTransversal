@@ -4,29 +4,31 @@ package entidades;
 import java.time.LocalDate;
 
 
-public class Alumnos {
+public class Alumno {
     
     private int idAlumno = -1;
+    private long dni;
     private String apellido;
     private String nombre;
     private LocalDate fechaNac;
-    private boolean activo;
+    private boolean estado;
     
-    public Alumnos(){}
+    public Alumno(){}
 
-    public Alumnos(String apellido, String nombre, LocalDate fechaNac, boolean activo) {
+    public Alumno(long dni, String apellido, String nombre, LocalDate fechaNac, boolean estado) {
+        this.dni = dni;
         this.apellido = apellido;
         this.nombre = nombre;
         this.fechaNac = fechaNac;
-        this.activo = activo;
+        this.estado = estado;
     }
 
-    public Alumnos(int idAlumno, String apellido, String nombre, LocalDate fechaNac, boolean activo) {
+    public Alumno(int idAlumno, String apellido, String nombre, LocalDate fechaNac, boolean estado) {
         this.idAlumno = idAlumno;
         this.apellido = apellido;
         this.nombre = nombre;
         this.fechaNac = fechaNac;
-        this.activo = activo;
+        this.estado = estado;
     }
 
     public int getIdAlumno() {
@@ -35,6 +37,14 @@ public class Alumnos {
 
     public void setIdAlumno(int idAlumno) {
         this.idAlumno = idAlumno;
+    }
+
+    public long getDni() {
+        return dni;
+    }
+
+    public void setDni(long dni) {
+        this.dni = dni;
     }
 
     public String getApellido() {
@@ -61,17 +71,19 @@ public class Alumnos {
         this.fechaNac = fechaNac;
     }
 
-    public boolean isActivo() {
-        return activo;
+    public boolean isEstado() {
+        return estado;
     }
 
-    public void setActivo(boolean activo) {
-        this.activo = activo;
+    public void setEstado(boolean estado) {
+        this.estado = estado;
     }
+
+    
 
     @Override
     public String toString() {
-        return "Alumno{" + "idAlumno=" + idAlumno + ", apellido=" + apellido + ", nombre=" + nombre + ", fechaNac=" + fechaNac + ", activo=" + activo + '}';
+        return "Alumno{" + "idAlumno=" + idAlumno + ", apellido=" + apellido + ", nombre=" + nombre + ", fechaNac=" + fechaNac + ", activo=" + estado + '}';
     }
     
     

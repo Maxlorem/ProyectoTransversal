@@ -5,7 +5,7 @@ package entidades;
 public class Inscripcion {
     
     private int idInscripcion = -1;
-    private Alumnos alumno;
+    private Alumno alumno;
     private Materias materia;
     private double nota;
     
@@ -16,13 +16,13 @@ public class Inscripcion {
         this.nota = nota;
     }
 
-    public Inscripcion(Alumnos alumno, Materias materia, double nota) {
+    public Inscripcion(Alumno alumno, Materias materia, double nota) {
         this.alumno = alumno;
         this.materia = materia;
         this.nota = nota;
     }
 
-    public Inscripcion(int idInscripcion, Alumnos alumno, Materias materia, double nota) {
+    public Inscripcion(int idInscripcion, Alumno alumno, Materias materia, double nota) {
         this.idInscripcion = idInscripcion;
         this.alumno = alumno;
         this.materia = materia;
@@ -37,11 +37,11 @@ public class Inscripcion {
         this.idInscripcion = idInscripcion;
     }
 
-    public Alumnos getAlumno() {
+    public Alumno getAlumno() {
         return alumno;
     }
 
-    public void setAlumno(Alumnos alumno) {
+    public void setAlumno(Alumno alumno) {
         this.alumno = alumno;
     }
 
