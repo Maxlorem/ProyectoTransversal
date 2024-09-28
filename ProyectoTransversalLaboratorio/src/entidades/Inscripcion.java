@@ -4,7 +4,7 @@ package entidades;
 
 public class Inscripcion {
     
-    private int idInscripcion;
+    private int idInscripcion = -1;
     private Alumnos alumno;
     private Materias materia;
     private double nota;

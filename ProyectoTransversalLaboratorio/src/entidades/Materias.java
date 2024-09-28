@@ -4,7 +4,7 @@ package entidades;
 
 public class Materias {
     
-    private int idMateria;
+    private int idMateria = -1;
     private String nombre;
     private int anioMateria;
     private boolean activo;

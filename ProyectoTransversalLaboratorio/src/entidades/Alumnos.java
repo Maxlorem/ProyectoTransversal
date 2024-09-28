@@ -6,7 +6,7 @@ import java.time.LocalDate;
 
 public class Alumnos {
     
-    private int idAlumno;
+    private int idAlumno = -1;
     private String apellido;
     private String nombre;
     private LocalDate fechaNac;
