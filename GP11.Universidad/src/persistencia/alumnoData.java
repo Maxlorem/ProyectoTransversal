@@ -21,7 +21,7 @@ public class alumnoData {
         this.conexionAlumoData = conexion.buscarConecion();
     }
 
-    public void guardarAlumno(Alumno a) throws SQLException { //sin id porque es autoincremental por la BD en XAMPP
+    public void guardarAlumno(Alumno a){ //sin id porque es autoincremental por la BD en XAMPP
 
         String query = "INSERT INTO alumnos(dni, apellido, nombre, fechaNacimiento, estado) VALUES (?,?,?,?,?)";
         
@@ -56,7 +56,7 @@ public class alumnoData {
     Cuando hacemos ps.Set y pedimos (#, getDATO) estamos obteniendo los datos del alumno en JAVA para convertirlos en SQL.*/
 
     
-    public Alumno buscarAlumno(int id){
+    public Alumno buscarAlumnoPorId(int id){
         
             Alumno a = null;
             
@@ -86,7 +86,7 @@ public class alumnoData {
     
     public List<Alumno> listarAlumnos(){
     //copiar el buscar u aggregar el add a la lista, el SELECT es * FROM alumnos. y return nombre del array.
-        Alumno a = null;
+        Alumno a;
         List<Alumno> listadoAlumnos = new ArrayList<>();    
             String query = "SELECT * FROM alumnos";
         try {   
