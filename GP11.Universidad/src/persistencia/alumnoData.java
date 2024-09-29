@@ -82,5 +82,26 @@ public class alumnoData {
             System.out.println("Error, no se pudo encontrar el registro!");
         }
         return a;
-    }  
+    } 
+    
+    public List<Alumno> listarAlumnos(){
+    //copiar el buscar u aggregar el add a la lista, el SELECT es * FROM alumnos. y return nombre del array.
+        return null;   
+    }
+    
+    public void actualizarAlumno(Alumno a){
+        //aca se usa UPDATE alumno SET ... Atributos ... WHERE idAlumno=?.
+    }
+    
+    public void borrarAlumnoFisico (int idAlumno){
+        // similar al Update: DELETE FROM alumno WHERE idAlumno=?.
+    }
+    
+    public void altaLogicaAlumno(Alumno a){
+        //aca es una actualizar: UPDATE alumno SET estado=1 WHERE idAlumno=?.
+    }
+    
+    public void bajaLogicaAlumno(Alumno a){
+        //aca es UPDATE alumno SET estado=0 WHERE idAlumno=?.
+    }
 }
