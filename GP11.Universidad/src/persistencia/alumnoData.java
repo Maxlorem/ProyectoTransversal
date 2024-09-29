@@ -111,7 +111,7 @@ public class alumnoData {
             System.out.println("Error, no se pudo encontrar el registro!");
         }
     
-    return null;   
+    return listadoAlumnos;   
     }
     
     public void actualizarAlumno(Alumno a){
