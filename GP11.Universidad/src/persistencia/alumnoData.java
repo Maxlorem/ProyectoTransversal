@@ -86,7 +86,31 @@ public class alumnoData {
     
     public List<Alumno> listarAlumnos(){
     //copiar el buscar u aggregar el add a la lista, el SELECT es * FROM alumnos. y return nombre del array.
-        return null;   
+        Alumno a = null;
+        List<Alumno> listadoAlumnos = new ArrayList<>();    
+            String query = "SELECT * FROM alumnos";
+        try {   
+            PreparedStatement ps;
+            
+            ps = conexionAlumoData.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+               a = new Alumno();
+               a.setIdAlumno(rs.getInt("idAlumno"));
+               a.setDni(rs.getLong("dni"));
+               a.setApellido(rs.getString("apellido"));
+               a.setNombre(rs.getString("nombre"));
+               a.setFechaNac(rs.getDate("fechaNacimiento").toLocalDate());
+               a.setEstado(rs.getBoolean("estado"));
+               listadoAlumnos.add(a);
+            }
+              ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(alumnoData.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Error, no se pudo encontrar el registro!");
+        }
+    
+    return null;   
     }
     
     public void actualizarAlumno(Alumno a){
