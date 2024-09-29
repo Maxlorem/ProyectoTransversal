@@ -105,6 +105,7 @@ public class alumnoData {
                listadoAlumnos.add(a);
             }
               ps.close();
+        
         } catch (SQLException ex) {
             Logger.getLogger(alumnoData.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("Error, no se pudo encontrar el registro!");
@@ -115,17 +116,62 @@ public class alumnoData {
     
     public void actualizarAlumno(Alumno a){
         //aca se usa UPDATE alumno SET ... Atributos ... WHERE idAlumno=?.
+        String query = "UPDATE alumnos SET dni = ?, apellido = ?, nombre= ?, fechaNacimiento= ?, estado= ? WHERE= idAlumno = ?";
+        try {
+            PreparedStatement ps = conexionAlumoData.prepareStatement(query) ;
+            ps.setLong(1,a.getDni());
+            ps.setString(2, a.getApellido());
+            ps.setString(3, a.getNombre());
+            ps.setDate(4,Date.valueOf(a.getFechaNac()));
+            ps.setBoolean(5, a.isEstado());
+            ps.setInt(6, a.getIdAlumno());
+            ps.executeQuery();
+            ps.close();
+          
+        } catch (SQLException ex) {
+            Logger.getLogger(alumnoData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
     
     public void borrarAlumnoFisico (int idAlumno){
-        // similar al Update: DELETE FROM alumno WHERE idAlumno=?.
+        try {
+            // similar al Update: DELETE FROM alumno WHERE idAlumno=?.
+            String query = "DELETE FROM alumnos WHERE idAlumno = ?";
+            PreparedStatement ps = conexionAlumoData.prepareStatement(query);
+            ps.setInt(1, idAlumno);
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(alumnoData.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     public void altaLogicaAlumno(Alumno a){
         //aca es una actualizar: UPDATE alumno SET estado=1 WHERE idAlumno=?.
+        String query = "UPDATE alumnos SET estado= 1 WHERE= idAlumno = ?";
+        try {
+            PreparedStatement ps = conexionAlumoData.prepareStatement(query) ;
+            ps.setInt(1, a.getIdAlumno());
+            ps.executeQuery();
+            ps.close();
+          
+        } catch (SQLException ex) {
+            Logger.getLogger(alumnoData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
     
     public void bajaLogicaAlumno(Alumno a){
         //aca es UPDATE alumno SET estado=0 WHERE idAlumno=?.
+        String query = "UPDATE alumnos SET estado= 0 WHERE= idAlumno = ?";
+        try {
+            PreparedStatement ps = conexionAlumoData.prepareStatement(query) ;
+            ps.setInt(1, a.getIdAlumno());
+            ps.executeQuery();
+            ps.close();
+          
+        } catch (SQLException ex) {
+            Logger.getLogger(alumnoData.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }
