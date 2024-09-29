@@ -18,7 +18,7 @@ public class alumnoData {
     private Connection conexionAlumoData = null;
 
     public alumnoData(Conexion conexion) {
-        this.conexionAlumoData = conexion.buscarConecion();
+        this.conexionAlumoData = conexion.buscarConexion();
     }
 
     public void guardarAlumno(Alumno a) throws SQLException { //sin id porque es autoincremental por la BD en XAMPP
