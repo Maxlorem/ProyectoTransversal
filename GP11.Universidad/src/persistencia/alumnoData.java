@@ -17,15 +17,40 @@ public class alumnoData {
 
     private Connection conexionAlumoData = null;
 
-    public alumnoData(ConexionNoEstatica conexion) {
-        this.conexionAlumoData = conexion.buscarConecion();
+    public alumnoData(Connection conexion) {
+        this.conexionAlumoData = conexion;
     }
 
     public void guardarAlumno(Alumno a){ //sin id porque es autoincremental por la BD en XAMPP
-
-        String query = "INSERT INTO alumnos(dni, apellido, nombre, fechaNacimiento, estado) VALUES (?,?,?,?,?)";
+        //Tenemos que validar que en la base de datos no haya un usuario con el mismo DNI que el enviado
+        boolean validado = false;   
         
-        try {
+        List<Alumno> alumnos = this.listarAlumnos();
+        
+        if(alumnos.isEmpty()){
+            System.out.println("Entro en el vacio");
+            validado = true;
+        } else{
+            for(Alumno alumno: alumnos){
+                
+                if(alumno.getDni() != a.getDni() ){
+                    
+                    System.out.println("Entro en el validado true");
+                    validado = true;
+                    
+                }else{
+                    validado = false;
+                    System.out.println("Usuarios con dni identicos no son admitidos");                    
+                    break;
+                }
+            }
+        }
+                       
+        
+                
+        if(validado){
+            String query = "INSERT INTO alumnos(dni, apellido, nombre, fechaNacimiento, estado) VALUES (?,?,?,?,?)";
+            try {
             PreparedStatement ps = conexionAlumoData.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             
             ps.setLong(1, a.getDni());
@@ -43,9 +68,11 @@ public class alumnoData {
             }
             ps.close();
             System.out.println("GUARDADO!!!!!");
-        } catch (SQLException ex) {
-            Logger.getLogger(alumnoData.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            } catch (SQLException ex) {
+                Logger.getLogger(alumnoData.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }      
+        
 
     }
     /*ps es un objeto que guarda los datos que ingresamos parseados para ingresar a la BD, la frase Statement.RETURN KEYS es para 
@@ -56,11 +83,11 @@ public class alumnoData {
     Cuando hacemos ps.Set y pedimos (#, getDATO) estamos obteniendo los datos del alumno en JAVA para convertirlos en SQL.*/
 
     
-    public Alumno buscarAlumnoPorId(int id){
+    public  Alumno buscarAlumnoPorId(int id){
         
             Alumno a = null;
             
-            String query = "SELECT FROM alumnos WHERE idAlumno = ?";
+            String query = "SELECT * FROM alumnos WHERE idAlumno = ?";
         try {   
             PreparedStatement ps;
             
@@ -77,8 +104,10 @@ public class alumnoData {
                a.setEstado(rs.getBoolean("estado"));
             }
               ps.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(alumnoData.class.getName()).log(Level.SEVERE, null, ex);
+            if(a == null){
+                throw new SQLException();
+            }
+        } catch (SQLException ex) {            
             System.out.println("Error, no se pudo encontrar el registro!");
         }
         return a;
@@ -105,10 +134,12 @@ public class alumnoData {
                listadoAlumnos.add(a);
             }
               ps.close();
-        
+            if(listadoAlumnos == null){
+                throw new SQLException();
+            }
         } catch (SQLException ex) {
-            Logger.getLogger(alumnoData.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("Error, no se pudo encontrar el registro!");
+            
+            System.out.println("No hay alumnos registrados");
         }
     
     return listadoAlumnos;   
@@ -116,20 +147,26 @@ public class alumnoData {
     
     public void actualizarAlumno(Alumno a){
         //aca se usa UPDATE alumno SET ... Atributos ... WHERE idAlumno=?.
-        String query = "UPDATE alumnos SET dni = ?, apellido = ?, nombre= ?, fechaNacimiento= ?, estado= ? WHERE= idAlumno = ?";
+        String query = "UPDATE alumnos SET dni = ?, apellido = ?, nombre= ?, fechaNacimiento= ?, estado= ? WHERE idAlumno = ?";
+        
         try {
-            PreparedStatement ps = conexionAlumoData.prepareStatement(query) ;
-            ps.setLong(1,a.getDni());
-            ps.setString(2, a.getApellido());
-            ps.setString(3, a.getNombre());
-            ps.setDate(4,Date.valueOf(a.getFechaNac()));
-            ps.setBoolean(5, a.isEstado());
-            ps.setInt(6, a.getIdAlumno());
-            ps.executeQuery();
-            ps.close();
-          
+            if(this.buscarAlumnoPorId(a.getIdAlumno()) == null){
+                throw new SQLException();
+            }else{
+                PreparedStatement ps = conexionAlumoData.prepareStatement(query) ;
+                ps.setLong(1,a.getDni());
+                ps.setString(2, a.getApellido());
+                ps.setString(3, a.getNombre());
+                ps.setDate(4,Date.valueOf(a.getFechaNac()));
+                ps.setBoolean(5, a.isEstado());
+                ps.setInt(6, a.getIdAlumno());
+
+                ps.executeQuery();
+                ps.close();
+                 System.out.println("Usuario Actualizado");
+            }                               
         } catch (SQLException ex) {
-            Logger.getLogger(alumnoData.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("No se pudo actualizar");
         }
         
     }
@@ -137,41 +174,57 @@ public class alumnoData {
     public void borrarAlumnoFisico (int idAlumno){
         try {
             // similar al Update: DELETE FROM alumno WHERE idAlumno=?.
+            if(this.buscarAlumnoPorId(idAlumno) == null){
+                System.out.println();
+                throw new SQLException();
+            }
             String query = "DELETE FROM alumnos WHERE idAlumno = ?";
             PreparedStatement ps = conexionAlumoData.prepareStatement(query);
             ps.setInt(1, idAlumno);
             ps.executeUpdate();
+            System.out.println("Registro eliminado con exito");
         } catch (SQLException ex) {
-            Logger.getLogger(alumnoData.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("No se pudo eliminar el registro");
         }
     }
     
     public void altaLogicaAlumno(Alumno a){
         //aca es una actualizar: UPDATE alumno SET estado=1 WHERE idAlumno=?.
-        String query = "UPDATE alumnos SET estado= 1 WHERE= idAlumno = ?";
+        String query = "UPDATE alumnos SET estado= 1 WHERE idAlumno = ?";
         try {
-            PreparedStatement ps = conexionAlumoData.prepareStatement(query) ;
-            ps.setInt(1, a.getIdAlumno());
-            ps.executeQuery();
-            ps.close();
-          
+            if(a.isEstado()){
+                System.out.println("El alumno ya esta dado de alta");
+                throw new SQLException();
+            }else{
+                PreparedStatement ps = conexionAlumoData.prepareStatement(query) ;
+                ps.setInt(1, a.getIdAlumno());
+                ps.executeUpdate();
+                ps.close();
+            }          
         } catch (SQLException ex) {
-            Logger.getLogger(alumnoData.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("No se pudo dar la alta al registro");
         }
         
     }
     
     public void bajaLogicaAlumno(Alumno a){
         //aca es UPDATE alumno SET estado=0 WHERE idAlumno=?.
-        String query = "UPDATE alumnos SET estado= 0 WHERE= idAlumno = ?";
+        String query = "UPDATE alumnos SET estado= ? WHERE idAlumno = ?";
         try {
-            PreparedStatement ps = conexionAlumoData.prepareStatement(query) ;
-            ps.setInt(1, a.getIdAlumno());
-            ps.executeQuery();
-            ps.close();
-          
+            if(!a.isEstado()){
+                System.out.println("El alumno ya está dado de baja");
+                throw new SQLException();
+            } else{
+                PreparedStatement ps = conexionAlumoData.prepareStatement(query) ;
+                ps.setBoolean(1, false);
+                ps.setInt(2, a.getIdAlumno());         
+                ps.executeUpdate();
+                ps.close();
+                System.out.println("Usuario dado de baja");
+            }
+           
         } catch (SQLException ex) {
-            Logger.getLogger(alumnoData.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("No se pudo dar la baja al registro");
         }
     }
 }

@@ -13,7 +13,7 @@ public class Conexion {
     private Conexion(){
         
         try {
-            Class.forName("org.matiadb.jdbc.Driver");
+            Class.forName("org.mariadb.jdbc.Driver");
         } catch (ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(null, "Error al cargar el driver");
         }
@@ -27,7 +27,8 @@ public class Conexion {
         }
         
         try {
-            con = DriverManager.getConnection("jdbc:mysql:/localhost/universidad", "root", "");
+            con = DriverManager.getConnection("jdbc:mariadb://localhost/universidad", "root", "");
+            System.out.println("Conexion exitosa");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error de conexion");
         }
