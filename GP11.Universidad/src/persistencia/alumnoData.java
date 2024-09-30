@@ -1,7 +1,7 @@
 package persistencia;
 
 import entidades.Alumno;
-import entidades.Conexion;
+import entidades.ConexionNoEstatica;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.Date;
@@ -17,7 +17,7 @@ public class alumnoData {
 
     private Connection conexionAlumoData = null;
 
-    public alumnoData(Conexion conexion) {
+    public alumnoData(ConexionNoEstatica conexion) {
         this.conexionAlumoData = conexion.buscarConecion();
     }
 
