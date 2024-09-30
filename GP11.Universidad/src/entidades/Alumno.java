@@ -23,7 +23,11 @@ public class Alumno {
         this.estado = estado;
     }
 
+<<<<<<< Updated upstream
     public Alumno(int idAlumno,long dni ,String apellido, String nombre, LocalDate fechaNac, boolean estado) {
+=======
+    public Alumno(int idAlumno, long dni, String apellido, String nombre, LocalDate fechaNac, boolean estado) {
+>>>>>>> Stashed changes
         this.idAlumno = idAlumno;
         this.dni = dni;
         this.apellido = apellido;
