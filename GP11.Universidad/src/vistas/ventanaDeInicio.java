@@ -1,6 +1,8 @@
 package vistas;
 
 import java.awt.Color;
+import javax.swing.BorderFactory;
+import javax.swing.border.Border;
 
 public class ventanaDeInicio extends javax.swing.JFrame {
 
@@ -55,14 +57,28 @@ public class ventanaDeInicio extends javax.swing.JFrame {
         lblInsc.setForeground(new java.awt.Color(255, 255, 255));
         lblInsc.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblInsc.setText("INSCRIPCIONES");
-        btnSistemaInscripciones.add(lblInsc, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 180, 31));
+        btnSistemaInscripciones.add(lblInsc, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 31, 180, 20));
 
+        jSeparator1.setBackground(new java.awt.Color(51, 51, 51));
         jSeparator1.setForeground(new java.awt.Color(255, 102, 0));
         btnSistemaInscripciones.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 130, 10));
 
-        menuPnl.add(btnSistemaInscripciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 240, 50));
+        menuPnl.add(btnSistemaInscripciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 240, 60));
 
         btnSistemaAlumnos.setBackground(new java.awt.Color(51, 51, 51));
+        btnSistemaAlumnos.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 51, 51), 3, true));
+        btnSistemaAlumnos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSistemaAlumnos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSistemaAlumnosMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnSistemaAlumnosMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnSistemaAlumnosMouseExited(evt);
+            }
+        });
         btnSistemaAlumnos.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblSysAlu.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
@@ -74,8 +90,9 @@ public class ventanaDeInicio extends javax.swing.JFrame {
         lblAlu.setForeground(new java.awt.Color(255, 255, 255));
         lblAlu.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblAlu.setText("ALUMNOS");
-        btnSistemaAlumnos.add(lblAlu, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 130, 31));
+        btnSistemaAlumnos.add(lblAlu, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 33, 130, -1));
 
+        jSeparator2.setBackground(new java.awt.Color(51, 51, 51));
         jSeparator2.setForeground(new java.awt.Color(255, 102, 0));
         btnSistemaAlumnos.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 130, 10));
 
@@ -92,7 +109,7 @@ public class ventanaDeInicio extends javax.swing.JFrame {
 
         btnSistemaAlumnos.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, -50, 970, 30));
 
-        menuPnl.add(btnSistemaAlumnos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 240, 50));
+        menuPnl.add(btnSistemaAlumnos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 240, 60));
 
         btnSistemaMaterias.setBackground(new java.awt.Color(51, 51, 51));
         btnSistemaMaterias.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -106,12 +123,13 @@ public class ventanaDeInicio extends javax.swing.JFrame {
         lblMat.setForeground(new java.awt.Color(255, 255, 255));
         lblMat.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblMat.setText("MATERIAS");
-        btnSistemaMaterias.add(lblMat, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 130, 31));
+        btnSistemaMaterias.add(lblMat, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 33, 130, -1));
 
+        jSeparator3.setBackground(new java.awt.Color(51, 51, 51));
         jSeparator3.setForeground(new java.awt.Color(255, 102, 0));
         btnSistemaMaterias.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 130, 10));
 
-        menuPnl.add(btnSistemaMaterias, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 240, 50));
+        menuPnl.add(btnSistemaMaterias, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 240, 60));
 
         backgroundPnl.add(menuPnl, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 260, 550));
 
@@ -195,6 +213,20 @@ public class ventanaDeInicio extends javax.swing.JFrame {
     private void closePnlMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closePnlMouseExited
         closePnl.setBackground(new Color(255, 155, 0));
     }//GEN-LAST:event_closePnlMouseExited
+
+    private void btnSistemaAlumnosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSistemaAlumnosMouseEntered
+        btnSistemaAlumnos.setBackground(new Color(102, 102, 102));
+    }//GEN-LAST:event_btnSistemaAlumnosMouseEntered
+
+    private void btnSistemaAlumnosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSistemaAlumnosMouseExited
+        btnSistemaAlumnos.setBackground(new Color(51, 51, 51));
+    }//GEN-LAST:event_btnSistemaAlumnosMouseExited
+
+    private void btnSistemaAlumnosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSistemaAlumnosMouseClicked
+       lblSysAlu.setForeground(new Color(255,255,255));
+       lblAlu.setForeground(new Color(255, 102, 0));
+       btnSistemaAlumnos.setBorder(BorderFactory.createLineBorder(new Color(255,102,0),3));
+    }//GEN-LAST:event_btnSistemaAlumnosMouseClicked
 
     public static void main(String args[]) {
         
