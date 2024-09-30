@@ -18,7 +18,6 @@ public class ventanaDeInicio extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1000, 550));
-        setPreferredSize(new java.awt.Dimension(1000, 550));
         setResizable(false);
 
         backgroundPnl.setBackground(new java.awt.Color(153, 153, 153));
