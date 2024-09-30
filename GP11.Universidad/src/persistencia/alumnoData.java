@@ -1,7 +1,7 @@
 package persistencia;
 
 import entidades.Alumno;
-import entidades.ConexionNoEstatica;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.Date;
@@ -27,15 +27,12 @@ public class alumnoData {
         
         List<Alumno> alumnos = this.listarAlumnos();
         
-        if(alumnos.isEmpty()){
-            System.out.println("Entro en el vacio");
+        if(alumnos.isEmpty()){           
             validado = true;
         } else{
             for(Alumno alumno: alumnos){
                 
-                if(alumno.getDni() != a.getDni() ){
-                    
-                    System.out.println("Entro en el validado true");
+                if(alumno.getDni() != a.getDni() ){                                       
                     validado = true;
                     
                 }else{

@@ -20,27 +20,32 @@ public class prueba {
         
         alumnoData data = new alumnoData(conexion);
         //Guardado
-//        data.guardarAlumno(alumno);
-//        data.guardarAlumno(alumno2);
-//        data.guardarAlumno(alumno3);
-//        data.guardarAlumno(alumno4);
-//        data.guardarAlumno(alumno5);
+        data.guardarAlumno(alumno);
+        data.guardarAlumno(alumno2);
+        data.guardarAlumno(alumno3);
+        data.guardarAlumno(alumno4);
+        data.guardarAlumno(alumno5);
+
         //Busqueda por Id
 //        System.out.println(data.buscarAlumnoPorId(3));
 //        System.out.println(data.buscarAlumnoPorId(2));
 //        data.buscarAlumnoPorId(6);
         //Busqueda TOTAL
+        
 //        System.out.println(data.listarAlumnos());
          //ACtualizacion
+         
 //        Alumno alumno11 = new Alumno(12,34642651, "Ricciardo","minimo", LocalDate.of(2002, 11, 8), true);
 //        data.actualizarAlumno(alumno11);
         //BORRADO FISICO
+        
 //        data.borrarAlumnoFisico(5);
     
 //DAR LA BAJA LOGICA
-           data.bajaLogicaAlumno(alumno2);
-           data.bajaLogicaAlumno(alumno2);
-           //Dar la ALTA LOGICA
+//           data.bajaLogicaAlumno(alumno2);
+//           data.bajaLogicaAlumno(alumno2);
+
+//Dar la ALTA LOGICA
 //data.altaLogicaAlumno(alumno2);
         
         
