@@ -30,9 +30,16 @@ public class ventanaDeInicio extends javax.swing.JFrame {
         lblSysMat = new javax.swing.JLabel();
         lblMat = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
+        lblInageSistema = new javax.swing.JLabel();
         imagenPnl = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
         closePnl = new javax.swing.JPanel();
         closeBtn = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        pnlIngresoAlumnos = new javax.swing.JPanel();
+        pnlIngresoMaterias = new javax.swing.JPanel();
+        pnlIngresoInsc = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setUndecorated(true);
@@ -131,9 +138,19 @@ public class ventanaDeInicio extends javax.swing.JFrame {
 
         menuPnl.add(btnSistemaMaterias, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 240, 60));
 
-        backgroundPnl.add(menuPnl, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 260, 550));
+        lblInageSistema.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblInageSistema.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Alumnos.png"))); // NOI18N
+        menuPnl.add(lblInageSistema, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 240, 250));
+
+        backgroundPnl.add(menuPnl, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 260, 520));
 
         imagenPnl.setBackground(new java.awt.Color(204, 204, 204));
+        imagenPnl.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        backgroundPnl.add(imagenPnl, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 30, 190, 520));
+
+        jPanel3.setBackground(new java.awt.Color(102, 102, 102));
+        jPanel3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 102, 0), 1, true));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         closePnl.setBackground(new java.awt.Color(255, 102, 0));
         closePnl.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -170,22 +187,60 @@ public class ventanaDeInicio extends javax.swing.JFrame {
                 .addComponent(closeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        javax.swing.GroupLayout imagenPnlLayout = new javax.swing.GroupLayout(imagenPnl);
-        imagenPnl.setLayout(imagenPnlLayout);
-        imagenPnlLayout.setHorizontalGroup(
-            imagenPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, imagenPnlLayout.createSequentialGroup()
-                .addGap(0, 159, Short.MAX_VALUE)
-                .addComponent(closePnl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        jPanel3.add(closePnl, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 0, -1, -1));
+
+        jLabel1.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Sistema de Gestión Universitaria");
+        jLabel1.setToolTipText("");
+        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 6, 550, 20));
+
+        backgroundPnl.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 30));
+
+        jPanel2.setBackground(new java.awt.Color(153, 153, 153));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        javax.swing.GroupLayout pnlIngresoAlumnosLayout = new javax.swing.GroupLayout(pnlIngresoAlumnos);
+        pnlIngresoAlumnos.setLayout(pnlIngresoAlumnosLayout);
+        pnlIngresoAlumnosLayout.setHorizontalGroup(
+            pnlIngresoAlumnosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
         );
-        imagenPnlLayout.setVerticalGroup(
-            imagenPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(imagenPnlLayout.createSequentialGroup()
-                .addComponent(closePnl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 520, Short.MAX_VALUE))
+        pnlIngresoAlumnosLayout.setVerticalGroup(
+            pnlIngresoAlumnosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
         );
 
-        backgroundPnl.add(imagenPnl, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 0, 190, 550));
+        jPanel2.add(pnlIngresoAlumnos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        javax.swing.GroupLayout pnlIngresoMateriasLayout = new javax.swing.GroupLayout(pnlIngresoMaterias);
+        pnlIngresoMaterias.setLayout(pnlIngresoMateriasLayout);
+        pnlIngresoMateriasLayout.setHorizontalGroup(
+            pnlIngresoMateriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        pnlIngresoMateriasLayout.setVerticalGroup(
+            pnlIngresoMateriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        jPanel2.add(pnlIngresoMaterias, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 0, -1, -1));
+
+        javax.swing.GroupLayout pnlIngresoInscLayout = new javax.swing.GroupLayout(pnlIngresoInsc);
+        pnlIngresoInsc.setLayout(pnlIngresoInscLayout);
+        pnlIngresoInscLayout.setHorizontalGroup(
+            pnlIngresoInscLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        pnlIngresoInscLayout.setVerticalGroup(
+            pnlIngresoInscLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        jPanel2.add(pnlIngresoInsc, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 420, -1, -1));
+
+        backgroundPnl.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 30, 550, 520));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -226,6 +281,8 @@ public class ventanaDeInicio extends javax.swing.JFrame {
        lblSysAlu.setForeground(new Color(255,255,255));
        lblAlu.setForeground(new Color(255, 102, 0));
        btnSistemaAlumnos.setBorder(BorderFactory.createLineBorder(new Color(255,102,0),3));
+       btnSistemaInscripciones.setVisible(false);
+       btnSistemaMaterias.setVisible(false);
     }//GEN-LAST:event_btnSistemaAlumnosMouseClicked
 
     public static void main(String args[]) {
@@ -246,16 +303,23 @@ public class ventanaDeInicio extends javax.swing.JFrame {
     private javax.swing.JLabel closeBtn;
     private javax.swing.JPanel closePnl;
     private javax.swing.JPanel imagenPnl;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JLabel lblAlu;
+    private javax.swing.JLabel lblInageSistema;
     private javax.swing.JLabel lblInsc;
     private javax.swing.JLabel lblMat;
     private javax.swing.JLabel lblSysAlu;
     private javax.swing.JLabel lblSysInsc;
     private javax.swing.JLabel lblSysMat;
     private javax.swing.JPanel menuPnl;
+    private javax.swing.JPanel pnlIngresoAlumnos;
+    private javax.swing.JPanel pnlIngresoInsc;
+    private javax.swing.JPanel pnlIngresoMaterias;
     // End of variables declaration//GEN-END:variables
 }
