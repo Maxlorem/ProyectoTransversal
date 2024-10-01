@@ -10,6 +10,10 @@ public class ventanaDeInicio extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         pnlIngresoAlumnos.setVisible(false);
+        pnlIngresoInsc.setVisible(false);
+        pnlIngresoMaterias.setVisible(false);
+        
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -40,8 +44,11 @@ public class ventanaDeInicio extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jSeparator5 = new javax.swing.JSeparator();
         jSeparator6 = new javax.swing.JSeparator();
-        jLabel9 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         closePnl = new javax.swing.JPanel();
         closeBtn = new javax.swing.JLabel();
@@ -60,8 +67,16 @@ public class ventanaDeInicio extends javax.swing.JFrame {
         jTextArea1 = new javax.swing.JTextArea();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea2 = new javax.swing.JTextArea();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
         pnlIngresoMaterias = new javax.swing.JPanel();
         pnlIngresoInsc = new javax.swing.JPanel();
+        jLabel18 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setUndecorated(true);
@@ -75,6 +90,7 @@ public class ventanaDeInicio extends javax.swing.JFrame {
         menuPnl.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnSistemaInscripciones.setBackground(new java.awt.Color(51, 51, 51));
+        btnSistemaInscripciones.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
         btnSistemaInscripciones.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblSysInsc.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
@@ -95,20 +111,17 @@ public class ventanaDeInicio extends javax.swing.JFrame {
         menuPnl.add(btnSistemaInscripciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 240, 60));
 
         btnSistemaAlumnos.setBackground(new java.awt.Color(51, 51, 51));
-        btnSistemaAlumnos.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 51, 51), 3, true));
+        btnSistemaAlumnos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
         btnSistemaAlumnos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnSistemaAlumnos.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnSistemaAlumnosMouseClicked(evt);
-            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnSistemaAlumnosMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 btnSistemaAlumnosMouseExited(evt);
             }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                btnSistemaAlumnosMouseReleased(evt);
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnSistemaAlumnosMousePressed(evt);
             }
         });
         btnSistemaAlumnos.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -144,6 +157,7 @@ public class ventanaDeInicio extends javax.swing.JFrame {
         menuPnl.add(btnSistemaAlumnos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 240, 60));
 
         btnSistemaMaterias.setBackground(new java.awt.Color(51, 51, 51));
+        btnSistemaMaterias.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
         btnSistemaMaterias.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblSysMat.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
@@ -200,7 +214,6 @@ public class ventanaDeInicio extends javax.swing.JFrame {
         imagenPnl.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 410, -1, -1));
         imagenPnl.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 380, 170, 10));
         imagenPnl.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 450, 170, 10));
-        imagenPnl.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 170, 260));
 
         jButton2.setBackground(new java.awt.Color(51, 51, 51));
         jButton2.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
@@ -208,6 +221,28 @@ public class ventanaDeInicio extends javax.swing.JFrame {
         jButton2.setText("Aceptar");
         jButton2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         imagenPnl.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 470, 110, 30));
+
+        jPanel6.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Ingreso.png"))); // NOI18N
+        jPanel6.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 190, 185));
+
+        jLabel16.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel16.setText("Ingrese usuario y contraseña");
+        jPanel6.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 190, -1));
+
+        jLabel17.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel17.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel17.setText("Para acceder");
+        jPanel6.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 190, -1));
+
+        imagenPnl.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 190, 270));
 
         backgroundPnl.add(imagenPnl, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 30, 190, 520));
 
@@ -275,7 +310,7 @@ public class ventanaDeInicio extends javax.swing.JFrame {
         jButton1.setText("Ingresar");
         jButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton1.setEnabled(false);
-        pnlIngresoAlumnos.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 490, 110, -1));
+        pnlIngresoAlumnos.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 480, 110, -1));
 
         btnBackAlumnos.setBackground(new java.awt.Color(102, 102, 102));
         btnBackAlumnos.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
@@ -287,7 +322,7 @@ public class ventanaDeInicio extends javax.swing.JFrame {
                 btnBackAlumnosActionPerformed(evt);
             }
         });
-        pnlIngresoAlumnos.add(btnBackAlumnos, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 490, 110, -1));
+        pnlIngresoAlumnos.add(btnBackAlumnos, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 480, 110, -1));
 
         jLabel2.setBackground(new java.awt.Color(102, 102, 102));
         jLabel2.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
@@ -333,6 +368,7 @@ public class ventanaDeInicio extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel3)
+                .addGap(0, 0, 0)
                 .addComponent(jLabel5)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -349,7 +385,7 @@ public class ventanaDeInicio extends javax.swing.JFrame {
         jTextArea1.setBorder(null);
         jScrollPane1.setViewportView(jTextArea1);
 
-        pnlIngresoAlumnos.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 330, 240));
+        pnlIngresoAlumnos.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 310, 240));
 
         jTextArea2.setEditable(false);
         jTextArea2.setBackground(new java.awt.Color(51, 51, 51));
@@ -360,7 +396,65 @@ public class ventanaDeInicio extends javax.swing.JFrame {
         jTextArea2.setAutoscrolls(false);
         jScrollPane2.setViewportView(jTextArea2);
 
-        pnlIngresoAlumnos.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, 330, 100));
+        pnlIngresoAlumnos.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, 310, 100));
+
+        jPanel5.setBackground(new java.awt.Color(255, 102, 0));
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 10, Short.MAX_VALUE)
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 450, Short.MAX_VALUE)
+        );
+
+        pnlIngresoAlumnos.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 10, 10, 450));
+
+        jLabel10.setBackground(new java.awt.Color(51, 51, 51));
+        jLabel10.setFont(new java.awt.Font("Verdana", 1, 36)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel10.setText("S G U");
+        jLabel10.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        jLabel10.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
+        pnlIngresoAlumnos.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 210, 190, 250));
+
+        jLabel11.setBackground(new java.awt.Color(51, 51, 51));
+        jLabel11.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel11.setText("GRUPO 11 - V0.1");
+        pnlIngresoAlumnos.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 260, 170, -1));
+
+        jLabel12.setBackground(new java.awt.Color(51, 51, 51));
+        jLabel12.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel12.setText("Pestchanker Mauricio Andrés");
+        pnlIngresoAlumnos.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 380, 190, -1));
+
+        jLabel13.setBackground(new java.awt.Color(51, 51, 51));
+        jLabel13.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel13.setText("Quiroga Máximo");
+        pnlIngresoAlumnos.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 420, 190, -1));
+
+        jLabel14.setBackground(new java.awt.Color(51, 51, 51));
+        jLabel14.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel14.setText("Chirino Sosa Marcos Antonio");
+        pnlIngresoAlumnos.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 330, 190, -1));
+
+        jLabel15.setBackground(new java.awt.Color(51, 51, 51));
+        jLabel15.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(255, 102, 0));
+        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel15.setText("TP Transversal");
+        pnlIngresoAlumnos.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 290, 170, -1));
 
         jPanel2.add(pnlIngresoAlumnos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 520));
 
@@ -389,6 +483,10 @@ public class ventanaDeInicio extends javax.swing.JFrame {
         );
 
         jPanel2.add(pnlIngresoInsc, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 420, -1, -1));
+
+        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/portada.png"))); // NOI18N
+        jPanel2.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 470, 440));
 
         backgroundPnl.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 30, 550, 520));
 
@@ -427,27 +525,24 @@ public class ventanaDeInicio extends javax.swing.JFrame {
         btnSistemaAlumnos.setBackground(new Color(51, 51, 51));
     }//GEN-LAST:event_btnSistemaAlumnosMouseExited
 
-    private void btnSistemaAlumnosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSistemaAlumnosMouseClicked
-       lblSysAlu.setForeground(new Color(255,255,255));
-       lblAlu.setForeground(new Color(255, 102, 0));
-       btnSistemaAlumnos.setBorder(BorderFactory.createLineBorder(new Color(255,102,0),3));
-       btnSistemaInscripciones.setVisible(false);
-       btnSistemaMaterias.setVisible(false);
-    }//GEN-LAST:event_btnSistemaAlumnosMouseClicked
-
-    private void btnSistemaAlumnosMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSistemaAlumnosMouseReleased
-        pnlIngresoAlumnos.setVisible(true);
-    }//GEN-LAST:event_btnSistemaAlumnosMouseReleased
-
     private void btnBackAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackAlumnosActionPerformed
         btnSistemaInscripciones.setVisible(true);
         btnSistemaMaterias.setVisible(true);
         lblSysAlu.setForeground(new Color(255,102,0));
         lblAlu.setForeground(new Color(255, 255, 255));
-        btnSistemaAlumnos.setBorder(null);
+        btnSistemaAlumnos.setBorder(BorderFactory.createLineBorder(new Color(0,0,0),3));
         pnlIngresoAlumnos.setVisible(false);
         
     }//GEN-LAST:event_btnBackAlumnosActionPerformed
+
+    private void btnSistemaAlumnosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSistemaAlumnosMousePressed
+     lblSysAlu.setForeground(new Color(255,255,255));
+       lblAlu.setForeground(new Color(255, 102, 0));
+       btnSistemaAlumnos.setBorder(BorderFactory.createLineBorder(new Color(255,102,0),3));
+       btnSistemaInscripciones.setVisible(false);
+       btnSistemaMaterias.setVisible(false);
+       pnlIngresoAlumnos.setVisible(true);
+    }//GEN-LAST:event_btnSistemaAlumnosMousePressed
 
     public static void main(String args[]) {
         
@@ -471,6 +566,15 @@ public class ventanaDeInicio extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -483,6 +587,8 @@ public class ventanaDeInicio extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
