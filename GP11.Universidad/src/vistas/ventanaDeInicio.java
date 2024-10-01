@@ -9,6 +9,7 @@ public class ventanaDeInicio extends javax.swing.JFrame {
         public ventanaDeInicio() {
         initComponents();
         this.setLocationRelativeTo(null);
+        pnlIngresoAlumnos.setVisible(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -32,12 +33,33 @@ public class ventanaDeInicio extends javax.swing.JFrame {
         jSeparator3 = new javax.swing.JSeparator();
         lblInageSistema = new javax.swing.JLabel();
         imagenPnl = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jPasswordField1 = new javax.swing.JPasswordField();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jSeparator5 = new javax.swing.JSeparator();
+        jSeparator6 = new javax.swing.JSeparator();
+        jLabel9 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         closePnl = new javax.swing.JPanel();
         closeBtn = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         pnlIngresoAlumnos = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        btnBackAlumnos = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jSeparator4 = new javax.swing.JSeparator();
+        jLabel4 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea2 = new javax.swing.JTextArea();
         pnlIngresoMaterias = new javax.swing.JPanel();
         pnlIngresoInsc = new javax.swing.JPanel();
 
@@ -84,6 +106,9 @@ public class ventanaDeInicio extends javax.swing.JFrame {
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 btnSistemaAlumnosMouseExited(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnSistemaAlumnosMouseReleased(evt);
             }
         });
         btnSistemaAlumnos.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -139,13 +164,51 @@ public class ventanaDeInicio extends javax.swing.JFrame {
         menuPnl.add(btnSistemaMaterias, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 240, 60));
 
         lblInageSistema.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblInageSistema.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Alumnos.png"))); // NOI18N
+        lblInageSistema.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Sistema Ingreso.png"))); // NOI18N
         menuPnl.add(lblInageSistema, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 240, 250));
 
         backgroundPnl.add(menuPnl, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 260, 520));
 
         imagenPnl.setBackground(new java.awt.Color(204, 204, 204));
+        imagenPnl.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
         imagenPnl.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel6.setBackground(new java.awt.Color(204, 204, 204));
+        jLabel6.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setText("INGRESO");
+        jLabel6.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
+        imagenPnl.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 190, 60));
+
+        jTextField1.setBackground(new java.awt.Color(204, 204, 204));
+        jTextField1.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        jTextField1.setBorder(null);
+        imagenPnl.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, 170, 20));
+
+        jPasswordField1.setBackground(new java.awt.Color(204, 204, 204));
+        jPasswordField1.setText("jPasswordField1");
+        jPasswordField1.setBorder(null);
+        imagenPnl.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 430, 170, 20));
+
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel7.setText("Usuario:");
+        imagenPnl.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, -1, -1));
+
+        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel8.setText("Contraseña:");
+        imagenPnl.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 410, -1, -1));
+        imagenPnl.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 380, 170, 10));
+        imagenPnl.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 450, 170, 10));
+        imagenPnl.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 170, 260));
+
+        jButton2.setBackground(new java.awt.Color(51, 51, 51));
+        jButton2.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setText("Aceptar");
+        jButton2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        imagenPnl.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 470, 110, 30));
+
         backgroundPnl.add(imagenPnl, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 30, 190, 520));
 
         jPanel3.setBackground(new java.awt.Color(102, 102, 102));
@@ -201,18 +264,105 @@ public class ventanaDeInicio extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(153, 153, 153));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout pnlIngresoAlumnosLayout = new javax.swing.GroupLayout(pnlIngresoAlumnos);
-        pnlIngresoAlumnos.setLayout(pnlIngresoAlumnosLayout);
-        pnlIngresoAlumnosLayout.setHorizontalGroup(
-            pnlIngresoAlumnosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+        pnlIngresoAlumnos.setBackground(new java.awt.Color(51, 51, 51));
+        pnlIngresoAlumnos.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 102, 0), 1, true));
+        pnlIngresoAlumnos.setForeground(new java.awt.Color(255, 255, 255));
+        pnlIngresoAlumnos.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButton1.setBackground(new java.awt.Color(102, 102, 102));
+        jButton1.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("Ingresar");
+        jButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButton1.setEnabled(false);
+        pnlIngresoAlumnos.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 490, 110, -1));
+
+        btnBackAlumnos.setBackground(new java.awt.Color(102, 102, 102));
+        btnBackAlumnos.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        btnBackAlumnos.setForeground(new java.awt.Color(255, 255, 255));
+        btnBackAlumnos.setText("Atras");
+        btnBackAlumnos.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnBackAlumnos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackAlumnosActionPerformed(evt);
+            }
+        });
+        pnlIngresoAlumnos.add(btnBackAlumnos, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 490, 110, -1));
+
+        jLabel2.setBackground(new java.awt.Color(102, 102, 102));
+        jLabel2.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Sistema de Gestión");
+        pnlIngresoAlumnos.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 210, 40));
+
+        jSeparator4.setBackground(new java.awt.Color(102, 102, 102));
+        jSeparator4.setForeground(new java.awt.Color(255, 102, 0));
+        pnlIngresoAlumnos.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, 250, 10));
+
+        jLabel4.setBackground(new java.awt.Color(102, 102, 102));
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Alumnos.png"))); // NOI18N
+        jLabel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        pnlIngresoAlumnos.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 10, 190, 190));
+
+        jPanel4.setBackground(new java.awt.Color(51, 51, 51));
+
+        jLabel3.setBackground(new java.awt.Color(102, 102, 102));
+        jLabel3.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 102, 0));
+        jLabel3.setText("Alumnos");
+
+        jLabel5.setBackground(new java.awt.Color(102, 102, 102));
+        jLabel5.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("Ingreso");
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
-        pnlIngresoAlumnosLayout.setVerticalGroup(
-            pnlIngresoAlumnosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel3)
+                .addComponent(jLabel5)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel2.add(pnlIngresoAlumnos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        pnlIngresoAlumnos.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 40, 130, 60));
+
+        jTextArea1.setEditable(false);
+        jTextArea1.setBackground(new java.awt.Color(51, 51, 51));
+        jTextArea1.setColumns(20);
+        jTextArea1.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        jTextArea1.setForeground(new java.awt.Color(255, 255, 255));
+        jTextArea1.setRows(5);
+        jTextArea1.setText("Funcionalidad del sistema:\n\n- Inscribir nuevos alumnos.\n- Modificar registros.\n- Alta de alumnos.\n- Baja de alumnos.\n- Borrado de registros.\n- Buscar alumnos mediante distintos\nfiltros y opciones.\n- Listado completo de alumnos.\n\nPara acceder ingrese su Usuario y \ncontraseña.");
+        jTextArea1.setBorder(null);
+        jScrollPane1.setViewportView(jTextArea1);
+
+        pnlIngresoAlumnos.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 330, 240));
+
+        jTextArea2.setEditable(false);
+        jTextArea2.setBackground(new java.awt.Color(51, 51, 51));
+        jTextArea2.setColumns(20);
+        jTextArea2.setForeground(new java.awt.Color(153, 153, 153));
+        jTextArea2.setRows(5);
+        jTextArea2.setText("Usuario Alumno: alumno\nContraseña Alumno: alumno\n\nUsuario Docente: docente\nContraseña Docente: docente");
+        jTextArea2.setAutoscrolls(false);
+        jScrollPane2.setViewportView(jTextArea2);
+
+        pnlIngresoAlumnos.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, 330, 100));
+
+        jPanel2.add(pnlIngresoAlumnos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 520));
 
         javax.swing.GroupLayout pnlIngresoMateriasLayout = new javax.swing.GroupLayout(pnlIngresoMaterias);
         pnlIngresoMaterias.setLayout(pnlIngresoMateriasLayout);
@@ -285,6 +435,20 @@ public class ventanaDeInicio extends javax.swing.JFrame {
        btnSistemaMaterias.setVisible(false);
     }//GEN-LAST:event_btnSistemaAlumnosMouseClicked
 
+    private void btnSistemaAlumnosMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSistemaAlumnosMouseReleased
+        pnlIngresoAlumnos.setVisible(true);
+    }//GEN-LAST:event_btnSistemaAlumnosMouseReleased
+
+    private void btnBackAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackAlumnosActionPerformed
+        btnSistemaInscripciones.setVisible(true);
+        btnSistemaMaterias.setVisible(true);
+        lblSysAlu.setForeground(new Color(255,102,0));
+        lblAlu.setForeground(new Color(255, 255, 255));
+        btnSistemaAlumnos.setBorder(null);
+        pnlIngresoAlumnos.setVisible(false);
+        
+    }//GEN-LAST:event_btnBackAlumnosActionPerformed
+
     public static void main(String args[]) {
         
         
@@ -297,19 +461,40 @@ public class ventanaDeInicio extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel backgroundPnl;
+    private javax.swing.JButton btnBackAlumnos;
     private javax.swing.JPanel btnSistemaAlumnos;
     private javax.swing.JPanel btnSistemaInscripciones;
     private javax.swing.JPanel btnSistemaMaterias;
     private javax.swing.JLabel closeBtn;
     private javax.swing.JPanel closePnl;
     private javax.swing.JPanel imagenPnl;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPasswordField jPasswordField1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JSeparator jSeparator6;
+    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea jTextArea2;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel lblAlu;
     private javax.swing.JLabel lblInageSistema;
     private javax.swing.JLabel lblInsc;
