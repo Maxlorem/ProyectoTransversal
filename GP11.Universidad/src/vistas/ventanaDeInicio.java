@@ -36,6 +36,7 @@ public class ventanaDeInicio extends javax.swing.JFrame {
         lblMat = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
         lblInageSistema = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
         imagenPnl = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
@@ -76,7 +77,6 @@ public class ventanaDeInicio extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         pnlIngresoMaterias = new javax.swing.JPanel();
         pnlIngresoInsc = new javax.swing.JPanel();
-        jLabel18 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setUndecorated(true);
@@ -186,6 +186,12 @@ public class ventanaDeInicio extends javax.swing.JFrame {
         lblInageSistema.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblInageSistema.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Sistema Ingreso.png"))); // NOI18N
         menuPnl.add(lblInageSistema, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 240, 250));
+
+        jLabel18.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(255, 102, 0));
+        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel18.setText("DOBLE CLIC PARA ACCEDER");
+        menuPnl.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 260, 30));
 
         backgroundPnl.add(menuPnl, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 260, 520));
 
@@ -462,7 +468,7 @@ public class ventanaDeInicio extends javax.swing.JFrame {
         jLabel15.setText("TP Transversal");
         pnlIngresoAlumnos.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 290, 170, -1));
 
-        jPanel2.add(pnlIngresoAlumnos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 520));
+        jPanel2.add(pnlIngresoAlumnos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 0, 0));
 
         javax.swing.GroupLayout pnlIngresoMateriasLayout = new javax.swing.GroupLayout(pnlIngresoMaterias);
         pnlIngresoMaterias.setLayout(pnlIngresoMateriasLayout);
@@ -489,10 +495,6 @@ public class ventanaDeInicio extends javax.swing.JFrame {
         );
 
         jPanel2.add(pnlIngresoInsc, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 420, -1, -1));
-
-        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/portada.png"))); // NOI18N
-        jPanel2.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 470, 440));
 
         backgroundPnl.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 30, 550, 520));
 
