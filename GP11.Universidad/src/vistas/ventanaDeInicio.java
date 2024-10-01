@@ -1,6 +1,7 @@
 package vistas;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import javax.swing.BorderFactory;
 import javax.swing.border.Border;
 
@@ -50,13 +51,13 @@ public class ventanaDeInicio extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
+        pnlSuperior = new javax.swing.JPanel();
         closePnl = new javax.swing.JPanel();
         closeBtn = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
+        pnlGeneral = new javax.swing.JPanel();
         pnlIngresoAlumnos = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        btnAccesAlumnos = new javax.swing.JButton();
         btnBackAlumnos = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jSeparator4 = new javax.swing.JSeparator();
@@ -76,6 +77,8 @@ public class ventanaDeInicio extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         pnlIngresoMaterias = new javax.swing.JPanel();
+        btnAccessMaterias = new javax.swing.JButton();
+        btnBackMaterias = new javax.swing.JButton();
         pnlIngresoInsc = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -123,9 +126,6 @@ public class ventanaDeInicio extends javax.swing.JFrame {
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 btnSistemaAlumnosMouseExited(evt);
             }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                btnSistemaAlumnosMousePressed(evt);
-            }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 btnSistemaAlumnosMouseReleased(evt);
             }
@@ -164,6 +164,21 @@ public class ventanaDeInicio extends javax.swing.JFrame {
 
         btnSistemaMaterias.setBackground(new java.awt.Color(51, 51, 51));
         btnSistemaMaterias.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        btnSistemaMaterias.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSistemaMaterias.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSistemaMateriasMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnSistemaMateriasMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnSistemaMateriasMouseExited(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnSistemaMateriasMouseReleased(evt);
+            }
+        });
         btnSistemaMaterias.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblSysMat.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
@@ -258,9 +273,9 @@ public class ventanaDeInicio extends javax.swing.JFrame {
 
         backgroundPnl.add(imagenPnl, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 30, 190, 520));
 
-        jPanel3.setBackground(new java.awt.Color(102, 102, 102));
-        jPanel3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 102, 0), 1, true));
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        pnlSuperior.setBackground(new java.awt.Color(102, 102, 102));
+        pnlSuperior.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 102, 0), 1, true));
+        pnlSuperior.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         closePnl.setBackground(new java.awt.Color(255, 102, 0));
         closePnl.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -297,38 +312,38 @@ public class ventanaDeInicio extends javax.swing.JFrame {
                 .addComponent(closeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jPanel3.add(closePnl, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 0, -1, -1));
+        pnlSuperior.add(closePnl, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 0, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Sistema de Gestión Universitaria");
         jLabel1.setToolTipText("");
-        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 6, 550, 20));
+        pnlSuperior.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 6, 550, 20));
 
-        backgroundPnl.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 30));
+        backgroundPnl.add(pnlSuperior, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 30));
 
-        jPanel2.setBackground(new java.awt.Color(153, 153, 153));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        pnlGeneral.setBackground(new java.awt.Color(153, 153, 153));
+        pnlGeneral.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pnlIngresoAlumnos.setBackground(new java.awt.Color(51, 51, 51));
         pnlIngresoAlumnos.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 102, 0), 1, true));
         pnlIngresoAlumnos.setForeground(new java.awt.Color(255, 255, 255));
         pnlIngresoAlumnos.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setBackground(new java.awt.Color(102, 102, 102));
-        jButton1.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Ingresar");
-        jButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton1.setEnabled(false);
-        pnlIngresoAlumnos.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 490, 110, -1));
+        btnAccesAlumnos.setBackground(new java.awt.Color(102, 102, 102));
+        btnAccesAlumnos.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        btnAccesAlumnos.setForeground(new java.awt.Color(255, 255, 255));
+        btnAccesAlumnos.setText("Ingresar");
+        btnAccesAlumnos.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnAccesAlumnos.setEnabled(false);
+        pnlIngresoAlumnos.add(btnAccesAlumnos, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 490, 110, -1));
 
         btnBackAlumnos.setBackground(new java.awt.Color(102, 102, 102));
         btnBackAlumnos.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         btnBackAlumnos.setForeground(new java.awt.Color(255, 255, 255));
         btnBackAlumnos.setText("Atras");
-        btnBackAlumnos.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnBackAlumnos.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnBackAlumnos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackAlumnosActionPerformed(evt);
@@ -468,20 +483,32 @@ public class ventanaDeInicio extends javax.swing.JFrame {
         jLabel15.setText("TP Transversal");
         pnlIngresoAlumnos.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 290, 170, -1));
 
-        jPanel2.add(pnlIngresoAlumnos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 0, 0));
+        pnlGeneral.add(pnlIngresoAlumnos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 100, 70));
 
-        javax.swing.GroupLayout pnlIngresoMateriasLayout = new javax.swing.GroupLayout(pnlIngresoMaterias);
-        pnlIngresoMaterias.setLayout(pnlIngresoMateriasLayout);
-        pnlIngresoMateriasLayout.setHorizontalGroup(
-            pnlIngresoMateriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        pnlIngresoMateriasLayout.setVerticalGroup(
-            pnlIngresoMateriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
+        pnlIngresoMaterias.setBackground(new java.awt.Color(51, 51, 51));
+        pnlIngresoMaterias.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.add(pnlIngresoMaterias, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 0, -1, -1));
+        btnAccessMaterias.setBackground(new java.awt.Color(102, 102, 102));
+        btnAccessMaterias.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        btnAccessMaterias.setForeground(new java.awt.Color(255, 255, 255));
+        btnAccessMaterias.setText("Ingresar");
+        btnAccessMaterias.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnAccessMaterias.setEnabled(false);
+        pnlIngresoMaterias.add(btnAccessMaterias, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 490, 100, -1));
+
+        btnBackMaterias.setBackground(new java.awt.Color(102, 102, 102));
+        btnBackMaterias.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        btnBackMaterias.setForeground(new java.awt.Color(255, 255, 255));
+        btnBackMaterias.setText("Atras");
+        btnBackMaterias.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnBackMaterias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackMateriasActionPerformed(evt);
+            }
+        });
+        pnlIngresoMaterias.add(btnBackMaterias, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 490, 100, -1));
+
+        pnlGeneral.add(pnlIngresoMaterias, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 520));
 
         javax.swing.GroupLayout pnlIngresoInscLayout = new javax.swing.GroupLayout(pnlIngresoInsc);
         pnlIngresoInsc.setLayout(pnlIngresoInscLayout);
@@ -494,9 +521,9 @@ public class ventanaDeInicio extends javax.swing.JFrame {
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
-        jPanel2.add(pnlIngresoInsc, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 420, -1, -1));
+        pnlGeneral.add(pnlIngresoInsc, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 420, -1, -1));
 
-        backgroundPnl.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 30, 550, 520));
+        backgroundPnl.add(pnlGeneral, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 30, 550, 520));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -511,19 +538,6 @@ public class ventanaDeInicio extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void closePnlMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closePnlMouseEntered
-        closePnl.setBackground(Color.red);
-    }//GEN-LAST:event_closePnlMouseEntered
-
-    private void closePnlMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closePnlMouseClicked
-        closePnl.setBackground(Color.YELLOW);
-        System.exit(0);
-    }//GEN-LAST:event_closePnlMouseClicked
-
-    private void closePnlMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closePnlMouseExited
-        closePnl.setBackground(new Color(255, 155, 0));
-    }//GEN-LAST:event_closePnlMouseExited
 
     private void btnSistemaAlumnosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSistemaAlumnosMouseEntered
         btnSistemaAlumnos.setBackground(new Color(102, 102, 102));
@@ -541,14 +555,12 @@ public class ventanaDeInicio extends javax.swing.JFrame {
        btnSistemaMaterias.setVisible(false);
        pnlIngresoAlumnos.setVisible(true);
        
+       
     }//GEN-LAST:event_btnSistemaAlumnosMouseClicked
 
     private void btnSistemaAlumnosMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSistemaAlumnosMouseReleased
-        
         pnlIngresoAlumnos.setSize(550,520);
-        pnlIngresoAlumnos.setSize(550,520);
-        pnlIngresoAlumnos.setSize(550,520);
-        
+            
     }//GEN-LAST:event_btnSistemaAlumnosMouseReleased
 
     private void btnBackAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackAlumnosActionPerformed
@@ -561,9 +573,48 @@ public class ventanaDeInicio extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnBackAlumnosActionPerformed
 
-    private void btnSistemaAlumnosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSistemaAlumnosMousePressed
-     
-    }//GEN-LAST:event_btnSistemaAlumnosMousePressed
+    private void btnSistemaMateriasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSistemaMateriasMouseEntered
+        btnSistemaMaterias.setBackground(new Color(102, 102, 102));
+    }//GEN-LAST:event_btnSistemaMateriasMouseEntered
+
+    private void btnSistemaMateriasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSistemaMateriasMouseExited
+        btnSistemaMaterias.setBackground(new Color(51, 51, 51));
+    }//GEN-LAST:event_btnSistemaMateriasMouseExited
+
+    private void closePnlMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closePnlMouseExited
+        closePnl.setBackground(new Color(255, 155, 0));
+    }//GEN-LAST:event_closePnlMouseExited
+
+    private void closePnlMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closePnlMouseEntered
+        closePnl.setBackground(Color.red);
+    }//GEN-LAST:event_closePnlMouseEntered
+
+    private void closePnlMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closePnlMouseClicked
+        closePnl.setBackground(Color.YELLOW);
+        System.exit(0);
+    }//GEN-LAST:event_closePnlMouseClicked
+
+    private void btnBackMateriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackMateriasActionPerformed
+        btnSistemaAlumnos.setVisible(true);
+        btnSistemaInscripciones.setVisible(true);
+        lblSysMat.setForeground(new Color(255,102,0));
+        lblMat.setForeground(new Color(255, 255, 255));
+        btnSistemaMaterias.setBorder(BorderFactory.createLineBorder(new Color(0,0,0),3));
+        pnlIngresoMaterias.setVisible(false);
+    }//GEN-LAST:event_btnBackMateriasActionPerformed
+
+    private void btnSistemaMateriasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSistemaMateriasMouseClicked
+        lblSysMat.setForeground(new Color(255,255,255));
+       lblMat.setForeground(new Color(255, 102, 0));
+       btnSistemaMaterias.setBorder(BorderFactory.createLineBorder(new Color(255,102,0),3));
+       btnSistemaInscripciones.setVisible(false);
+       btnSistemaAlumnos.setVisible(false);
+       pnlIngresoMaterias.setVisible(true);
+    }//GEN-LAST:event_btnSistemaMateriasMouseClicked
+
+    private void btnSistemaMateriasMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSistemaMateriasMouseReleased
+        pnlIngresoMaterias.setSize(550,520);
+    }//GEN-LAST:event_btnSistemaMateriasMouseReleased
 
     public static void main(String args[]) {
         
@@ -577,14 +628,16 @@ public class ventanaDeInicio extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel backgroundPnl;
+    private javax.swing.JButton btnAccesAlumnos;
+    private javax.swing.JButton btnAccessMaterias;
     private javax.swing.JButton btnBackAlumnos;
+    private javax.swing.JButton btnBackMaterias;
     private javax.swing.JPanel btnSistemaAlumnos;
     private javax.swing.JPanel btnSistemaInscripciones;
     private javax.swing.JPanel btnSistemaMaterias;
     private javax.swing.JLabel closeBtn;
     private javax.swing.JPanel closePnl;
     private javax.swing.JPanel imagenPnl;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -605,8 +658,6 @@ public class ventanaDeInicio extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
@@ -630,8 +681,10 @@ public class ventanaDeInicio extends javax.swing.JFrame {
     private javax.swing.JLabel lblSysInsc;
     private javax.swing.JLabel lblSysMat;
     private javax.swing.JPanel menuPnl;
+    private javax.swing.JPanel pnlGeneral;
     private javax.swing.JPanel pnlIngresoAlumnos;
     private javax.swing.JPanel pnlIngresoInsc;
     private javax.swing.JPanel pnlIngresoMaterias;
+    private javax.swing.JPanel pnlSuperior;
     // End of variables declaration//GEN-END:variables
 }
