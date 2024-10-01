@@ -114,6 +114,9 @@ public class ventanaDeInicio extends javax.swing.JFrame {
         btnSistemaAlumnos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
         btnSistemaAlumnos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnSistemaAlumnos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSistemaAlumnosMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnSistemaAlumnosMouseEntered(evt);
             }
@@ -122,6 +125,9 @@ public class ventanaDeInicio extends javax.swing.JFrame {
             }
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 btnSistemaAlumnosMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnSistemaAlumnosMouseReleased(evt);
             }
         });
         btnSistemaAlumnos.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -310,7 +316,7 @@ public class ventanaDeInicio extends javax.swing.JFrame {
         jButton1.setText("Ingresar");
         jButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton1.setEnabled(false);
-        pnlIngresoAlumnos.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 480, 110, -1));
+        pnlIngresoAlumnos.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 490, 110, -1));
 
         btnBackAlumnos.setBackground(new java.awt.Color(102, 102, 102));
         btnBackAlumnos.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
@@ -322,7 +328,7 @@ public class ventanaDeInicio extends javax.swing.JFrame {
                 btnBackAlumnosActionPerformed(evt);
             }
         });
-        pnlIngresoAlumnos.add(btnBackAlumnos, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 480, 110, -1));
+        pnlIngresoAlumnos.add(btnBackAlumnos, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 490, 110, -1));
 
         jLabel2.setBackground(new java.awt.Color(102, 102, 102));
         jLabel2.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
@@ -525,6 +531,24 @@ public class ventanaDeInicio extends javax.swing.JFrame {
         btnSistemaAlumnos.setBackground(new Color(51, 51, 51));
     }//GEN-LAST:event_btnSistemaAlumnosMouseExited
 
+    private void btnSistemaAlumnosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSistemaAlumnosMouseClicked
+       lblSysAlu.setForeground(new Color(255,255,255));
+       lblAlu.setForeground(new Color(255, 102, 0));
+       btnSistemaAlumnos.setBorder(BorderFactory.createLineBorder(new Color(255,102,0),3));
+       btnSistemaInscripciones.setVisible(false);
+       btnSistemaMaterias.setVisible(false);
+       pnlIngresoAlumnos.setVisible(true);
+       
+    }//GEN-LAST:event_btnSistemaAlumnosMouseClicked
+
+    private void btnSistemaAlumnosMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSistemaAlumnosMouseReleased
+        
+        pnlIngresoAlumnos.setSize(550,520);
+        pnlIngresoAlumnos.setSize(550,520);
+        pnlIngresoAlumnos.setSize(550,520);
+        
+    }//GEN-LAST:event_btnSistemaAlumnosMouseReleased
+
     private void btnBackAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackAlumnosActionPerformed
         btnSistemaInscripciones.setVisible(true);
         btnSistemaMaterias.setVisible(true);
@@ -536,12 +560,7 @@ public class ventanaDeInicio extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBackAlumnosActionPerformed
 
     private void btnSistemaAlumnosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSistemaAlumnosMousePressed
-     lblSysAlu.setForeground(new Color(255,255,255));
-       lblAlu.setForeground(new Color(255, 102, 0));
-       btnSistemaAlumnos.setBorder(BorderFactory.createLineBorder(new Color(255,102,0),3));
-       btnSistemaInscripciones.setVisible(false);
-       btnSistemaMaterias.setVisible(false);
-       pnlIngresoAlumnos.setVisible(true);
+     
     }//GEN-LAST:event_btnSistemaAlumnosMousePressed
 
     public static void main(String args[]) {
