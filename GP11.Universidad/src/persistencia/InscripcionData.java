@@ -5,6 +5,6 @@ public class InscripcionData {
     
     private Connection conexion;
     private MateriaData matData;
-    private AlumnoData alumnoData;
+    private alumnoData alumnoData;
     
 }
