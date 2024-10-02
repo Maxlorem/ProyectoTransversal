@@ -1,9 +1,7 @@
 package vistas;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import javax.swing.BorderFactory;
-import javax.swing.border.Border;
 
 public class ventanaDeInicio extends javax.swing.JFrame {
 
@@ -79,6 +77,23 @@ public class ventanaDeInicio extends javax.swing.JFrame {
         pnlIngresoMaterias = new javax.swing.JPanel();
         btnAccessMaterias = new javax.swing.JButton();
         btnBackMaterias = new javax.swing.JButton();
+        jLabel19 = new javax.swing.JLabel();
+        jSeparator7 = new javax.swing.JSeparator();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTextArea3 = new javax.swing.JTextArea();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTextArea4 = new javax.swing.JTextArea();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        jLabel27 = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
         pnlIngresoInsc = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -357,7 +372,7 @@ public class ventanaDeInicio extends javax.swing.JFrame {
         jLabel2.setText("Sistema de Gestión");
         pnlIngresoAlumnos.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 210, 40));
 
-        jSeparator4.setBackground(new java.awt.Color(102, 102, 102));
+        jSeparator4.setBackground(new java.awt.Color(51, 51, 51));
         jSeparator4.setForeground(new java.awt.Color(255, 102, 0));
         pnlIngresoAlumnos.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, 250, 10));
 
@@ -483,9 +498,10 @@ public class ventanaDeInicio extends javax.swing.JFrame {
         jLabel15.setText("TP Transversal");
         pnlIngresoAlumnos.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 290, 170, -1));
 
-        pnlGeneral.add(pnlIngresoAlumnos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 100, 70));
+        pnlGeneral.add(pnlIngresoAlumnos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 10, 10));
 
         pnlIngresoMaterias.setBackground(new java.awt.Color(51, 51, 51));
+        pnlIngresoMaterias.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 102, 0)));
         pnlIngresoMaterias.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnAccessMaterias.setBackground(new java.awt.Color(102, 102, 102));
@@ -508,7 +524,118 @@ public class ventanaDeInicio extends javax.swing.JFrame {
         });
         pnlIngresoMaterias.add(btnBackMaterias, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 490, 100, -1));
 
-        pnlGeneral.add(pnlIngresoMaterias, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 520));
+        jLabel19.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel19.setText("Sistema de Gestión");
+        pnlIngresoMaterias.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 290, 40));
+
+        jSeparator7.setBackground(new java.awt.Color(51, 51, 51));
+        jSeparator7.setForeground(new java.awt.Color(255, 102, 0));
+        pnlIngresoMaterias.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, 200, 10));
+
+        jPanel2.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel20.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(255, 102, 0));
+        jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel20.setText("Materias");
+        jPanel2.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 0, 140, 26));
+
+        jLabel21.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel21.setText("Ingreso");
+        jPanel2.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 140, -1));
+
+        pnlIngresoMaterias.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 50, 140, -1));
+
+        jPanel3.setBackground(new java.awt.Color(255, 102, 0));
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 10, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 450, Short.MAX_VALUE)
+        );
+
+        pnlIngresoMaterias.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 10, 10, 450));
+
+        jTextArea3.setEditable(false);
+        jTextArea3.setBackground(new java.awt.Color(51, 51, 51));
+        jTextArea3.setColumns(20);
+        jTextArea3.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        jTextArea3.setForeground(new java.awt.Color(255, 255, 255));
+        jTextArea3.setRows(5);
+        jTextArea3.setText("Funcionalidad del sistema:\n\n- Agregar nuevas materias a la currícula.\n\n- Modificar materias existentes.\n\n- Buscar materias.\n\n- Listar materias.\n\n- Borrar materias, física y lógicamente.");
+        jScrollPane3.setViewportView(jTextArea3);
+
+        pnlIngresoMaterias.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 300, 200));
+
+        jTextArea4.setEditable(false);
+        jTextArea4.setBackground(new java.awt.Color(51, 51, 51));
+        jTextArea4.setColumns(20);
+        jTextArea4.setForeground(new java.awt.Color(153, 153, 153));
+        jTextArea4.setRows(5);
+        jTextArea4.setText("Usuario Alumno: alumno\nContraseña Alumno: alumno\n\nUsuario Docente: docente\nContraseña Docente: docente");
+        jTextArea4.setAutoscrolls(false);
+        jScrollPane4.setViewportView(jTextArea4);
+
+        pnlIngresoMaterias.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, 300, 100));
+
+        jLabel22.setBackground(new java.awt.Color(51, 51, 51));
+        jLabel22.setFont(new java.awt.Font("Verdana", 1, 36)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel22.setText("S G U");
+        jLabel22.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        jLabel22.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
+        pnlIngresoMaterias.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 210, 190, 250));
+
+        jLabel23.setBackground(new java.awt.Color(51, 51, 51));
+        jLabel23.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel23.setText("GRUPO 11 - V0.1");
+        pnlIngresoMaterias.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 260, 170, -1));
+
+        jLabel24.setBackground(new java.awt.Color(51, 51, 51));
+        jLabel24.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        jLabel24.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel24.setText("Pestchanker Mauricio Andrés");
+        pnlIngresoMaterias.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 380, 190, -1));
+
+        jLabel25.setBackground(new java.awt.Color(51, 51, 51));
+        jLabel25.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        jLabel25.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel25.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel25.setText("Quiroga Máximo");
+        pnlIngresoMaterias.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 420, 190, -1));
+
+        jLabel26.setBackground(new java.awt.Color(51, 51, 51));
+        jLabel26.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        jLabel26.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel26.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel26.setText("Chirino Sosa Marcos Antonio");
+        pnlIngresoMaterias.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 330, 190, -1));
+
+        jLabel27.setBackground(new java.awt.Color(51, 51, 51));
+        jLabel27.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        jLabel27.setForeground(new java.awt.Color(255, 102, 0));
+        jLabel27.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel27.setText("TP Transversal");
+        pnlIngresoMaterias.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 290, 170, -1));
+
+        jLabel28.setBackground(new java.awt.Color(102, 102, 102));
+        jLabel28.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Alumnos.png"))); // NOI18N
+        jLabel28.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        pnlIngresoMaterias.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 10, 190, 190));
+
+        pnlGeneral.add(pnlIngresoMaterias, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 10, 10));
 
         javax.swing.GroupLayout pnlIngresoInscLayout = new javax.swing.GroupLayout(pnlIngresoInsc);
         pnlIngresoInsc.setLayout(pnlIngresoInscLayout);
@@ -649,7 +776,17 @@ public class ventanaDeInicio extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -658,20 +795,27 @@ public class ventanaDeInicio extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
+    private javax.swing.JSeparator jSeparator7;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;
+    private javax.swing.JTextArea jTextArea3;
+    private javax.swing.JTextArea jTextArea4;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel lblAlu;
     private javax.swing.JLabel lblInageSistema;
