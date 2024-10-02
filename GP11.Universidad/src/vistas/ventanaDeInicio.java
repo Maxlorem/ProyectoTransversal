@@ -3,11 +3,11 @@ package vistas;
 import java.awt.Color;
 import javax.swing.BorderFactory;
 
-public class ventanaDeInicio extends javax.swing.JFrame {
+public class VentanaDeInicio extends javax.swing.JFrame {
 
     int xMouse,yMouse;
     int x,y;
-    public ventanaDeInicio() {
+    public VentanaDeInicio() {
         initComponents();
         this.setLocationRelativeTo(null);
         pnlIngresoAlumnos.setVisible(false);
@@ -835,7 +835,7 @@ public class ventanaDeInicio extends javax.swing.JFrame {
         
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ventanaDeInicio().setVisible(true);
+                new VentanaDeInicio().setVisible(true);
             }
         });
     }
