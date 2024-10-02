@@ -12,7 +12,12 @@ public class ventanaDeInicio extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         pnlIngresoAlumnos.setVisible(false);
         pnlIngresoInsc.setVisible(false);
-        pnlIngresoMaterias.setVisible(false);        
+        pnlIngresoMaterias.setVisible(false);   
+        btnSistemaAlumnos.setVisible(false);
+        btnSistemaMaterias.setVisible(false);
+        btnSistemaInscripciones.setVisible(false);
+        lblDoubleclick.setText("BIENVENIDO");
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -35,8 +40,8 @@ public class ventanaDeInicio extends javax.swing.JFrame {
         lblMat = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
         lblInageSistema = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
-        imagenPnl = new javax.swing.JPanel();
+        lblDoubleclick = new javax.swing.JLabel();
+        ingressPnl = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jPasswordField1 = new javax.swing.JPasswordField();
@@ -95,6 +100,8 @@ public class ventanaDeInicio extends javax.swing.JFrame {
         jLabel28 = new javax.swing.JLabel();
         pnlIngresoInsc = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        pnlMsgInicio = new javax.swing.JPanel();
+        jLabel29 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setUndecorated(true);
@@ -120,7 +127,7 @@ public class ventanaDeInicio extends javax.swing.JFrame {
         lblInsc.setForeground(new java.awt.Color(255, 255, 255));
         lblInsc.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblInsc.setText("INSCRIPCIONES");
-        btnSistemaInscripciones.add(lblInsc, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 31, 180, 20));
+        btnSistemaInscripciones.add(lblInsc, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 180, 20));
 
         jSeparator1.setBackground(new java.awt.Color(51, 51, 51));
         jSeparator1.setForeground(new java.awt.Color(255, 102, 0));
@@ -156,7 +163,7 @@ public class ventanaDeInicio extends javax.swing.JFrame {
         lblAlu.setForeground(new java.awt.Color(255, 255, 255));
         lblAlu.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblAlu.setText("ALUMNOS");
-        btnSistemaAlumnos.add(lblAlu, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 33, 130, -1));
+        btnSistemaAlumnos.add(lblAlu, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 130, -1));
 
         jSeparator2.setBackground(new java.awt.Color(51, 51, 51));
         jSeparator2.setForeground(new java.awt.Color(255, 102, 0));
@@ -205,7 +212,7 @@ public class ventanaDeInicio extends javax.swing.JFrame {
         lblMat.setForeground(new java.awt.Color(255, 255, 255));
         lblMat.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblMat.setText("MATERIAS");
-        btnSistemaMaterias.add(lblMat, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 33, 130, -1));
+        btnSistemaMaterias.add(lblMat, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, 90, -1));
 
         jSeparator3.setBackground(new java.awt.Color(51, 51, 51));
         jSeparator3.setForeground(new java.awt.Color(255, 102, 0));
@@ -217,17 +224,17 @@ public class ventanaDeInicio extends javax.swing.JFrame {
         lblInageSistema.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Sistema Ingreso.png"))); // NOI18N
         menuPnl.add(lblInageSistema, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 240, 250));
 
-        jLabel18.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
-        jLabel18.setForeground(new java.awt.Color(255, 102, 0));
-        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel18.setText("DOBLE CLIC PARA ACCEDER");
-        menuPnl.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 260, 30));
+        lblDoubleclick.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        lblDoubleclick.setForeground(new java.awt.Color(255, 102, 0));
+        lblDoubleclick.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblDoubleclick.setText("DOBLE CLIC PARA ACCEDER");
+        menuPnl.add(lblDoubleclick, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 260, 30));
 
         backgroundPnl.add(menuPnl, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 260, 520));
 
-        imagenPnl.setBackground(new java.awt.Color(204, 204, 204));
-        imagenPnl.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
-        imagenPnl.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        ingressPnl.setBackground(new java.awt.Color(204, 204, 204));
+        ingressPnl.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
+        ingressPnl.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel6.setBackground(new java.awt.Color(204, 204, 204));
         jLabel6.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
@@ -235,34 +242,39 @@ public class ventanaDeInicio extends javax.swing.JFrame {
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("INGRESO");
         jLabel6.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
-        imagenPnl.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 190, 60));
+        ingressPnl.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 190, 60));
 
         jTextField1.setBackground(new java.awt.Color(204, 204, 204));
         jTextField1.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jTextField1.setBorder(null);
-        imagenPnl.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, 170, 20));
+        ingressPnl.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, 170, 20));
 
         jPasswordField1.setBackground(new java.awt.Color(204, 204, 204));
         jPasswordField1.setText("jPasswordField1");
         jPasswordField1.setBorder(null);
-        imagenPnl.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 430, 170, 20));
+        ingressPnl.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 430, 170, 20));
 
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Usuario:");
-        imagenPnl.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, -1, -1));
+        ingressPnl.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, -1, -1));
 
         jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Contraseña:");
-        imagenPnl.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 410, -1, -1));
-        imagenPnl.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 380, 170, 10));
-        imagenPnl.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 450, 170, 10));
+        ingressPnl.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 410, -1, -1));
+        ingressPnl.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 380, 170, 10));
+        ingressPnl.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 450, 170, 10));
 
         jButton2.setBackground(new java.awt.Color(51, 51, 51));
         jButton2.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Aceptar");
         jButton2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        imagenPnl.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 470, 110, 30));
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        ingressPnl.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 470, 110, 30));
 
         jPanel6.setBackground(new java.awt.Color(0, 0, 0));
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -284,9 +296,9 @@ public class ventanaDeInicio extends javax.swing.JFrame {
         jLabel17.setText("Para acceder");
         jPanel6.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 190, -1));
 
-        imagenPnl.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 190, 270));
+        ingressPnl.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 190, 270));
 
-        backgroundPnl.add(imagenPnl, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 30, 190, 520));
+        backgroundPnl.add(ingressPnl, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 30, 190, 520));
 
         pnlSuperior.setBackground(new java.awt.Color(102, 102, 102));
         pnlSuperior.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 102, 0), 1, true));
@@ -670,6 +682,30 @@ public class ventanaDeInicio extends javax.swing.JFrame {
         });
         pnlGeneral.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 20));
 
+        pnlMsgInicio.setBackground(new java.awt.Color(0, 0, 0));
+        pnlMsgInicio.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 102, 51), 3, true));
+
+        jLabel29.setBackground(new java.awt.Color(153, 153, 153));
+        jLabel29.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        jLabel29.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel29.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel29.setText("Para acceder ingrese usuario y contraseña");
+
+        javax.swing.GroupLayout pnlMsgInicioLayout = new javax.swing.GroupLayout(pnlMsgInicio);
+        pnlMsgInicio.setLayout(pnlMsgInicioLayout);
+        pnlMsgInicioLayout.setHorizontalGroup(
+            pnlMsgInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel29, javax.swing.GroupLayout.DEFAULT_SIZE, 484, Short.MAX_VALUE)
+        );
+        pnlMsgInicioLayout.setVerticalGroup(
+            pnlMsgInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlMsgInicioLayout.createSequentialGroup()
+                .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 9, Short.MAX_VALUE))
+        );
+
+        pnlGeneral.add(pnlMsgInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 490, 70));
+
         backgroundPnl.add(pnlGeneral, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 30, 550, 520));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -786,6 +822,14 @@ public class ventanaDeInicio extends javax.swing.JFrame {
 //        this.setLocation(x - xMouse, y - yMouse);
     }//GEN-LAST:event_jLabel1MouseDragged
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        pnlMsgInicio.setVisible(false);
+        btnSistemaAlumnos.setVisible(true);
+        btnSistemaMaterias.setVisible(true);
+        btnSistemaInscripciones.setVisible(true);
+        lblDoubleclick.setText("DOBLE CLIC PARA ACCEDER");
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     public static void main(String args[]) {
         
         
@@ -807,7 +851,7 @@ public class ventanaDeInicio extends javax.swing.JFrame {
     private javax.swing.JPanel btnSistemaMaterias;
     private javax.swing.JLabel closeBtn;
     private javax.swing.JPanel closePnl;
-    private javax.swing.JPanel imagenPnl;
+    private javax.swing.JPanel ingressPnl;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -818,7 +862,6 @@ public class ventanaDeInicio extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
@@ -830,6 +873,7 @@ public class ventanaDeInicio extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -861,6 +905,7 @@ public class ventanaDeInicio extends javax.swing.JFrame {
     private javax.swing.JTextArea jTextArea4;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel lblAlu;
+    private javax.swing.JLabel lblDoubleclick;
     private javax.swing.JLabel lblInageSistema;
     private javax.swing.JLabel lblInsc;
     private javax.swing.JLabel lblMat;
@@ -872,6 +917,7 @@ public class ventanaDeInicio extends javax.swing.JFrame {
     private javax.swing.JPanel pnlIngresoAlumnos;
     private javax.swing.JPanel pnlIngresoInsc;
     private javax.swing.JPanel pnlIngresoMaterias;
+    private javax.swing.JPanel pnlMsgInicio;
     private javax.swing.JPanel pnlSuperior;
     // End of variables declaration//GEN-END:variables
 }
