@@ -5,14 +5,14 @@ import javax.swing.BorderFactory;
 
 public class ventanaDeInicio extends javax.swing.JFrame {
 
-        public ventanaDeInicio() {
+    int xMouse,yMouse;
+    int x,y;
+    public ventanaDeInicio() {
         initComponents();
         this.setLocationRelativeTo(null);
         pnlIngresoAlumnos.setVisible(false);
         pnlIngresoInsc.setVisible(false);
-        pnlIngresoMaterias.setVisible(false);
-        
-        
+        pnlIngresoMaterias.setVisible(false);        
     }
 
     @SuppressWarnings("unchecked")
@@ -52,7 +52,6 @@ public class ventanaDeInicio extends javax.swing.JFrame {
         pnlSuperior = new javax.swing.JPanel();
         closePnl = new javax.swing.JPanel();
         closeBtn = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
         pnlGeneral = new javax.swing.JPanel();
         pnlIngresoAlumnos = new javax.swing.JPanel();
         btnAccesAlumnos = new javax.swing.JButton();
@@ -95,6 +94,7 @@ public class ventanaDeInicio extends javax.swing.JFrame {
         jLabel27 = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
         pnlIngresoInsc = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setUndecorated(true);
@@ -290,6 +290,16 @@ public class ventanaDeInicio extends javax.swing.JFrame {
 
         pnlSuperior.setBackground(new java.awt.Color(102, 102, 102));
         pnlSuperior.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 102, 0), 1, true));
+        pnlSuperior.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                pnlSuperiorMouseDragged(evt);
+            }
+        });
+        pnlSuperior.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                pnlSuperiorMousePressed(evt);
+            }
+        });
         pnlSuperior.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         closePnl.setBackground(new java.awt.Color(255, 102, 0));
@@ -328,13 +338,6 @@ public class ventanaDeInicio extends javax.swing.JFrame {
         );
 
         pnlSuperior.add(closePnl, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 0, -1, -1));
-
-        jLabel1.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Sistema de Gestión Universitaria");
-        jLabel1.setToolTipText("");
-        pnlSuperior.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 6, 550, 20));
 
         backgroundPnl.add(pnlSuperior, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 30));
 
@@ -650,6 +653,23 @@ public class ventanaDeInicio extends javax.swing.JFrame {
 
         pnlGeneral.add(pnlIngresoInsc, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 420, -1, -1));
 
+        jLabel1.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        jLabel1.setForeground(java.awt.Color.black);
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Sistema de Gestión Universitaria");
+        jLabel1.setToolTipText("");
+        jLabel1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jLabel1MouseDragged(evt);
+            }
+        });
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabel1MousePressed(evt);
+            }
+        });
+        pnlGeneral.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 20));
+
         backgroundPnl.add(pnlGeneral, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 30, 550, 520));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -742,6 +762,29 @@ public class ventanaDeInicio extends javax.swing.JFrame {
     private void btnSistemaMateriasMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSistemaMateriasMouseReleased
         pnlIngresoMaterias.setSize(550,520);
     }//GEN-LAST:event_btnSistemaMateriasMouseReleased
+
+    private void pnlSuperiorMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlSuperiorMousePressed
+        xMouse = evt.getX();
+        yMouse = evt.getY();
+    }//GEN-LAST:event_pnlSuperiorMousePressed
+
+    private void pnlSuperiorMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlSuperiorMouseDragged
+        x = evt.getXOnScreen(); 
+        y = evt.getYOnScreen();
+        this.setLocation(x - xMouse, y - yMouse);
+    
+    }//GEN-LAST:event_pnlSuperiorMouseDragged
+
+    private void jLabel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MousePressed
+//        xMouse = evt.getX();
+//        yMouse = evt.getY();
+    }//GEN-LAST:event_jLabel1MousePressed
+
+    private void jLabel1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseDragged
+//        x = evt.getXOnScreen(); 
+//        y = evt.getYOnScreen();
+//        this.setLocation(x - xMouse, y - yMouse);
+    }//GEN-LAST:event_jLabel1MouseDragged
 
     public static void main(String args[]) {
         

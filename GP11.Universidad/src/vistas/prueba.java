@@ -10,8 +10,7 @@ public class prueba {
         
         Connection conexion = entidades.Conexion.getConexion();
         
-        
-        
+              
         Alumno alumno = new Alumno(44642651, "Quiroga","maximo", LocalDate.of(2002, 11, 8), true);
         Alumno alumno2 = new Alumno(2,44642652, "Pestchanker","Andres", LocalDate.of(1984, 10, 1), true);
         Alumno alumno3 = new Alumno(44642654, "Sosa Chirino","Marcos Antonio", LocalDate.of(2006, 5, 30), true);
