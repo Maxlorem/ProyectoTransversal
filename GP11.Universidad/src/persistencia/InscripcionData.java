@@ -2,6 +2,7 @@
 
 package persistencia;
 import entidades.Inscripcion;
+import entidades.Materias;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -15,14 +16,14 @@ public class InscripcionData {
     private Connection conexion;
     
     private AlumnoData alumnoData;
-    //private MateriaData materiaData;
+    private MateriaData materiaData;
     
     
     
    public InscripcionData(Connection conexion, AlumnoData alumnoData/*, MateriaData materiaData */){
        this.conexion = conexion;
        this.alumnoData = alumnoData;
-       //this.materiaData = materiaData;
+       this.materiaData = materiaData;
    } 
    
    public void guardarInscripcion(Inscripcion inscripcion){
@@ -50,16 +51,33 @@ public class InscripcionData {
             ResultSet resultados = ps.executeQuery();
             while(resultados.next()){
                 Inscripcion inscripcion = new Inscripcion();
+                
                 inscripcion.setIdInscripcion(resultados.getInt("idInscripcion"));
                 inscripcion.setAlumno(alumnoData.buscarAlumnoPorId(resultados.getInt("idAlumno")));
-                //inscripcion.setMateria(MateriaData);
+                inscripcion.setMateria(materiaData.buscarMateriaPorId(resultados.getInt("idMateria")));
+                inscripcion.setNota(resultados.getDouble("nota"));
             }
             
-            
+            System.out.println("Notas Obtenidas");
         } catch (SQLException ex) {
             System.out.println("No se pudo Obtener las inscripciones del alumno");
         }
        return inscripciones;
    }
-   
+//   public ArrayList<Materias> obtenerMateriasCursadas(int id){
+//       
+//   }
+//   public ArrayList<Materias> obtenerMateriasNOCursadas(int id){
+//       
+//   }
+//   public void borrarInscripcionMateriaAlumno(int idAlumno,int idMateria){
+//       
+//   }
+//   public void actualizarNota(int idAlumno,int idMateria,double nota){
+//       
+//   }
+//   public ArrayList<Alumno> obtenerAlumnosXMateria(int idMateria){
+//       
+//   }
+           
 }
