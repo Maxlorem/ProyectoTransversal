@@ -56,13 +56,13 @@ public class alumnoData {
             ps.setDate(4, Date.valueOf(a.getFechaNac()));
             ps.setBoolean(5, a.isEstado());
             ps.executeUpdate();
-
-            ResultSet rs = ps.getGeneratedKeys();
-            if (rs.next()) {
-                a.setIdAlumno(rs.getInt(1));
-            } else {
-                System.out.println("No se pudo obtener el ID");
-            }
+            // SIRVE CUANDO SE QUIERE GUARDAR EL ID QUE LE GENERA LA BASE DE DATOS AL ALUMNO, PERO LA INFORMACION TIENE QUE ESTAR GUARDADA LOCALMENTE
+//            ResultSet rs = ps.getGeneratedKeys();
+//            if (rs.next()) {
+//                a.setIdAlumno(rs.getInt(1));
+//            } else {
+//                System.out.println("No se pudo obtener el ID");
+//            }
             ps.close();
             System.out.println("GUARDADO!!!!!");
             } catch (SQLException ex) {

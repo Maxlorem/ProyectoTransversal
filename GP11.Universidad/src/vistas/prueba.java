@@ -16,14 +16,17 @@ public class prueba {
         Alumno alumno3 = new Alumno(44642654, "Sosa Chirino","Marcos Antonio", LocalDate.of(2006, 5, 30), true);
         Alumno alumno4 = new Alumno(3232323, "Sosa ","Marcos Antonio", LocalDate.of(2006, 5, 30), true);
         Alumno alumno5 = new Alumno(3232322, "Sosa ","Marcos Antonio", LocalDate.of(2006, 5, 30), true);
+        Alumno alumno6 = new Alumno(13232322, "Sosa ","Marcos Antonio", LocalDate.of(2006, 5, 30), true);
         
         alumnoData data = new alumnoData(conexion);
         //Guardado
         data.guardarAlumno(alumno);
+        
         data.guardarAlumno(alumno2);
         data.guardarAlumno(alumno3);
         data.guardarAlumno(alumno4);
         data.guardarAlumno(alumno5);
+        data.guardarAlumno(alumno6);
 
         //Busqueda por Id
 //        System.out.println(data.buscarAlumnoPorId(3));
