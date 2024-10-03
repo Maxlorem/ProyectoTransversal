@@ -64,12 +64,54 @@ public class InscripcionData {
         }
        return inscripciones;
    }
-//   public ArrayList<Materias> obtenerMateriasCursadas(int id){
-//       
-//   }
-//   public ArrayList<Materias> obtenerMateriasNOCursadas(int id){
-//       
-//   }
+   public ArrayList<Materias> obtenerMateriasCursadas(int id){
+        ArrayList<Materias> materiasObtenidas = new ArrayList<Materias>();
+        try {
+            String query = " SELECT inscripcion.idMateria, nombre ,año "
+                    + "FROM inscripcion,materia"
+                    + "WHERE inscripcion.idMateria = materia.idMateria"
+                    + "AND inscripcion.idAlumno = ?"
+                    + "AND materia.estado = ?";
+            PreparedStatement ps = conexion.prepareStatement(query);
+            ps.setInt(1, id);
+            ps.setBoolean(2, true);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                Materias materias = new Materias();
+                materias.setAnioMateria(rs.getInt("idMateria"));
+                materias.setAnioMateria(rs.getInt("año"));
+                materias.setNombre(rs.getString("nombre"));
+                materiasObtenidas.add(materias);
+            }
+        } catch (SQLException ex) {
+            System.out.println("No se pudo traer las materias cursadas");
+        }
+       return materiasObtenidas;
+   }
+   public ArrayList<Materias> obtenerMateriasNOCursadas(int id){
+       ArrayList<Materias> materiasObtenidas = new ArrayList<Materias>();
+        try {
+            String query = " SELECT inscripcion.idMateria, nombre ,año "
+                    + "FROM inscripcion,materia"
+                    + "WHERE inscripcion.idMateria = materia.idMateria"
+                    + "AND inscripcion.idAlumno = ?"
+                    + "AND materia.estado = ?";
+            PreparedStatement ps = conexion.prepareStatement(query);
+            ps.setInt(1, id);
+            ps.setBoolean(2, false);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                Materias materias = new Materias();
+                materias.setAnioMateria(rs.getInt("idMateria"));
+                materias.setAnioMateria(rs.getInt("año"));
+                materias.setNombre(rs.getString("nombre"));
+                materiasObtenidas.add(materias);
+            }
+        } catch (SQLException ex) {
+            System.out.println("No se pudo traer las materias NO cursadas");
+        }
+       return materiasObtenidas;
+   }
 //   public void borrarInscripcionMateriaAlumno(int idAlumno,int idMateria){
 //       
 //   }

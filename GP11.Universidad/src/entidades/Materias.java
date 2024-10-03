@@ -13,6 +13,12 @@ public class Materias {
     
     }
 
+    public Materias(int idMateria,String nombre, int anioMateria) {
+        this.idMateria = idMateria;
+        this.nombre = nombre;
+        this.anioMateria = anioMateria;
+    }
+    
     public Materias(String nombre, int anioMateria, boolean activo) {
         this.nombre = nombre;
         this.anioMateria = anioMateria;
