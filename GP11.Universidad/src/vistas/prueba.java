@@ -3,8 +3,8 @@ import entidades.Alumno;
 import java.sql.Connection;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import persistencia.alumnoData;
-public class prueba {
+import persistencia.AlumnoData;
+public class Prueba {
 
     public static void main(String args[]) {
         
@@ -18,7 +18,7 @@ public class prueba {
         Alumno alumno5 = new Alumno(3232322, "Sosa ","Marcos Antonio", LocalDate.of(2006, 5, 30), true);
         Alumno alumno6 = new Alumno(13232322, "Sosa ","Marcos Antonio", LocalDate.of(2006, 5, 30), true);
         
-        alumnoData data = new alumnoData(conexion);
+        AlumnoData data = new AlumnoData(conexion);
         //Guardado
         data.guardarAlumno(alumno);
         

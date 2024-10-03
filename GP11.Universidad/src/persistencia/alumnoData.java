@@ -13,11 +13,11 @@ import java.sql.Statement;
 import java.util.List;
 import java.util.ArrayList;
 
-public class alumnoData {
+public class AlumnoData {
 
     private Connection conexionAlumoData = null;
 
-    public alumnoData(Connection conexion) {
+    public AlumnoData(Connection conexion) {
         this.conexionAlumoData = conexion;
     }
 
@@ -66,7 +66,7 @@ public class alumnoData {
             ps.close();
             System.out.println("GUARDADO!!!!!");
             } catch (SQLException ex) {
-                Logger.getLogger(alumnoData.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(AlumnoData.class.getName()).log(Level.SEVERE, null, ex);
             }
         }      
         
