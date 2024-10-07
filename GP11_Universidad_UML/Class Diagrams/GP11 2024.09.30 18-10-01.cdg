@@ -68,7 +68,7 @@
         <Method name="getConexion" returnType="Connection" visibility="public" isStatic="true"/>
       </Methods>
     </Class>
-    <Class name="Inscripcion" package="entidades" visibility="public" xPosition="1306.0" yPosition="385.0">
+    <Class name="Inscripcion" package="entidades" visibility="public" xPosition="1318.0" yPosition="386.0">
       <Fields>
         <Field name="idInscripcion" type="int" visibility="private"/>
         <Field name="alumno" type="Alumno" visibility="private"/>
@@ -183,7 +183,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="prueba" package="vistas" visibility="public" xPosition="1672.0" yPosition="1069.0">
+    <Class name="prueba" package="vistas" visibility="public" xPosition="1491.0" yPosition="960.0">
       <Fields/>
       <Constructors/>
       <Methods>
@@ -234,11 +234,9 @@
     </Class>
   </ClassDiagramComponents>
   <ClassDiagramRelations>
-    <UseRelation source="persistencia.alumnoData" target="entidades.Alumno" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="entidades.Inscripcion" target="entidades.Materias" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="entidades.Inscripcion" target="entidades.Alumno" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="tiene" source="entidades.Inscripcion" target="entidades.Alumno" type="Default" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
+    <HasRelation name="tiene" source="entidades.Inscripcion" target="entidades.Materias" type="Default" sourceCardinality="0..1" targetCardinality="1..*" collectionType="ArrayList"/>
     <HasRelation name="conexion" source="entidades.Conexion" target="entidades.Conexion" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="alumno" source="entidades.Inscripcion" target="entidades.Alumno" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="materia" source="entidades.Inscripcion" target="entidades.Materias" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="persistencia.alumnoData" target="entidades.Alumno" sourceCardinality="1..1" targetCardinality="1..1"/>
   </ClassDiagramRelations>
 </ClassDiagram>
