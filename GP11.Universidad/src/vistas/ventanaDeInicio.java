@@ -1,15 +1,29 @@
 package vistas;
 
+import entidades.Conexion;
+import entidades.Materias;
 import java.awt.Color;
-import java.awt.Component;
 import javax.swing.BorderFactory;
+import java.sql.Connection;
+import persistencia.MateriaData;
 
 public class VentanaDeInicio extends javax.swing.JFrame {
 
     int xMouse,yMouse;
     int x,y;
+    MateriaData materiaData;
+   
+    Materias materia = new Materias("Matematica 1 ", 1, false);
+    Materias materia2 = new Materias("Ingles 1 ", 1, false);
+    Materias materia3= new Materias("Programacion 1 ", 1, false);
+    Materias materia4 = new Materias("Laboratorio de Programacion 1 ", 1, true);
+    Materias materia5 = new Materias("Desarrollo Web ", 1, true);
+    Materias materia6 = new Materias("Administracion de Bases de Datos ", 1, true);
+    Materias materia7 = new Materias("EDA", 1, false);
+    
     public VentanaDeInicio() {
         initComponents();
+        Connection con = Conexion.getConexion();
         this.setLocationRelativeTo(null);
         pnlIngresoAlumnos.setVisible(false);
         pnlIngresoInsc.setVisible(false);
@@ -18,9 +32,20 @@ public class VentanaDeInicio extends javax.swing.JFrame {
         btnSistemaMaterias.setVisible(false);
         btnSistemaInscripciones.setVisible(false);
         lblDoubleclick.setText("BIENVENIDO");
+        materiaData = new MateriaData(con);
         
+        materiaData.guardarMateria(materia);
+        materiaData.guardarMateria(materia2);
+        materiaData.guardarMateria(materia3);
+        materiaData.guardarMateria(materia4);
+        materiaData.guardarMateria(materia5);
+        materiaData.guardarMateria(materia6);
+        materiaData.guardarMateria(materia7);
     }
-
+    
+    
+    
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
