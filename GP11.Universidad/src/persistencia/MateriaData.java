@@ -159,6 +159,39 @@ public class MateriaData {
         
     }
     
+    //BUSCAR POR ESTADO
+    
+    public  Materias buscarMateriaPorEstado(boolean status){
+        
+            Materias a = null;
+            
+            String query = "SELECT * FROM materia WHERE estado = ?";
+        try {   
+            PreparedStatement ps;
+            
+            ps = conexionMateriaData.prepareStatement(query);
+            ps.setBoolean(1, status);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+               a = new Materias();
+               a.setIdMateria(rs.getInt("idMateria"));
+               a.setNombre(rs.getString("nombre"));
+               a.setAnioMateria(rs.getInt("año"));
+              a.setEstado(rs.getBoolean("estado"));
+            }
+            ps.close();
+            if(a == null){
+                throw new SQLException();
+            }
+        } catch (SQLException ex) {            
+            System.out.println("Error, no se pudo encontrar el registro!");
+            System.out.println("Mensaje de error: " + ex.getMessage());
+        }
+        return a;
+    }
+    
+    
+    
     
     public List<Materias> listarMaterias(){
     //copiar el buscar u aggregar el add a la lista, el SELECT es * FROM alumnos. y return nombre del array.
