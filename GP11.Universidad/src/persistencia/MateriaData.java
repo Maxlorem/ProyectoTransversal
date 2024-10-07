@@ -56,7 +56,7 @@ public class MateriaData {
             ps.setBoolean(4, a.isEstado());
             ps.executeUpdate();
 
-            ResultSet rs = ps.getGeneratedKeys();
+            ResultSet rs = ps.getGeneratedKeys(); // YA NO ES NECESARIO; SIRVE CUANDO LA INFORMACION SE GUARDA EN EL DISPOSITIVO
             if (rs.next()) {
                 a.setIdMateria(rs.getInt(1));
             } else {
@@ -65,7 +65,8 @@ public class MateriaData {
             ps.close();
             System.out.println("GUARDADO!!!!!");
             } catch (SQLException ex) {
-                Logger.getLogger(MateriaData.class.getName()).log(Level.SEVERE, null, ex);
+                System.out.println("No se ha podido guardar la materia");
+                System.out.println("Mensaje de error: " + ex.getMessage());
             }
         }
   }
@@ -87,12 +88,13 @@ public class MateriaData {
                a.setAnioMateria(rs.getInt("anioMateria"));
               a.setEstado(rs.getBoolean("estado"));
             }
-              ps.close();
+            ps.close();
             if(a == null){
                 throw new SQLException();
             }
         } catch (SQLException ex) {            
             System.out.println("Error, no se pudo encontrar el registro!");
+            System.out.println("Mensaje de error: " + ex.getMessage());
         }
         return a;
     } 
@@ -119,9 +121,9 @@ public class MateriaData {
             if(listadoMaterias == null){
                 throw new SQLException();
             }
-        } catch (SQLException ex) {
-            
+        } catch (SQLException ex) {            
             System.out.println("No hay materias registrados");
+            System.out.println("Mensaje de error: " + ex.getMessage());
         }
     
     return listadoMaterias;   
