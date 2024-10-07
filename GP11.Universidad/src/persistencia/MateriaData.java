@@ -225,21 +225,20 @@ public class MateriaData {
     
     public void actualizarMateria(Materias a){
         //aca se usa UPDATE alumno SET ... Atributos ... WHERE idAlumno=?.
-        String query = "UPDATE materia SET idMateria = ?, nombre= ?, año= ?, estado= ? WHERE idMateria = ?";
+        String query = "UPDATE materia SET  nombre= ?, año = ?, estado= ? WHERE idAlumno = ?";
         
         try {
             if(this.buscarMateriaPorId(a.getIdMateria()) == null){
                 throw new SQLException();
             }else{
-            PreparedStatement ps = conexionMateriaData.prepareStatement(query) ;
-            ps.setString(1, a.getNombre());
-            ps.setInt(2,a.getAnioMateria());
-            ps.setBoolean(3, a.isEstado());
-            ps.executeUpdate();
+                PreparedStatement ps = conexionMateriaData.prepareStatement(query) ;
+                ps.setString(1, a.getNombre());
+                ps.setInt(2, a.getAnioMateria());
+                ps.setBoolean(3, a.isEstado());
 
                 ps.executeQuery();
                 ps.close();
-                 System.out.println("Materia Actualizada");
+                 System.out.println("Usuario Actualizado");
             }                               
         } catch (SQLException ex) {
             System.out.println("No se pudo actualizar");
