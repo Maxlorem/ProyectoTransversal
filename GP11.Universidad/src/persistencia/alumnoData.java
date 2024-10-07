@@ -7,8 +7,6 @@ import java.sql.PreparedStatement;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.sql.ResultSet;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import java.sql.Statement;
 import java.util.List;
 import java.util.ArrayList;
@@ -67,7 +65,8 @@ public class AlumnoData {
             ps.close();
             System.out.println("GUARDADO!!!!!");
             } catch (SQLException ex) {
-                Logger.getLogger(AlumnoData.class.getName()).log(Level.SEVERE, null, ex);
+                System.out.println("No se ha podido guardar el alumno");
+                System.out.println("Mensaje de error: " + ex.getMessage());
             }
         }      
         
@@ -107,9 +106,77 @@ public class AlumnoData {
             }
         } catch (SQLException ex) {            
             System.out.println("Error, no se pudo encontrar el registro!");
+            System.out.println("Mensaje de error: " + ex.getMessage());
         }
         return a;
+   
     } 
+ 
+    //BUSCAR POR NOMBRE
+    
+    public  Alumno buscarAlumnoPorName(String name){
+        
+            Alumno a = null;
+            
+            String query = "SELECT * FROM alumnos WHERE nombre = ?";
+        try {   
+            PreparedStatement ps;
+            
+            ps = conexionAlumoData.prepareStatement(query);
+            ps.setString(1, name);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+               a = new Alumno();
+               a.setIdAlumno(rs.getInt("idAlumno"));
+               a.setDni(rs.getLong("dni"));
+               a.setApellido(rs.getString("apellido"));
+               a.setNombre(rs.getString("nombre"));
+               a.setFechaNac(rs.getDate("fechaNacimiento").toLocalDate());
+               a.setEstado(rs.getBoolean("estado"));
+            }
+              ps.close();
+            if(a == null){
+                throw new SQLException();
+            }
+        } catch (SQLException ex) {            
+            System.out.println("Error, no se pudo encontrar el registro!");
+            System.out.println("Mensaje de error: " + ex.getMessage());
+        }
+        return a;
+    }
+    
+    //BUSCAR POR ESTADO
+    
+    public  Alumno buscarAlumnoPorEstado(boolean status){
+        
+            Alumno a = null;
+            
+            String query = "SELECT * FROM alumnos WHERE estado = ?";
+        try {   
+            PreparedStatement ps;
+            
+            ps = conexionAlumoData.prepareStatement(query);
+            ps.setBoolean(1, status);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+               a = new Alumno();
+               a.setIdAlumno(rs.getInt("idAlumno"));
+               a.setDni(rs.getLong("dni"));
+               a.setApellido(rs.getString("apellido"));
+               a.setNombre(rs.getString("nombre"));
+               a.setFechaNac(rs.getDate("fechaNacimiento").toLocalDate());
+               a.setEstado(rs.getBoolean("estado"));
+            }
+              ps.close();
+            if(a == null){
+                throw new SQLException();
+            }
+        } catch (SQLException ex) {            
+            System.out.println("Error, no se pudo encontrar el registro!");
+            System.out.println("Mensaje de error: " + ex.getMessage());
+        }
+        return a;
+    }
     
     public List<Alumno> listarAlumnos(){
     //copiar el buscar u aggregar el add a la lista, el SELECT es * FROM alumnos. y return nombre del array.
@@ -135,9 +202,9 @@ public class AlumnoData {
             if(listadoAlumnos == null){
                 throw new SQLException();
             }
-        } catch (SQLException ex) {
-            
+        } catch (SQLException ex) {            
             System.out.println("No hay alumnos registrados");
+            System.out.println("Mensaje de error: " + ex.getMessage());
         }
     
     return listadoAlumnos;   
@@ -165,6 +232,7 @@ public class AlumnoData {
             }                               
         } catch (SQLException ex) {
             System.out.println("No se pudo actualizar");
+            System.out.println("Mensaje de error: " + ex.getMessage());
         }
         
     }
@@ -183,6 +251,7 @@ public class AlumnoData {
             System.out.println("Registro eliminado con exito");
         } catch (SQLException ex) {
             System.out.println("No se pudo eliminar el registro");
+            System.out.println("Mensaje de error: " + ex.getMessage());
         }
     }
     
@@ -201,6 +270,7 @@ public class AlumnoData {
             }          
         } catch (SQLException ex) {
             System.out.println("No se pudo dar la alta al registro");
+            System.out.println("Mensaje de error: " + ex.getMessage());
         }
         
     }
@@ -223,6 +293,7 @@ public class AlumnoData {
            
         } catch (SQLException ex) {
             System.out.println("No se pudo dar la baja al registro");
+            System.out.println("Mensaje de error: " + ex.getMessage());
         }
     }
 }
