@@ -16,31 +16,39 @@ public class InscripcionData {
     private MateriaData materiaData;   
     
     
-   public InscripcionData(Connection conexion, AlumnoData alumnoData/*, MateriaData materiaData */){
+   public InscripcionData(Connection conexion, AlumnoData alumnoData, MateriaData materiaData ){
        this.conexion = conexion;
        this.alumnoData = alumnoData;
        this.materiaData = materiaData;
    } 
    
    public void guardarInscripcion(Inscripcion inscripcion){
-             
-       
-        try {
-            String query = "INSERT INTO inscripcion( idAlumno ,idMateria ) VALUES (?,?)";
-            PreparedStatement ps = conexion.prepareStatement(query);
-            ps.setInt(1, inscripcion.getAlumno().getIdAlumno());
-            ps.setInt(2, inscripcion.getMateria().getIdMateria());
-            ps.executeUpdate();
-            ps.close();
-        } catch (SQLException ex) {
-            System.out.println("No se pudo inscribir");
-        }
+       try{
+            if(this.obtenerInscripcionesPorAlumno(inscripcion.getAlumno().getIdAlumno()).size()> 0){
+                throw new Error();
+            } else{
+               try {
+                String query = "INSERT INTO inscripcion( idAlumno ,idMateria ) VALUES (?,?)";
+                PreparedStatement ps = conexion.prepareStatement(query);
+                ps.setInt(1, inscripcion.getAlumno().getIdAlumno());
+                ps.setInt(2, inscripcion.getMateria().getIdMateria());
+                ps.executeUpdate();
+                ps.close();
+                System.out.println("Inscripcion Exitosa");
+                } catch (SQLException ex) {
+                    System.out.println("No se pudo inscribir");
+                }
+            } 
+       } catch(Error e){
+           System.out.println("El alumno ya esta inscripto a la materia");
+       }
+              
        
    }
    public ArrayList<Inscripcion> obtenerInscripcionesPorAlumno(int id){
         ArrayList<Inscripcion> inscripciones = new ArrayList<>();
         try {
-            String query = " SELECT * FROM inscripcion WHERE idInscripcion = ? ";
+            String query = " SELECT * FROM inscripcion WHERE idAlumno = ? ";
             
             PreparedStatement ps = conexion.prepareStatement(query);
             ps.setInt(1, id);
@@ -48,11 +56,12 @@ public class InscripcionData {
             ps.close();
             while(resultados.next()){
                 Inscripcion inscripcion = new Inscripcion();
-                
+                System.out.println("Entro");
                 inscripcion.setIdInscripcion(resultados.getInt("idInscripcion"));
                 inscripcion.setAlumno(alumnoData.buscarAlumnoPorId(resultados.getInt("idAlumno")));
                 inscripcion.setMateria(materiaData.buscarMateriaPorId(resultados.getInt("idMateria")));
                 inscripcion.setNota(resultados.getDouble("nota"));
+                inscripciones.add(inscripcion);
             }
             
             System.out.println("Notas Obtenidas");
