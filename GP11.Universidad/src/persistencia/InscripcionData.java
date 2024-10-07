@@ -36,8 +36,15 @@ public class InscripcionData {
                 ps.close();
                 System.out.println("Inscripcion Exitosa");
                 } catch (SQLException ex) {
-                    System.out.println("No se pudo inscribir");
-                }
+                    System.out.println(ex.getErrorCode());
+                    if(ex.getErrorCode() == 1452){
+                        System.out.println("No se pudo inscribir" );
+                        System.out.println("ERROR 1452: Revisa si en la base de datos existe el idAlumno enviado, o si existe el idMateria enviado.");
+                    }else{
+                        System.out.println("ERROR: Ocurrio un error inesperado y no se pudo inscribir");
+                    }
+                    
+                } 
             } 
        } catch(Error e){
            System.out.println("El alumno ya esta inscripto a la materia");
@@ -56,7 +63,7 @@ public class InscripcionData {
             ps.close();
             while(resultados.next()){
                 Inscripcion inscripcion = new Inscripcion();
-                System.out.println("Entro");
+               
                 inscripcion.setIdInscripcion(resultados.getInt("idInscripcion"));
                 inscripcion.setAlumno(alumnoData.buscarAlumnoPorId(resultados.getInt("idAlumno")));
                 inscripcion.setMateria(materiaData.buscarMateriaPorId(resultados.getInt("idMateria")));
