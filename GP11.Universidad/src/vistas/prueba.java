@@ -53,7 +53,7 @@ public class Prueba {
 
 MateriaData materiaData = new MateriaData(conexion);
     
-   /*Materias materia = new Materias("Matematica 1 ", 1, false);
+    Materias materia = new Materias("Matematica 1 ", 1, false);
     Materias materia2 = new Materias("Ingles 1 ", 1, false);
     Materias materia3= new Materias("Programacion 1 ", 1, false);
     Materias materia4 = new Materias("Laboratorio de Programacion 1 ", 1, true);
@@ -63,13 +63,13 @@ MateriaData materiaData = new MateriaData(conexion);
     
 // GUARDAR MATERIAS    
 
-    materiaData.guardarMateria(materia);
-    materiaData.guardarMateria(materia2);
-    materiaData.guardarMateria(materia3);
-    materiaData.guardarMateria(materia4);
-    materiaData.guardarMateria(materia5);
-    materiaData.guardarMateria(materia6);
-    materiaData.guardarMateria(materia7); */
+    //materiaData.guardarMateria(materia);
+    //materiaData.guardarMateria(materia2);
+    //materiaData.guardarMateria(materia3);
+    //materiaData.guardarMateria(materia4);
+    //materiaData.guardarMateria(materia5);
+    //materiaData.guardarMateria(materia6);
+    //materiaData.guardarMateria(materia7); 
 
 
 //BUSCAR MATERIAS POR ID
@@ -83,7 +83,19 @@ MateriaData materiaData = new MateriaData(conexion);
         
 //ACTUALIZAR MATERIAS
 
-Materias materia10 = new Materias(7, "Laboratorio de programacion 2", 1 ,true);
-materiaData.actualizarMateria(materia10);
+//Materias materia10 = new Materias(7, "Laboratorio de programacion 2", 1 ,true);
+//materiaData.actualizarMateria(materia10); no funciona ???
+
+
+//BORRADO FISICO
+
+//materiaData.borrarMateriaFisico(7);
+
+
+//DAR ALTA LOGICA
+
+//materiaData.altaLogicaMateria(materia);
+//NO FUNCIONA Y SEGURO EL BAJA LOGICA TAMPOCO
+
     }
 }
