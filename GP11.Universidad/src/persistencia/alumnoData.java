@@ -67,7 +67,8 @@ public class AlumnoData {
             ps.close();
             System.out.println("GUARDADO!!!!!");
             } catch (SQLException ex) {
-                Logger.getLogger(AlumnoData.class.getName()).log(Level.SEVERE, null, ex);
+                System.out.println("No se ha podido guardar el alumno");
+                System.out.println("Mensaje de error: " + ex.getMessage());
             }
         }      
         
@@ -107,6 +108,7 @@ public class AlumnoData {
             }
         } catch (SQLException ex) {            
             System.out.println("Error, no se pudo encontrar el registro!");
+            System.out.println("Mensaje de error: " + ex.getMessage());
         }
         return a;
     } 
@@ -135,9 +137,9 @@ public class AlumnoData {
             if(listadoAlumnos == null){
                 throw new SQLException();
             }
-        } catch (SQLException ex) {
-            
+        } catch (SQLException ex) {            
             System.out.println("No hay alumnos registrados");
+            System.out.println("Mensaje de error: " + ex.getMessage());
         }
     
     return listadoAlumnos;   
@@ -165,6 +167,7 @@ public class AlumnoData {
             }                               
         } catch (SQLException ex) {
             System.out.println("No se pudo actualizar");
+            System.out.println("Mensaje de error: " + ex.getMessage());
         }
         
     }
@@ -183,6 +186,7 @@ public class AlumnoData {
             System.out.println("Registro eliminado con exito");
         } catch (SQLException ex) {
             System.out.println("No se pudo eliminar el registro");
+            System.out.println("Mensaje de error: " + ex.getMessage());
         }
     }
     
@@ -201,6 +205,7 @@ public class AlumnoData {
             }          
         } catch (SQLException ex) {
             System.out.println("No se pudo dar la alta al registro");
+            System.out.println("Mensaje de error: " + ex.getMessage());
         }
         
     }
@@ -223,6 +228,7 @@ public class AlumnoData {
            
         } catch (SQLException ex) {
             System.out.println("No se pudo dar la baja al registro");
+            System.out.println("Mensaje de error: " + ex.getMessage());
         }
     }
 }
