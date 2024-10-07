@@ -123,9 +123,9 @@ public class Prueba {
         //System.out.println(materiaData.listarMaterias());
         
 //ACTUALIZAR MATERIAS
-
-Materias materia10 = new Materias(7, "Laboratorio de programacion 2", 1 ,true);
-materiaData.actualizarMateria(materia10);
+//
+//    Materias materia10 = new Materias(7, "Laboratorio de programacion 2", 1 ,true);
+//    materiaData.actualizarMateria(materia10);
 
     }
 }
