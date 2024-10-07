@@ -9,16 +9,11 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 public class InscripcionData {
     
-    private Connection conexion;
-    
+    private Connection conexion;    
     private AlumnoData alumnoData;
-    private MateriaData materiaData;
-    
+    private MateriaData materiaData;   
     
     
    public InscripcionData(Connection conexion, AlumnoData alumnoData/*, MateriaData materiaData */){
