@@ -44,14 +44,13 @@ public class MateriaData {
 
         
         if(validado){
-            String query = "INSERT INTO materias(idMateria, nombre, anioMateria, estado) VALUES (?,?,?,?)";
+            String query = "INSERT INTO materia(nombre, año, estado) VALUES (?,?,?)";
             try {
             PreparedStatement ps = conexionMateriaData.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             
-            ps.setLong(1, a.getIdMateria());
-            ps.setString(2, a.getNombre());
-            ps.setInt(3,a.getAnioMateria());
-            ps.setBoolean(4, a.isEstado());
+            ps.setString(1, a.getNombre());
+            ps.setInt(2,a.getAnioMateria());
+            ps.setBoolean(3, a.isEstado());
             ps.executeUpdate();
 
             ResultSet rs = ps.getGeneratedKeys(); // YA NO ES NECESARIO; SIRVE CUANDO LA INFORMACION SE GUARDA EN EL DISPOSITIVO
@@ -72,7 +71,7 @@ public class MateriaData {
         
             Materias a = null;
             
-            String query = "SELECT * FROM materias WHERE idMateria = ?";
+            String query = "SELECT * FROM materia WHERE idMateria = ?";
         try {   
             PreparedStatement ps;
             
@@ -83,7 +82,7 @@ public class MateriaData {
                a = new Materias();
                a.setIdMateria(rs.getInt("idMateria"));
                a.setNombre(rs.getString("nombre"));
-               a.setAnioMateria(rs.getInt("anioMateria"));
+               a.setAnioMateria(rs.getInt("año"));
               a.setEstado(rs.getBoolean("estado"));
             }
             ps.close();
@@ -101,7 +100,7 @@ public class MateriaData {
     //copiar el buscar u aggregar el add a la lista, el SELECT es * FROM alumnos. y return nombre del array.
         Materias a;
         List<Materias> listadoMaterias = new ArrayList<>();    
-            String query = "SELECT * FROM materias";
+            String query = "SELECT * FROM materia";
         try {   
             PreparedStatement ps;
             
@@ -111,7 +110,7 @@ public class MateriaData {
                a = new Materias();
                a.setIdMateria(rs.getInt("idMateria"));
                a.setNombre(rs.getString("nombre"));
-               a.setAnioMateria(rs.getInt("anioMateria"));
+               a.setAnioMateria(rs.getInt("año"));
                a.setEstado(rs.getBoolean("estado"));
                listadoMaterias.add(a);
             }
