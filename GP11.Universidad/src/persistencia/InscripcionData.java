@@ -36,9 +36,9 @@ public class InscripcionData {
                 ps.close();
                 System.out.println("Inscripcion Exitosa");
                 } catch (SQLException ex) {
-                    System.out.println(ex.getErrorCode());
+                    
                     if(ex.getErrorCode() == 1452){
-                        System.out.println("No se pudo inscribir" );
+                       
                         System.out.println("ERROR 1452: Revisa si en la base de datos existe el idAlumno enviado, o si existe el idMateria enviado.");
                     }else{
                         System.out.println("ERROR: Ocurrio un error inesperado y no se pudo inscribir");
@@ -54,6 +54,7 @@ public class InscripcionData {
    }
    public ArrayList<Inscripcion> obtenerInscripcionesPorAlumno(int id){
         ArrayList<Inscripcion> inscripciones = new ArrayList<>();
+        Inscripcion inscripcion = new Inscripcion();
         try {
             String query = " SELECT * FROM inscripcion WHERE idAlumno = ? ";
             
@@ -62,7 +63,7 @@ public class InscripcionData {
             ResultSet resultados = ps.executeQuery();
             ps.close();
             while(resultados.next()){
-                Inscripcion inscripcion = new Inscripcion();
+                
                
                 inscripcion.setIdInscripcion(resultados.getInt("idInscripcion"));
                 inscripcion.setAlumno(alumnoData.buscarAlumnoPorId(resultados.getInt("idAlumno")));
@@ -70,61 +71,94 @@ public class InscripcionData {
                 inscripcion.setNota(resultados.getDouble("nota"));
                 inscripciones.add(inscripcion);
             }
+            if(inscripciones.size() == 0){
+                System.out.println("El alumno no tiene inscripciones");
+            } else{
+                System.out.println(
+                        "Inscripciones del alumno enviadas\n DATOS="
+                        + "\n     -ID_INSCRIPCION: " + inscripcion.getIdInscripcion()
+                        + "\n     -ID_ALUMNO: "  + inscripcion.getAlumno().getIdAlumno()
+                        + "\n     -DNI: " + inscripcion.getAlumno().getDni() 
+                        + "\n     -Nombre: " + inscripcion.getAlumno().getNombre()
+                        + "\n     -ID_MATERIA: " + inscripcion.getMateria().getIdMateria()                               
+                        + "\n     -NOMBRE_MATERIA: " + inscripcion.getMateria().getNombre()
+                        );
+            }
             
-            System.out.println("Notas Obtenidas");
         } catch (SQLException ex) {
             System.out.println("No se pudo Obtener las inscripciones del alumno");
         }
        return inscripciones;
    }
-   public ArrayList<Materias> obtenerMateriasCursadas(int id){
+   public ArrayList<Materias> obtenerMateriasCursadasPorAlumno(int id){
         ArrayList<Materias> materiasObtenidas = new ArrayList<Materias>();
+        
         try {
-            String query = " SELECT inscripcion.idMateria, nombre ,año "
-                    + "FROM inscripcion,materia"
-                    + "WHERE inscripcion.idMateria = materia.idMateria"
-                    + "AND inscripcion.idAlumno = ?"
-                    + "AND materia.estado = ?";
+            String query = " SELECT materia.idMateria, materia.nombre ,materia.año,materia.estado "
+                    + "FROM materia "
+                    + "LEFT JOIN inscripcion ON materia.idMateria = inscripcion.idMateria "
+                    + "WHERE inscripcion.idAlumno = ? " ;
             PreparedStatement ps = conexion.prepareStatement(query);
             ps.setInt(1, id);
             ps.setBoolean(2, true);
             ResultSet rs = ps.executeQuery();
             ps.close();
-            while(rs.next()){
+            while(rs.next()){   
                 Materias materias = new Materias();
-                materias.setAnioMateria(rs.getInt("idMateria"));
+                materias.setIdMateria(rs.getInt("idMateria"));
                 materias.setAnioMateria(rs.getInt("año"));
                 materias.setNombre(rs.getString("nombre"));
+                materias.setEstado(rs.getBoolean("estado"));
                 materiasObtenidas.add(materias);
+                
+            }
+            if (materiasObtenidas.size() > 0) {
+                System.out.println("Materias cursadas por el alumno enviadas=");
+            } else{
+                System.out.println("El alumno con ID: " + id
+                        + "   ||  No está cursando materias");
             }
             
         } catch (SQLException ex) {
-            System.out.println("No se pudo traer las materias cursadas");
+            System.out.println("ERROR: No se pudo traer las materias cursadas");
+            System.out.println("ERROR_CODE: " + ex.getErrorCode());
         }
        return materiasObtenidas;
    }
-   public ArrayList<Materias> obtenerMateriasNOCursadas(int id){
+   public ArrayList<Materias> obtenerMateriasNOCursadasPorAlumno(int id){
        ArrayList<Materias> materiasObtenidas = new ArrayList<Materias>();
+       
         try {
-            String query = " SELECT inscripcion.idMateria, nombre ,año "
-                    + "FROM inscripcion,materia"
-                    + "WHERE inscripcion.idMateria = materia.idMateria"
-                    + "AND inscripcion.idAlumno = ?"
-                    + "AND materia.estado = ?";
+            String query = " SELECT materia.idMateria, materia.nombre ,materia.año,materia.estado "
+                    + "FROM materia "
+                    + "LEFT JOIN inscripcion ON materia.idMateria = inscripcion.idMateria "
+                    + "WHERE inscripcion.idAlumno IS NULL OR inscripcion.idAlumno <> ? "
+                    + "";
             PreparedStatement ps = conexion.prepareStatement(query);
             ps.setInt(1, id);
-            ps.setBoolean(2, false);
+            
             ResultSet rs = ps.executeQuery();
+            
             ps.close();
-            while(rs.next()){
+            while(rs.next()){     
                 Materias materias = new Materias();
-                materias.setAnioMateria(rs.getInt("idMateria"));
+                materias.setIdMateria(rs.getInt("idMateria"));
                 materias.setAnioMateria(rs.getInt("año"));
                 materias.setNombre(rs.getString("nombre"));
+                materias.setEstado(rs.getBoolean("estado"));
                 materiasObtenidas.add(materias);
+                
+            }
+            if (materiasObtenidas.size() > 0) {
+                
+                System.out.println("Materias NO cursadas por el alumno enviadas");
+            } else{
+                System.out.println("El alumno con ID: " + id
+                        + "   ||  Cursa todas las materias dictadas");
             }
         } catch (SQLException ex) {
-            System.out.println("No se pudo traer las materias NO cursadas");
+            System.out.println("ERROR: No se pudo traer las materias NO cursadas");
+            System.out.println("ERROR_CODE: " + ex.getErrorCode());
         }
        return materiasObtenidas;
    }
