@@ -70,33 +70,33 @@ public class MateriaData {
     }
     public  Materias buscarMateriaPorId(int id){
             
-        Materias materias = new Materias();
+        Materias materias = null;
         String query = "SELECT * FROM materia WHERE idMateria = ?";
         try {             
             
             PreparedStatement ps = conexionMateriaData.prepareStatement(query);
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
-            while(rs.next()){              
+            while(rs.next()){       
+                materias = new Materias();
                 materias.setIdMateria(rs.getInt("idMateria"));
                 materias.setNombre(rs.getString("nombre"));
                 materias.setAnioMateria(rs.getInt("año"));
                 materias.setEstado(rs.getBoolean("estado"));
+                
             }
             ps.close();
-            if(rs.next()){
-                System.out.println("BuscarMateriaPorId dice: Se ha enviado el registro");
-           
-            }else{
-                System.out.println("BuscarMateriaPorId dice: No se ha enviado el registro");
-           
+            if(materias == null){                
+                throw new Error();
             }
-        
-             
+            System.out.println("BuscarMateriaPorId dice: Se ha enviado el registro");             
         } catch (SQLException ex) {            
             System.out.println("Error: || metodo: buscarMateriaPorID");
             System.out.println("Mensaje de error: " + ex.getMessage());
+        } catch(Error e){
+            System.out.println("No se encontro la materia");
         }
+       
         return materias;
     }
     
@@ -104,7 +104,7 @@ public class MateriaData {
     
     public  Materias buscarMateriaPorName(String name){
         
-            Materias materia = new Materias();
+            Materias materia = null;
             
             String query = "SELECT * FROM materia WHERE materia.nombre = ?";
         try {   
@@ -113,6 +113,7 @@ public class MateriaData {
             ps.setString(1, name);
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
+                materia = new Materias();
                 materia.setIdMateria(rs.getInt("idMateria"));
                 materia.setNombre(rs.getString("nombre"));
                 materia.setAnioMateria(rs.getInt("año"));
@@ -120,13 +121,13 @@ public class MateriaData {
             }
             ps.close();
             if(materia == null){
-                System.out.println("No existe registro del mismo");
-            } else{
-                System.out.println("Registro enviado");
-            }
+                throw new Error();
+            } 
         } catch (SQLException ex) {            
             System.out.println("Error: || metodo: buscarMateriaPorName");
             System.out.println("Mensaje de error: " + ex.getMessage());
+        }catch(Error error){
+            System.out.println("No se ha encontrado el registro por nombre");
         }
         return materia;
     }
@@ -198,6 +199,40 @@ public class MateriaData {
         }
         return materiasEncontradasPorEstado;
     }
+    public  boolean buscarMateriaPorEstadoINDIVIDUAL(boolean status,Materias materiaEnviada){
+                          
+            String query = "SELECT * FROM materia WHERE materia.idMateria = ?";
+            Materias materias = null;
+            try {               
+            
+            PreparedStatement ps = conexionMateriaData.prepareStatement(query);
+            ps.setInt(1, materiaEnviada.getIdMateria());
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                materias = new Materias();
+                materias.setIdMateria(rs.getInt("idMateria"));
+                materias.setNombre(rs.getString("nombre"));
+                materias.setAnioMateria(rs.getInt("año"));
+                materias.setEstado(rs.getBoolean("estado"));
+                System.out.println(materias);
+            }
+            ps.close();
+            if(materias.isEstado() != status){
+                System.out.println("Materia enviada");
+                return true;
+            }
+            
+           
+        } catch (SQLException ex) {            
+            System.out.println("Error: || metodo: buscarMateriaPorEstadoINDIVIDUAL");
+            System.out.println("Mensaje de error: " + ex.getMessage());
+        }   catch(Error error){
+            System.out.println("No se encotro registrada la materia en dicho estado");
+            return false;
+            
+        }
+        return false;
+    }
     
     
     
@@ -260,7 +295,7 @@ public class MateriaData {
         
     }
     
-    public void borrarMateriaFisico (int idMateria){
+    public void borrarMateriaFisico (int idMateria){ //NO FUNCIONA
         try {
             // similar al Update: DELETE FROM alumno WHERE idAlumno=?.
             if(this.buscarMateriaPorId(idMateria) == null){
@@ -283,7 +318,7 @@ public class MateriaData {
         //aca es una actualizar: UPDATE alumno SET estado=1 WHERE idAlumno=?.
         String query = "UPDATE materia SET estado= 1 WHERE idMateria = ?";
         try {
-            if(materiaEnviada.isEstado()){
+            if(!this.buscarMateriaPorEstadoINDIVIDUAL(true, materiaEnviada)){
                 System.out.println("La materia ya esta dado de alta");
                 throw new SQLException();
             }else{
@@ -291,7 +326,8 @@ public class MateriaData {
                 ps.setInt(1, materiaEnviada.getIdMateria());
                 ps.executeUpdate();
                 ps.close();
-            }          
+                System.out.println("Materia Dada de ALTA");
+            }
         } catch (SQLException ex) {
             System.out.println("Error: || metodo: altaLogicaMateria");
             System.out.println("No se pudo dar la alta al registro");
@@ -304,7 +340,7 @@ public class MateriaData {
         //aca es UPDATE alumno SET estado=0 WHERE idAlumno=?.
         String query = "UPDATE materia SET estado= false WHERE idMateria = ?";
         try {
-            if(!materiaEnviada.isEstado()){
+             if(!this.buscarMateriaPorEstadoINDIVIDUAL(false, materiaEnviada)){
                 System.out.println("La materia ya está dado de baja");
                 throw new SQLException();
             } else{
@@ -314,7 +350,6 @@ public class MateriaData {
                 ps.close();
                 System.out.println("Materia dada de baja");
             }
-           
         } catch (SQLException ex) {
             System.out.println("Error: || metodo: bajaLogicaMateria");
             System.out.println("Mensaje de error: " + ex.getMessage());
