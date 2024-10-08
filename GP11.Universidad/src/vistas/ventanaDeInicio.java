@@ -9,31 +9,31 @@ import persistencia.MateriaData;
 
 public class VentanaDeInicio extends javax.swing.JFrame {
 
-    int xMouse,yMouse;
-    int x,y;
+    int xMouse, yMouse;
+    int x, y;
     MateriaData materiaData;
-   
+
     Materias materia = new Materias("Matematica 1 ", 1, false);
     Materias materia2 = new Materias("Ingles 1 ", 1, false);
-    Materias materia3= new Materias("Programacion 1 ", 1, false);
+    Materias materia3 = new Materias("Programacion 1 ", 1, false);
     Materias materia4 = new Materias("Laboratorio de Programacion 1 ", 1, true);
     Materias materia5 = new Materias("Desarrollo Web ", 1, true);
     Materias materia6 = new Materias("Administracion de Bases de Datos ", 1, true);
     Materias materia7 = new Materias("EDA", 1, false);
-    
+
     public VentanaDeInicio() {
         initComponents();
         Connection con = Conexion.getConexion();
         this.setLocationRelativeTo(null);
         pnlIngresoAlumnos.setVisible(false);
         pnlIngresoInsc.setVisible(false);
-        pnlIngresoMaterias.setVisible(false);   
+        pnlIngresoMaterias.setVisible(false);
         btnSistemaAlumnos.setVisible(false);
         btnSistemaMaterias.setVisible(false);
         btnSistemaInscripciones.setVisible(false);
         lblDoubleclick.setText("BIENVENIDO");
         materiaData = new MateriaData(con);
-        
+
         materiaData.guardarMateria(materia);
         materiaData.guardarMateria(materia2);
         materiaData.guardarMateria(materia3);
@@ -42,10 +42,7 @@ public class VentanaDeInicio extends javax.swing.JFrame {
         materiaData.guardarMateria(materia6);
         materiaData.guardarMateria(materia7);
     }
-    
-    
-    
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -973,29 +970,29 @@ public class VentanaDeInicio extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSistemaAlumnosMouseExited
 
     private void btnSistemaAlumnosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSistemaAlumnosMouseClicked
-       lblSysAlu.setForeground(new Color(255,255,255));
-       lblAlu.setForeground(new Color(255, 102, 0));
-       btnSistemaAlumnos.setBorder(BorderFactory.createLineBorder(new Color(255,102,0),3));
-       btnSistemaInscripciones.setVisible(false);
-       btnSistemaMaterias.setVisible(false);
-       pnlIngresoAlumnos.setVisible(true);
-       
-       
+        lblSysAlu.setForeground(new Color(255, 255, 255));
+        lblAlu.setForeground(new Color(255, 102, 0));
+        btnSistemaAlumnos.setBorder(BorderFactory.createLineBorder(new Color(255, 102, 0), 3));
+        btnSistemaInscripciones.setVisible(false);
+        btnSistemaMaterias.setVisible(false);
+        pnlIngresoAlumnos.setVisible(true);
+
+
     }//GEN-LAST:event_btnSistemaAlumnosMouseClicked
 
     private void btnSistemaAlumnosMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSistemaAlumnosMouseReleased
-        pnlIngresoAlumnos.setSize(550,520);
-            
+        pnlIngresoAlumnos.setSize(550, 520);
+
     }//GEN-LAST:event_btnSistemaAlumnosMouseReleased
 
     private void btnBackAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackAlumnosActionPerformed
         btnSistemaInscripciones.setVisible(true);
         btnSistemaMaterias.setVisible(true);
-        lblSysAlu.setForeground(new Color(255,102,0));
+        lblSysAlu.setForeground(new Color(255, 102, 0));
         lblAlu.setForeground(new Color(255, 255, 255));
-        btnSistemaAlumnos.setBorder(BorderFactory.createLineBorder(new Color(0,0,0),3));
+        btnSistemaAlumnos.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0), 3));
         pnlIngresoAlumnos.setVisible(false);
-        
+
     }//GEN-LAST:event_btnBackAlumnosActionPerformed
 
     private void btnSistemaMateriasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSistemaMateriasMouseEntered
@@ -1022,23 +1019,23 @@ public class VentanaDeInicio extends javax.swing.JFrame {
     private void btnBackMateriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackMateriasActionPerformed
         btnSistemaAlumnos.setVisible(true);
         btnSistemaInscripciones.setVisible(true);
-        lblSysMat.setForeground(new Color(255,102,0));
+        lblSysMat.setForeground(new Color(255, 102, 0));
         lblMat.setForeground(new Color(255, 255, 255));
-        btnSistemaMaterias.setBorder(BorderFactory.createLineBorder(new Color(0,0,0),3));
+        btnSistemaMaterias.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0), 3));
         pnlIngresoMaterias.setVisible(false);
     }//GEN-LAST:event_btnBackMateriasActionPerformed
 
     private void btnSistemaMateriasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSistemaMateriasMouseClicked
-        lblSysMat.setForeground(new Color(255,255,255));
-       lblMat.setForeground(new Color(255, 102, 0));
-       btnSistemaMaterias.setBorder(BorderFactory.createLineBorder(new Color(255,102,0),3));
-       btnSistemaInscripciones.setVisible(false);
-       btnSistemaAlumnos.setVisible(false);
-       pnlIngresoMaterias.setVisible(true);
+        lblSysMat.setForeground(new Color(255, 255, 255));
+        lblMat.setForeground(new Color(255, 102, 0));
+        btnSistemaMaterias.setBorder(BorderFactory.createLineBorder(new Color(255, 102, 0), 3));
+        btnSistemaInscripciones.setVisible(false);
+        btnSistemaAlumnos.setVisible(false);
+        pnlIngresoMaterias.setVisible(true);
     }//GEN-LAST:event_btnSistemaMateriasMouseClicked
 
     private void btnSistemaMateriasMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSistemaMateriasMouseReleased
-        pnlIngresoMaterias.setSize(550,520);
+        pnlIngresoMaterias.setSize(550, 520);
     }//GEN-LAST:event_btnSistemaMateriasMouseReleased
 
     private void pnlSuperiorMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlSuperiorMousePressed
@@ -1047,10 +1044,10 @@ public class VentanaDeInicio extends javax.swing.JFrame {
     }//GEN-LAST:event_pnlSuperiorMousePressed
 
     private void pnlSuperiorMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlSuperiorMouseDragged
-        x = evt.getXOnScreen(); 
+        x = evt.getXOnScreen();
         y = evt.getYOnScreen();
         this.setLocation(x - xMouse, y - yMouse);
-    
+
     }//GEN-LAST:event_pnlSuperiorMouseDragged
 
     private void jLabel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MousePressed
@@ -1065,45 +1062,45 @@ public class VentanaDeInicio extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel1MouseDragged
 
     private void btnAccesoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAccesoActionPerformed
-        if(btnAcceso.getText().equalsIgnoreCase("Aceptar")){
-        pnlMsgInicio.setVisible(false);
-        btnSistemaAlumnos.setVisible(true);
-        btnSistemaMaterias.setVisible(true);
-        btnSistemaInscripciones.setVisible(true);
-        lblDoubleclick.setText("DOBLE CLIC PARA ACCEDER");
-        pnlAccess.setBackground(new Color(51,153,0));
-        pnlAccesMsg1.setText("");
-        pnlAccesMsg2.setForeground(Color.BLACK);
-        pnlAccesMsg2.setText("Acceso concedido");
-        btnAcceso.setText("Log Out");
-        btnAccessMaterias.setEnabled(true);
-        }else{
-        pnlMsgInicio.setVisible(true);
-        btnSistemaAlumnos.setVisible(false);
-        btnSistemaMaterias.setVisible(false);
-        btnSistemaInscripciones.setVisible(false);
-        lblDoubleclick.setText("DOBLE CLIC PARA ACCEDER");
-        pnlAccess.setBackground(Color.BLACK);
-        pnlAccesMsg1.setText("Para Acceder");
-        pnlAccesMsg2.setForeground(new Color(255, 255, 255));
-        pnlAccesMsg2.setText("Ingrese usuario y contraseña");
-        btnAcceso.setText("Aceptar");
-        lblSysInsc.setForeground(new Color(255, 102, 0));
-        lblInsc.setForeground(new Color(255, 255, 255));
-        btnSistemaInscripciones.setBorder(BorderFactory.createLineBorder(new Color(0,0,0),3));
-        lblSysAlu.setForeground(new Color(255, 102, 0));
-        lblAlu.setForeground(new Color(255, 255, 255));
-        btnSistemaAlumnos.setBorder(BorderFactory.createLineBorder(new Color(0,0,0),3));
-        lblSysMat.setForeground(new Color(255, 102, 0));
-        lblMat.setForeground(new Color(255, 255, 255));
-        btnSistemaMaterias.setBorder(BorderFactory.createLineBorder(new Color(0,0,0),3));
-        pnlIngresoAlumnos.setVisible(false);
-        pnlIngresoInsc.setVisible(false);
-        pnlIngresoInsc.setVisible(false);
-        
+        if (btnAcceso.getText().equalsIgnoreCase("Aceptar")) {
+            pnlMsgInicio.setVisible(false);
+            btnSistemaAlumnos.setVisible(true);
+            btnSistemaMaterias.setVisible(true);
+            btnSistemaInscripciones.setVisible(true);
+            lblDoubleclick.setText("DOBLE CLIC PARA ACCEDER");
+            pnlAccess.setBackground(new Color(51, 153, 0));
+            pnlAccesMsg1.setText("");
+            pnlAccesMsg2.setForeground(Color.BLACK);
+            pnlAccesMsg2.setText("Acceso concedido");
+            btnAcceso.setText("Log Out");
+            btnAccessMaterias.setEnabled(true);
+        } else {
+            pnlMsgInicio.setVisible(true);
+            btnSistemaAlumnos.setVisible(false);
+            btnSistemaMaterias.setVisible(false);
+            btnSistemaInscripciones.setVisible(false);
+            lblDoubleclick.setText("DOBLE CLIC PARA ACCEDER");
+            pnlAccess.setBackground(Color.BLACK);
+            pnlAccesMsg1.setText("Para Acceder");
+            pnlAccesMsg2.setForeground(new Color(255, 255, 255));
+            pnlAccesMsg2.setText("Ingrese usuario y contraseña");
+            btnAcceso.setText("Aceptar");
+            lblSysInsc.setForeground(new Color(255, 102, 0));
+            lblInsc.setForeground(new Color(255, 255, 255));
+            btnSistemaInscripciones.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0), 3));
+            lblSysAlu.setForeground(new Color(255, 102, 0));
+            lblAlu.setForeground(new Color(255, 255, 255));
+            btnSistemaAlumnos.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0), 3));
+            lblSysMat.setForeground(new Color(255, 102, 0));
+            lblMat.setForeground(new Color(255, 255, 255));
+            btnSistemaMaterias.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0), 3));
+            pnlIngresoAlumnos.setVisible(false);
+            pnlIngresoInsc.setVisible(false);
+            pnlIngresoInsc.setVisible(false);
+
         }
-        
-        
+
+
     }//GEN-LAST:event_btnAccesoActionPerformed
 
     private void btnSistemaInscripcionesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSistemaInscripcionesMouseEntered
@@ -1117,45 +1114,51 @@ public class VentanaDeInicio extends javax.swing.JFrame {
     private void btnBackInscActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackInscActionPerformed
         btnSistemaMaterias.setVisible(true);
         btnSistemaAlumnos.setVisible(true);
-        lblSysInsc.setForeground(new Color(255,102,0));
+        lblSysInsc.setForeground(new Color(255, 102, 0));
         lblInsc.setForeground(new Color(255, 255, 255));
-        btnSistemaInscripciones.setBorder(BorderFactory.createLineBorder(new Color(0,0,0),3));
+        btnSistemaInscripciones.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0), 3));
         pnlIngresoInsc.setVisible(false);
     }//GEN-LAST:event_btnBackInscActionPerformed
 
     private void btnSistemaInscripcionesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSistemaInscripcionesMouseClicked
-        lblSysInsc.setForeground(new Color(255,255,255));
+        lblSysInsc.setForeground(new Color(255, 255, 255));
         lblInsc.setForeground(new Color(255, 102, 0));
-        btnSistemaInscripciones.setBorder(BorderFactory.createLineBorder(new Color(255,102,0),3));
+        btnSistemaInscripciones.setBorder(BorderFactory.createLineBorder(new Color(255, 102, 0), 3));
         btnSistemaMaterias.setVisible(false);
         btnSistemaAlumnos.setVisible(false);
         pnlIngresoInsc.setVisible(true);
     }//GEN-LAST:event_btnSistemaInscripcionesMouseClicked
 
     private void btnSistemaInscripcionesMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSistemaInscripcionesMouseReleased
-         pnlIngresoInsc.setSize(550,520);
+        pnlIngresoInsc.setSize(550, 520);
     }//GEN-LAST:event_btnSistemaInscripcionesMouseReleased
 
     private void btnAccessMateriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAccessMateriasActionPerformed
         backgroundPnl.setVisible(false);
         desktop.repaint();
-        VistaMaterias nw = new VistaMaterias();
+        VistaMaterias nw = new VistaMaterias(this);
         nw.setVisible(true);
         desktop.moveToFront(nw);
-       
-        
-        
-    }//GEN-LAST:event_btnAccessMateriasActionPerformed
 
+    }//GEN-LAST:event_btnAccessMateriasActionPerformed
+    public void mostrarInicio() {
+        desktop.repaint();
+        VentanaDeInicio nw = new VentanaDeInicio();
+        nw.setVisible(true);
+        desktop.moveToFront(nw);
+
+    }
     public static void main(String args[]) {
-        
-        
+
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new VentanaDeInicio().setVisible(true);
             }
         });
     }
+
+    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel backgroundPnl;
@@ -1257,4 +1260,5 @@ public class VentanaDeInicio extends javax.swing.JFrame {
     private javax.swing.JPanel pnlMsgInicio;
     private javax.swing.JPanel pnlSuperior;
     // End of variables declaration//GEN-END:variables
+
 }
