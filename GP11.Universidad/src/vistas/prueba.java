@@ -56,19 +56,25 @@ public class Prueba {
 // guardar Materia
     MateriaData materiaData = new MateriaData(conexion);
 //    
-    Materias materia = new Materias(1,"Matematica 1 ", 1, false);
-    Materias materia2 = new Materias(2,"Ingles 1 ", 1, false);
-    Materias materia3= new Materias(3,"Programacion 1 ", 1, false);
-    Materias materia4 = new Materias(4,"Laboratorio de Programacion 1 ", 1, true);
-    Materias materia5 = new Materias(5,"Desarrollo Web ", 1, true);
-    Materias materia6 = new Materias(6,"Administracion de Bases de Datos ", 1, true);
-//    
+// MATERIAS
+
+   
+    
+    Materias materia = new Materias("Matematica 1 ", 1, false);
+    Materias materia2 = new Materias("Ingles 1 ", 1, false);
+    Materias materia3= new Materias("Programacion 1 ", 1, false);
+    Materias materia4 = new Materias("Laboratorio de Programacion 1 ", 1, true);
+    Materias materia5 = new Materias("Desarrollo Web ", 1, true);
+    Materias materia6 = new Materias("Administracion de Bases de Datos ", 1, true);
+    Materias materia7 = new Materias("EDA", 1, false);
+    
 //    materiaData.guardarMateria(materia);
 //    materiaData.guardarMateria(materia2);
 //    materiaData.guardarMateria(materia3);
 //    materiaData.guardarMateria(materia4);
 //    materiaData.guardarMateria(materia5);
 //    materiaData.guardarMateria(materia6);
+
 
 
 // INSCRIPCIONES
@@ -80,10 +86,22 @@ public class Prueba {
         Inscripcion inscripcion4 = new Inscripcion(alumno4, materia3);
         Inscripcion inscripcion5 = new Inscripcion(alumno6, materia4);
        //GUARDAR INSCRIPCION
+
+//        InscripcionData inscripcionData = new InscripcionData(conexion, alumnoData, materiaData);
+//
+//        Inscripcion inscripcion = new Inscripcion(alumno, materia);
+//        Inscripcion inscripcion2 = new Inscripcion(alumno2, materia);
+//        Inscripcion inscripcion3 = new Inscripcion(alumno3, materia2);
+//        Inscripcion inscripcion4 = new Inscripcion(alumno4, materia3);
+//        Inscripcion inscripcion5 = new Inscripcion(alumno6, materia4);
+//        //NO PERMITIR INSCRIBIR A INSCRIPCIONES YA REALIZADAS, validar
+//        //VALIDAR SI LOS USUARIOS EXISTEN
+
 //        inscripcionData.guardarInscripcion(inscripcion);
 //        inscripcionData.guardarInscripcion(inscripcion2);
 //        inscripcionData.guardarInscripcion(inscripcion3);
 //        inscripcionData.guardarInscripcion(inscripcion4);
+
 //        inscripcionData.guardarInscripcion(inscripcion5);        
         
         //OBTENER INSCRIPCIONES POR ID DE ALUMNO
@@ -125,6 +143,13 @@ public class Prueba {
         ArrayList<Materias> obtenerMateriasNOCursadas4 = new ArrayList<>();
         ArrayList<Materias> obtenerMateriasNOCursadas5 = new ArrayList<>();
 
+//        inscripcionData.guardarInscripcion(inscripcion5);
+//        ArrayList<Inscripcion> inscripciones = new ArrayList<Inscripcion>();
+//          inscripciones = inscripcionData.obtenerInscripcionesPorAlumno(inscripcion.getAlumno().getIdAlumno());
+//        inscripciones.forEach( inscripcions -> System.out.println(inscripcion.toString()));
+//        System.out.println(inscripciones.size());
+
+
 //        obtenerMateriasNOCursadas = inscripcionData.obtenerMateriasNOCursadasPorAlumno(1);
 //        
 //        obtenerMateriasNOCursadas2 = inscripcionData.obtenerMateriasNOCursadasPorAlumno(2);
@@ -133,27 +158,7 @@ public class Prueba {
 //        obtenerMateriasNOCursadas5 = inscripcionData.obtenerMateriasNOCursadasPorAlumno(5);
         
         
-// MATERIAS
 
-   
-    
-   /*Materias materia = new Materias("Matematica 1 ", 1, false);
-    Materias materia2 = new Materias("Ingles 1 ", 1, false);
-    Materias materia3= new Materias("Programacion 1 ", 1, false);
-    Materias materia4 = new Materias("Laboratorio de Programacion 1 ", 1, true);
-    Materias materia5 = new Materias("Desarrollo Web ", 1, true);
-    Materias materia6 = new Materias("Administracion de Bases de Datos ", 1, true);
-    Materias materia7 = new Materias("EDA", 1, false);
-    
-// GUARDAR MATERIAS    
-
-    materiaData.guardarMateria(materia);
-    materiaData.guardarMateria(materia2);
-    materiaData.guardarMateria(materia3);
-    materiaData.guardarMateria(materia4);
-    materiaData.guardarMateria(materia5);
-    materiaData.guardarMateria(materia6);
-    materiaData.guardarMateria(materia7); */
 
 
 //BUSCAR MATERIAS POR ID

@@ -1,14 +1,29 @@
 package vistas;
 
+import entidades.Conexion;
+import entidades.Materias;
 import java.awt.Color;
 import javax.swing.BorderFactory;
+import java.sql.Connection;
+import persistencia.MateriaData;
 
 public class VentanaDeInicio extends javax.swing.JFrame {
 
     int xMouse,yMouse;
     int x,y;
+    MateriaData materiaData;
+   
+    Materias materia = new Materias("Matematica 1 ", 1, false);
+    Materias materia2 = new Materias("Ingles 1 ", 1, false);
+    Materias materia3= new Materias("Programacion 1 ", 1, false);
+    Materias materia4 = new Materias("Laboratorio de Programacion 1 ", 1, true);
+    Materias materia5 = new Materias("Desarrollo Web ", 1, true);
+    Materias materia6 = new Materias("Administracion de Bases de Datos ", 1, true);
+    Materias materia7 = new Materias("EDA", 1, false);
+    
     public VentanaDeInicio() {
         initComponents();
+        Connection con = Conexion.getConexion();
         this.setLocationRelativeTo(null);
         pnlIngresoAlumnos.setVisible(false);
         pnlIngresoInsc.setVisible(false);
@@ -17,13 +32,25 @@ public class VentanaDeInicio extends javax.swing.JFrame {
         btnSistemaMaterias.setVisible(false);
         btnSistemaInscripciones.setVisible(false);
         lblDoubleclick.setText("BIENVENIDO");
+        materiaData = new MateriaData(con);
         
+        materiaData.guardarMateria(materia);
+        materiaData.guardarMateria(materia2);
+        materiaData.guardarMateria(materia3);
+        materiaData.guardarMateria(materia4);
+        materiaData.guardarMateria(materia5);
+        materiaData.guardarMateria(materia6);
+        materiaData.guardarMateria(materia7);
     }
-
+    
+    
+    
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        desktop = new javax.swing.JDesktopPane();
         backgroundPnl = new javax.swing.JPanel();
         menuPnl = new javax.swing.JPanel();
         btnSistemaInscripciones = new javax.swing.JPanel();
@@ -128,6 +155,7 @@ public class VentanaDeInicio extends javax.swing.JFrame {
 
         backgroundPnl.setBackground(new java.awt.Color(153, 153, 153));
         backgroundPnl.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
+        backgroundPnl.setMaximumSize(new java.awt.Dimension(1000, 550));
         backgroundPnl.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         menuPnl.setBackground(new java.awt.Color(51, 51, 51));
@@ -576,6 +604,11 @@ public class VentanaDeInicio extends javax.swing.JFrame {
         btnAccessMaterias.setText("Ingresar");
         btnAccessMaterias.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnAccessMaterias.setEnabled(false);
+        btnAccessMaterias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAccessMateriasActionPerformed(evt);
+            }
+        });
         pnlIngresoMaterias.add(btnAccessMaterias, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 490, 100, -1));
 
         btnBackMaterias.setBackground(new java.awt.Color(102, 102, 102));
@@ -888,15 +921,44 @@ public class VentanaDeInicio extends javax.swing.JFrame {
 
         backgroundPnl.add(pnlGeneral, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 30, 550, 520));
 
+        desktop.setLayer(backgroundPnl, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        javax.swing.GroupLayout desktopLayout = new javax.swing.GroupLayout(desktop);
+        desktop.setLayout(desktopLayout);
+        desktopLayout.setHorizontalGroup(
+            desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1012, Short.MAX_VALUE)
+            .addGroup(desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(desktopLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(backgroundPnl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addContainerGap()))
+        );
+        desktopLayout.setVerticalGroup(
+            desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 562, Short.MAX_VALUE)
+            .addGroup(desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(desktopLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(backgroundPnl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addContainerGap()))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(backgroundPnl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(desktop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(backgroundPnl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(desktop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -1014,6 +1076,7 @@ public class VentanaDeInicio extends javax.swing.JFrame {
         pnlAccesMsg2.setForeground(Color.BLACK);
         pnlAccesMsg2.setText("Acceso concedido");
         btnAcceso.setText("Log Out");
+        btnAccessMaterias.setEnabled(true);
         }else{
         pnlMsgInicio.setVisible(true);
         btnSistemaAlumnos.setVisible(false);
@@ -1037,7 +1100,7 @@ public class VentanaDeInicio extends javax.swing.JFrame {
         pnlIngresoAlumnos.setVisible(false);
         pnlIngresoInsc.setVisible(false);
         pnlIngresoInsc.setVisible(false);
-            
+        
         }
         
         
@@ -1073,6 +1136,17 @@ public class VentanaDeInicio extends javax.swing.JFrame {
          pnlIngresoInsc.setSize(550,520);
     }//GEN-LAST:event_btnSistemaInscripcionesMouseReleased
 
+    private void btnAccessMateriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAccessMateriasActionPerformed
+        backgroundPnl.setVisible(false);
+        desktop.repaint();
+        VistaMaterias nw = new VistaMaterias();
+        nw.setVisible(true);
+        desktop.moveToFront(nw);
+       
+        
+        
+    }//GEN-LAST:event_btnAccessMateriasActionPerformed
+
     public static void main(String args[]) {
         
         
@@ -1097,6 +1171,7 @@ public class VentanaDeInicio extends javax.swing.JFrame {
     private javax.swing.JPanel btnSistemaMaterias;
     private javax.swing.JLabel closeBtn;
     private javax.swing.JPanel closePnl;
+    private javax.swing.JDesktopPane desktop;
     private javax.swing.JPanel ingressPnl;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
