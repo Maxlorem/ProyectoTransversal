@@ -161,19 +161,6 @@ public class Prueba {
 
 
 
-//BUSCAR MATERIAS POR ID
-
-        //System.out.println(materiaData.buscarMateriaPorId(3));
-        //System.out.println(materiaData.buscarMateriaPorId(1));
-
-//BUSQUEDA COMPLETA
-
-        //System.out.println(materiaData.listarMaterias());
-        
-//ACTUALIZAR MATERIAS
-//
-//    Materias materia10 = new Materias(7, "Laboratorio de programacion 2", 1 ,true);
-//    materiaData.actualizarMateria(materia10);
 
     }
 }
