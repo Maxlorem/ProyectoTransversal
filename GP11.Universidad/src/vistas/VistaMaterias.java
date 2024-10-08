@@ -834,6 +834,8 @@ public class VistaMaterias extends javax.swing.JFrame {
         jRfisicBaja.setEnabled(false);
         jRlogBaja.setEnabled(false);
         jRlogAlta.setEnabled(false);
+        txtName.setEditable(false);
+        txtYear.setEditable(false);
         modelo.setRowCount(0);
         llenarTabla();
         tabMaterias.setEnabled(true);

@@ -31,7 +31,7 @@ public class MateriaData {
         } else{
             for(Materias matery: materias){
                 
-                if(matery.getIdMateria() != a.getIdMateria() ){ 
+                if(matery.getIdMateria() != a.getIdMateria() && matery.getNombre() != a.getNombre()){ 
                     validado = true;
                     
                 }else{
