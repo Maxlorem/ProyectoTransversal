@@ -160,10 +160,11 @@ public class Prueba {
         //ELIMINAR REGISTROS
         //inscripcionData.borrarInscripcionMateriaAlumno(2, 1);
         
-        ArrayList<Alumno> alumnosQueTrajo = inscripcionData.obtenerAlumnosXMateria(5);
-        for(Alumno alumnoo:alumnosQueTrajo){
-            System.out.println(alumnoo);
-        }
+        //OBTENER ALUMNOS POR MATERIAS
+//        ArrayList<Alumno> alumnosQueTrajo = inscripcionData.obtenerAlumnosXMateria(5);
+//        for(Alumno alumnoo:alumnosQueTrajo){
+//            System.out.println(alumnoo);
+//        }
 
     }
 }

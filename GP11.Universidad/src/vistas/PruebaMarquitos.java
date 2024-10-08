@@ -47,27 +47,25 @@ public class PruebaMarquitos {
     Materias materia4 = new Materias(4,"Laboratorio de Programacion 1 ", 1, true);
     Materias materia5 = new Materias(5,"Desarrollo Web ", 1, true);
     Materias materia6 = new Materias(6,"Administracion de Bases de Datos ", 1, true);
-//    
-   //materiaData.guardarMateria(materia2);
-   //materiaData.guardarMateria(materia3);
-   //materiaData.guardarMateria(materia4);
-   //materiaData.guardarMateria(materia5);
-   //materiaData.guardarMateria(materia6);
+    
+//   materiaData.guardarMateria(materia2);
+//   materiaData.guardarMateria(materia3);
+//   materiaData.guardarMateria(materia4);
+//   materiaData.guardarMateria(materia5);
+//   materiaData.guardarMateria(materia6);
 
 
 
-//BUSCAR MATERIAS POR ID
-
-        //System.out.println(materiaData.buscarMateriaPorId(3));
-        //System.out.println(materiaData.buscarMateriaPorId(1));
-
-//BUSQUEDA COMPLETA
-
-        //System.out.println(materiaData.listarMaterias());
-        
-//ACTUALIZAR MATERIAS
-       Materias materia10 = new Materias(1, "Programación 2", 1, true);
-       materiaData.actualizarMateria(materia10);
-
-}
+    //BUSCAR MATERIAS POR ID
+    //BUSCAR MATERIAS POR NOMBRE
+    //BUSCAR MATERIAS POR AÑO
+    //BUSCAR MATERIAS POR ESTADO
+    //LISTAR TODAS LAS MATERIAS
+    //ACTUALIZAR MATERIAS
+    //BORRAR MATERIA FISICO (DEL TODO)
+    //ALTA LOGICA MATERIA
+    //BAJA LOGICA MATERIA
+    
+    }
+    
 }
