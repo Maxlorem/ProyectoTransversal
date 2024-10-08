@@ -50,6 +50,8 @@ public class VistaMaterias extends javax.swing.JFrame {
                         jRlogBaja.setEnabled(true);
                         txtPanel.setText("Una vez elija que Materia desea modificar, seleccione uno de los metodos de edición");
                         btnSeleccionar.setEnabled(true);
+                        btnEdit.setEnabled(false);
+                        
 
                     }
                 }
@@ -671,6 +673,13 @@ public class VistaMaterias extends javax.swing.JFrame {
         if (jRporAño.isSelected()) {
             actualizarTablaList(materiaData.buscarMateriaPorAño(Integer.parseInt(txtBusqueda.getText())));
         }
+        txtMsg.setText("Se ha completado la busqueda");
+        btnSrc.setEnabled(false);
+        btnAccept.setEnabled(true);
+        jRporAño.setEnabled(true);
+        jRporId.setEnabled(true);
+        jRporNombre.setEnabled(true);
+        grpSelection.clearSelection();
     }//GEN-LAST:event_btnSrcActionPerformed
 
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
@@ -762,6 +771,7 @@ public class VistaMaterias extends javax.swing.JFrame {
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
         txtPanel.setText("Seleccione la materia a editar en la tabla, luego seleccione el metodo de edicion que desea utilizar.");
+        btnClear.setEnabled(false);
         btnNw.setEnabled(false);
         
 
@@ -770,22 +780,22 @@ public class VistaMaterias extends javax.swing.JFrame {
 
     private void jReditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jReditActionPerformed
         txtPanel.setText("Metodo 'EDITAR', presione 'SELECCIONAR PARA CONTINUAR'.");
-        btnExe.setEnabled(true);
+        
     }//GEN-LAST:event_jReditActionPerformed
 
     private void jRlogAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRlogAltaActionPerformed
         txtPanel.setText("Metodo 'ALTA LOGICA', presione 'SELECCIONAR PARA CONTINUAR'.");
-        btnExe.setEnabled(true);
+      
     }//GEN-LAST:event_jRlogAltaActionPerformed
 
     private void jRlogBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRlogBajaActionPerformed
         txtPanel.setText("Metodo 'BAJA LOGICA', presione 'SELECCIONAR PARA CONTINUAR'.");
-        btnExe.setEnabled(true);
+       
     }//GEN-LAST:event_jRlogBajaActionPerformed
 
     private void jRfisicBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRfisicBajaActionPerformed
         txtPanel.setText("Metodo 'BORRAR FISICO', presione 'SELECCIONAR PARA CONTINUAR'. ATENCION: la entidad 'Materia' puede mantener relacion con algun alumno a traves de una Inscripción.");
-        btnExe.setEnabled(true);
+     
     }//GEN-LAST:event_jRfisicBajaActionPerformed
 
     private void btnExeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExeActionPerformed
@@ -813,8 +823,21 @@ public class VistaMaterias extends javax.swing.JFrame {
         }
         btnNw.setEnabled(true);
         btnExe.setEnabled(false);
+        btnEdit.setEnabled(true);
+        btnClear.setEnabled(true);
+        grpEdit.clearSelection();
+        txtId.setText("");
+        txtName.setText("");
+        txtState.setText("");
+        txtYear.setText("");
+        jRedit.setEnabled(false);
+        jRfisicBaja.setEnabled(false);
+        jRlogBaja.setEnabled(false);
+        jRlogAlta.setEnabled(false);
         modelo.setRowCount(0);
         llenarTabla();
+        tabMaterias.setEnabled(true);
+        txtPanel.setText("");
         
 
         
@@ -824,9 +847,11 @@ public class VistaMaterias extends javax.swing.JFrame {
         
             tabMaterias.setEnabled(false);
             btnSeleccionar.setEnabled(false);
+            btnExe.setEnabled(true);
             if (jRedit.isSelected()) {
                 txtName.setEditable(true);
                 txtYear.setEditable(true);
+                txtYear.setText("");
                 txtName.requestFocus();
                 txtPanel.setText("Cambie el nombre o el año de cursada, luego presione 'Ejecutar' para guardar los cambios.");
                 jRfisicBaja.setEnabled(false);
