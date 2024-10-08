@@ -9,6 +9,9 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 public class InscripcionData {
     
     private Connection conexion;    
@@ -162,20 +165,39 @@ public class InscripcionData {
         }
        return materiasObtenidas;
    }
-   public void borrarInscripcionMateriaAlumno(int idAlumno,int idMateria){
-       
-        try {
-            String query = "DELETE FROM inscripcion WHERE inscripcion.idAlumno = ? AND inscripcion.idMateria = ? ";            
-            PreparedStatement ps = conexion.prepareStatement(query);
-            ps.setInt(1, idAlumno);
-            ps.setInt(2, idMateria);
-            ps.executeUpdate();
-            System.out.println("Inscripcion borrada con exito");
-            ps.close();
-        } catch (SQLException ex) {
-            System.out.println("Ha ocurrido un error, la inscripcion NO ha sido eliminada");
-            System.out.println("MENSAJE DE ERROR: " + ex.getMessage());
+   public boolean metodoAuxiliarRevisaSiExisteRegistro(int idAlumno,int idMateria){
+        try {            
+            String queryValidacion =  "select * FROM inscripcion  WHERE inscripcion.idAlumno =  ? AND inscripcion.idMateria = ?";
+            PreparedStatement psValidacion = conexion.prepareStatement(queryValidacion);
+            psValidacion.setInt(1, idAlumno);
+            psValidacion.setInt(2, idMateria);
+            ResultSet rsValidacion = psValidacion.executeQuery();
+            if(!rsValidacion.next()){
+                return false; 
+            }
+        }catch (SQLException ex) {
+            System.out.println("Error en la consulta del metodo auxiliar");
+            return false;
         }
+        return true;
+   }
+   public void borrarInscripcionMateriaAlumno(int idAlumno,int idMateria){
+        if(this.metodoAuxiliarRevisaSiExisteRegistro(idAlumno, idMateria)){
+            try {
+                String query = "DELETE FROM inscripcion WHERE inscripcion.idAlumno = ? AND inscripcion.idMateria = ? ";
+                PreparedStatement ps = conexion.prepareStatement(query);
+                ps.setInt(1, idAlumno);
+                ps.setInt(2, idMateria);
+                ps.executeUpdate();
+                System.out.println("Inscripcion borrada con exito");
+                ps.close();
+            } catch (SQLException ex) {
+                System.out.println("Ha ocurrido un error, la inscripcion NO ha sido eliminada");
+                System.out.println("MENSAJE DE ERROR: " + ex.getMessage());
+            }
+        }else{
+            System.out.println("No se puede eliminar un registro que no existe");
+        }                         
        
    }
    public void actualizarNota(int idAlumno,int idMateria,double nota){
@@ -196,7 +218,7 @@ public class InscripcionData {
    public ArrayList<Alumno> obtenerAlumnosXMateria(int idMateria){
        ArrayList<Alumno> alumnosPorMateria = new ArrayList<>();
         try {            
-            String query = "SELECT * FROM materia WHERE materia.idMateria = ?";
+            String query = "select alumnos.idAlumno,alumnos.dni,alumnos.apellido,alumnos.nombre,alumnos.fechaNacimiento,alumnos.estado FROM inscripcion, materia,alumnos WHERE inscripcion.idMateria = materia.idMateria AND alumnos.idAlumno = inscripcion.idAlumno AND materia.idMateria = ?";
             PreparedStatement ps = conexion.prepareStatement(query);
             ps.setInt(1, idMateria);
             ResultSet rs = ps.executeQuery();
@@ -210,7 +232,11 @@ public class InscripcionData {
                 alumno.setEstado(rs.getBoolean("estado"));
                 alumnosPorMateria.add(alumno);
             }
-            System.out.println("Alumnos por Materias enviados");
+            if(alumnosPorMateria.size() > 0){
+                System.out.println("Alumnos por Materias enviados");
+            } else{
+                System.out.println("No hay alumnos registrados en la materia");
+            }            
             ps.close();
         } catch (SQLException ex) {
             System.out.println("NO ha sido posible obtener los alumnos por materia");

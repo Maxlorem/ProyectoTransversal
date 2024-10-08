@@ -157,10 +157,13 @@ public class Prueba {
 //        obtenerMateriasNOCursadas4 = inscripcionData.obtenerMateriasNOCursadasPorAlumno(4);
 //        obtenerMateriasNOCursadas5 = inscripcionData.obtenerMateriasNOCursadasPorAlumno(5);
         
+        //ELIMINAR REGISTROS
+        //inscripcionData.borrarInscripcionMateriaAlumno(2, 1);
         
-
-
-
+        ArrayList<Alumno> alumnosQueTrajo = inscripcionData.obtenerAlumnosXMateria(5);
+        for(Alumno alumnoo:alumnosQueTrajo){
+            System.out.println(alumnoo);
+        }
 
     }
 }
