@@ -686,7 +686,7 @@ public class VistaAlumnos extends javax.swing.JFrame {
             Integer idParseado = Integer.parseInt(idEnviado);
             Alumno alumnoBuscado = alumnoData.buscarAlumnoPorId(idParseado);
             if(alumnoBuscado != null){
-                txtMsg.setText("Alumno Encotrado");
+                txtMsg.setText("Se ha completado la busqueda: Alumno Encontrado");
                 actualizarTablaAlu(alumnoBuscado);
             }else{
                 txtMsg.setText("No se encontro el alumno");
@@ -698,6 +698,7 @@ public class VistaAlumnos extends javax.swing.JFrame {
             ArrayList<Alumno> alumnoBuscado = alumnoData.buscarAlumnoPorApellido(apellidoEnviado);
             if(!alumnoBuscado.isEmpty()){
                 actualizarTablaList(alumnoBuscado);
+                txtMsg.setText("Se ha completado la busqueda: Alumno Encontrado");
             }else{
                 txtMsg.setText("No se encontraron alumnos con ese apellido");
             }
@@ -708,14 +709,15 @@ public class VistaAlumnos extends javax.swing.JFrame {
             Integer dniParseado = Integer.parseInt(dniEnviado);
             Alumno alumnoBuscado = alumnoData.buscarAlumnoPorId(dniParseado);
             if(alumnoBuscado != null){
-                txtMsg.setText("Alumno Encontrado");
+                txtMsg.setText("Se ha completado la busqueda: Alumno Encontrado");
+                
                 actualizarTablaAlu(alumnoBuscado);
             }else{
                 txtMsg.setText("No se encontro el alumno");
             }
             //actualizarTablaAlu(alumnoData.buscarAlumnoPorDni(Integer.parseInt(txtBusqueda.getText())));
         }
-        txtMsg.setText("Se ha completado la busqueda");
+        
         btnSrc.setEnabled(false);
         btnAccept.setEnabled(true);
         jRporDni.setEnabled(true);
