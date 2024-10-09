@@ -87,7 +87,7 @@ public class PruebaMarquitos {
     
     //BORRAR MATERIA FISICO (DEL TODO) //NO RESUELTO
     
-  //  materiaData.borrarMateriaFisico(5);
+        //System.out.println(materiaData.borrarMateriaFisico(5));
     
     //ALTA LOGICA MATERIA//RESUELTO
     

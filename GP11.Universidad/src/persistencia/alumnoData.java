@@ -321,8 +321,12 @@ public class AlumnoData {
             System.out.println("Registro eliminado con exito");
         } catch (SQLException ex) {
             System.out.println("No se pudo eliminar el registro");
-            System.out.println("Mensaje de error: " + ex.getMessage());
+            System.out.println("Codigo de error: "+ex.getErrorCode()+"\nMensaje de error: " + ex.getMessage());
+//            if(ex.getErrorCode() == 1451){
+//                return 1451; //CODIGO DE ERROR QUE NO PUEDE BORRAR PORQUE TIENE UNA INSCRIPCION
+//            }
         }
+        
     }
     
     public void altaLogicaAlumno(Alumno alumnoPorParametro){
