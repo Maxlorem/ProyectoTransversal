@@ -270,6 +270,43 @@ public class AlumnoData {
         
     }
     
+    public  boolean buscarAlumnoPorEstadoINDIVIDUAL(boolean status,Alumno alumnoEnviado){
+                          
+            String query = "SELECT * FROM alumnos WHERE alumnos.idAlumno = ?";
+            Alumno a = null;
+            try {               
+            
+            PreparedStatement ps = conexionAlumoData.prepareStatement(query);
+            ps.setInt(1, alumnoEnviado.getIdAlumno());
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                a = new Alumno();
+                a.setIdAlumno(rs.getInt("idAlumno"));
+                a.setDni(rs.getLong("dni"));
+                a.setApellido(rs.getString("apellido"));
+                a.setNombre(rs.getString("nombre"));
+                a.setFechaNac(rs.getDate("fechaNacimiento").toLocalDate());
+                a.setEstado(rs.getBoolean("estado"));
+                System.out.println(a);
+            }
+            ps.close();
+            if(a.isEstado() != status){
+                System.out.println("Materia enviada");
+                return true;
+            }
+            
+           
+        } catch (SQLException ex) {            
+            System.out.println("Error: || metodo: buscarMateriaPorEstadoINDIVIDUAL");
+            System.out.println("Mensaje de error: " + ex.getMessage());
+        }   catch(Error error){
+            System.out.println("No se encotro registrada la materia en dicho estado");
+            return false;
+            
+        }
+        return false;
+    }
+    
     public void borrarAlumnoFisico (int idAlumno){
         try {
             // similar al Update: DELETE FROM alumno WHERE idAlumno=?.
@@ -292,7 +329,7 @@ public class AlumnoData {
         //aca es una actualizar: UPDATE alumno SET estado=1 WHERE idAlumno=?.
         String query = "UPDATE alumnos SET estado= 1 WHERE idAlumno = ?";
         try {
-            if(a.isEstado()){
+            if(!this.buscarAlumnoPorEstadoINDIVIDUAL(true, a)) {
                 System.out.println("El alumno ya esta dado de alta");
                 throw new SQLException();
             }else{
@@ -310,9 +347,9 @@ public class AlumnoData {
     
     public void bajaLogicaAlumno(Alumno a){
         //aca es UPDATE alumno SET estado=0 WHERE idAlumno=?.
-        String query = "UPDATE alumnos SET estado= 0 WHERE idAlumno = ?";
+        String query = "UPDATE alumnos SET estado= false WHERE idAlumno = ?";
         try {
-            if(a.isEstado()){
+            if(!this.buscarAlumnoPorEstadoINDIVIDUAL(false, a)) {
                 System.out.println("El alumno ya está dado de baja");
                 throw new SQLException();
             } else{

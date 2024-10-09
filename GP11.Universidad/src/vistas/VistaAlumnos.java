@@ -764,10 +764,11 @@ private VentanaDeInicio ventanaDeInicio;
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate fNac = LocalDate.parse(fText, formatter);
        
-        boolean stat = false;
+        boolean stat = true;
         if (txtState.getText().equals("0")) {
             stat = false;
-        } else if (txtState.getText().equals("1")) {
+        }
+        if (txtState.getText().equals("1")) {
             stat = true;
         }
         Alumno nwAlu = new Alumno(idAlu, dniAlu, ape, name, fNac, stat);
