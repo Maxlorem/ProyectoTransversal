@@ -82,7 +82,7 @@ public class AlumnoData {
     
     public  Alumno buscarAlumnoPorId(int id){
         
-            Alumno a = null;
+            Alumno alumnoEnviado = null;
             
             String query = "SELECT * FROM alumnos WHERE idAlumno = ?";
         try {   
@@ -92,16 +92,16 @@ public class AlumnoData {
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
-               a = new Alumno();
-               a.setIdAlumno(rs.getInt("idAlumno"));
-               a.setDni(rs.getLong("dni"));
-               a.setApellido(rs.getString("apellido"));
-               a.setNombre(rs.getString("nombre"));
-               a.setFechaNac(rs.getDate("fechaNacimiento").toLocalDate());
-               a.setEstado(rs.getBoolean("estado"));
+               alumnoEnviado = new Alumno();
+               alumnoEnviado.setIdAlumno(rs.getInt("idAlumno"));
+               alumnoEnviado.setDni(rs.getLong("dni"));
+               alumnoEnviado.setApellido(rs.getString("apellido"));
+               alumnoEnviado.setNombre(rs.getString("nombre"));
+               alumnoEnviado.setFechaNac(rs.getDate("fechaNacimiento").toLocalDate());
+               alumnoEnviado.setEstado(rs.getBoolean("estado"));
             }
               ps.close();
-            if(a == null){
+            if(alumnoEnviado == null){
                 throw new SQLException();
             }
         } catch (SQLException ex) {            
@@ -109,7 +109,7 @@ public class AlumnoData {
             System.out.println("Mensaje de error: " + ex.getMessage());
             
         }
-        return a;
+        return alumnoEnviado;
    
     } 
  
