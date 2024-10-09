@@ -2,7 +2,6 @@
 package vistas;
 import entidades.Alumno;
 import entidades.Conexion;
-import entidades.Materias;
 import java.sql.Connection;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -15,7 +14,8 @@ import javax.swing.table.DefaultTableModel;
 import persistencia.AlumnoData;
 
 public class VistaAlumnos extends javax.swing.JFrame {
-private VentanaDeInicio ventanaDeInicio;
+    
+    private VentanaDeInicio ventanaDeInicio;
     AlumnoData alumnoData;
     int xMouse, yMouse;
     int x, y;
@@ -23,6 +23,7 @@ private VentanaDeInicio ventanaDeInicio;
 
    
     public VistaAlumnos(VentanaDeInicio ventanaDeInicio) {
+        
         initComponents();
         this.ventanaDeInicio = ventanaDeInicio;
         Connection con = Conexion.getConexion();
@@ -173,7 +174,7 @@ private VentanaDeInicio ventanaDeInicio;
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Boolean.class
+                java.lang.Integer.class, java.lang.Long.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Boolean.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false, false
@@ -187,6 +188,7 @@ private VentanaDeInicio ventanaDeInicio;
                 return canEdit [columnIndex];
             }
         });
+        tabAlumnos.setEnabled(false);
         tabAlumnos.setFocusable(false);
         jScrollPane1.setViewportView(tabAlumnos);
 
@@ -577,7 +579,7 @@ private VentanaDeInicio ventanaDeInicio;
         grpEdit.add(jRlogAlta);
         jRlogAlta.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jRlogAlta.setForeground(new java.awt.Color(0, 0, 0));
-        jRlogAlta.setText("Alta Lógica");
+        jRlogAlta.setText("Estado Regular");
         jRlogAlta.setEnabled(false);
         jRlogAlta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -590,7 +592,7 @@ private VentanaDeInicio ventanaDeInicio;
         grpEdit.add(jRlogBaja);
         jRlogBaja.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jRlogBaja.setForeground(new java.awt.Color(0, 0, 0));
-        jRlogBaja.setText("Baja Lógica");
+        jRlogBaja.setText("Estado Libre");
         jRlogBaja.setEnabled(false);
         jRlogBaja.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -750,6 +752,7 @@ private VentanaDeInicio ventanaDeInicio;
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
         txtPanel.setText("Seleccione el Alumno a editar en la tabla, luego seleccione el metodo de edicion que desea utilizar.");
+        tabAlumnos.setEnabled(true);
         btnClear.setEnabled(false);
         btnNw.setEnabled(false);
 
@@ -764,10 +767,11 @@ private VentanaDeInicio ventanaDeInicio;
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate fNac = LocalDate.parse(fText, formatter);
        
-        boolean stat = false;
+        boolean stat = true;
         if (txtState.getText().equals("0")) {
             stat = false;
-        } else if (txtState.getText().equals("1")) {
+        }
+        if (txtState.getText().equals("1")) {
             stat = true;
         }
         Alumno nwAlu = new Alumno(idAlu, dniAlu, ape, name, fNac, stat);
@@ -805,7 +809,7 @@ private VentanaDeInicio ventanaDeInicio;
         
         modelo.setRowCount(0);
         llenarTabla();
-        tabAlumnos.setEnabled(true);
+        tabAlumnos.setEnabled(false);
         txtPanel.setText("");
 
     }//GEN-LAST:event_btnExeActionPerformed
