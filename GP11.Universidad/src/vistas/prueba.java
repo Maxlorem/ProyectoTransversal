@@ -42,7 +42,7 @@ public class Prueba {
 //        alumnoData.actualizarAlumno(alumno11);
         //BORRADO FISICO
         
-//        alumnoData.borrarAlumnoFisico(5);
+      //alumnoData.borrarAlumnoFisico(3);
     
 //DAR LA BAJA LOGICA
 //           alumnoData.bajaLogicaAlumno(alumno2);
@@ -57,7 +57,7 @@ public class Prueba {
     MateriaData materiaData = new MateriaData(conexion);
 //    
 // MATERIAS
-
+    //materiaData.borrarMateriaFisico(3);
    
     
     Materias materia = new Materias("Matematica 1 ", 1, false);

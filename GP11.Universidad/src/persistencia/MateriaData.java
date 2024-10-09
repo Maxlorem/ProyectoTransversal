@@ -68,7 +68,7 @@ public class MateriaData {
             }
         }
     }
-    public  Materias buscarMateriaPorId(int id){
+    public  Materias  buscarMateriaPorId(int id){
             
         Materias materias = null;
         String query = "SELECT * FROM materia WHERE idMateria = ?";
@@ -309,8 +309,10 @@ public class MateriaData {
         } catch (SQLException ex) {
             System.out.println("Error: || metodo: borrarMateriaFisico");
             System.out.println("No se pudo eliminar el registro");
-            System.out.println("Mensaje de error: " + ex.getMessage());
+            System.out.println("Codigo de error: "+ex.getErrorCode()+"\nMensaje de error: " + ex.getMessage());
+            
         }
+        
     }
     
    
