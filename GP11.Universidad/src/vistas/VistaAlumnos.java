@@ -833,6 +833,7 @@ public class VistaAlumnos extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNameKeyReleased
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+        
         Long dniAlu = Long.valueOf(txtDni.getText());
         String ape = txtApe.getText();
         String nom = txtName.getText();
@@ -851,7 +852,7 @@ public class VistaAlumnos extends javax.swing.JFrame {
         alumnoData.guardarAlumno(nwAlu);
         modelo.setRowCount(0);
         llenarTabla();
-        JOptionPane.showMessageDialog(null, "Alumno " + nwAlu.getApellido()+ " con ID " + nwAlu.getIdAlumno() + " DNI " + nwAlu.getDni() + " agregado con éxito.");
+        JOptionPane.showMessageDialog(null, "Alumno " + nwAlu.getApellido()+ " DNI " + nwAlu.getDni() + " agregado con éxito.");
         btnAdd.setEnabled(false);
         txtId.setText("");
         txtDni.setText("");
