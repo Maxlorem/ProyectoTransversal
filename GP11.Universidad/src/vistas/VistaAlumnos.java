@@ -37,7 +37,7 @@ private VentanaDeInicio ventanaDeInicio;
                     int fila = tabAlumnos.getSelectedRow();
                     if (fila != -1 && !btnNw.isEnabled()) {
 
-                        Integer idAlu = (Integer) tabAlumnos.getValueAt(fila, 0);
+                        Integer idAlu = (Integer) tabAlumnos.getValueAt(fila, 0); //CUANDO NO LO ENCUENTRA EXPLOTA
                         Long dni = (Long) tabAlumnos.getValueAt(fila, 1);
                         String ape = (String) tabAlumnos.getValueAt(fila, 2);
                         String nom = (String) tabAlumnos.getValueAt(fila, 3);
