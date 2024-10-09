@@ -2,6 +2,7 @@ package vistas;
 
 import entidades.Conexion;
 import java.sql.Connection;
+import javax.swing.JOptionPane;
 
 
 public class VistaInscripciones extends javax.swing.JFrame {
@@ -16,6 +17,7 @@ public class VistaInscripciones extends javax.swing.JFrame {
         this.ventanaDeInicio = ventanaDeInicio;
         Connection con = Conexion.getConexion();
         this.setLocationRelativeTo(null);
+        JOptionPane.showMessageDialog(null, "Para comenzar seleccione y elija un alumno, puede utilizar los filtros para Alumno en la esquina inferior izquierda. Si selecciona por DNI el campo de texto se habilita para filtrar letra a letra.", "Sistema Alumnos", HEIGHT);
     }
 
     
@@ -23,6 +25,7 @@ public class VistaInscripciones extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        bgMat = new javax.swing.ButtonGroup();
         panelMaterias = new javax.swing.JPanel();
         pnlSuperior = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -33,10 +36,8 @@ public class VistaInscripciones extends javax.swing.JFrame {
         pnlSistemasInsc = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        jcbAlumnos = new javax.swing.JComboBox<>();
+        jcbMateria = new javax.swing.JComboBox<>();
         jPanel5 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
@@ -52,23 +53,26 @@ public class VistaInscripciones extends javax.swing.JFrame {
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
         jRadioButton3 = new javax.swing.JRadioButton();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
+        lblInstruc1 = new javax.swing.JLabel();
+        lblInstruc2 = new javax.swing.JLabel();
+        lblMsgHab = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         jToggleButton1 = new javax.swing.JToggleButton();
         jSeparator1 = new javax.swing.JSeparator();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jToggleButton2 = new javax.swing.JToggleButton();
-        jToggleButton3 = new javax.swing.JToggleButton();
+        jSeparator2 = new javax.swing.JSeparator();
+        txtMateriaFilter = new javax.swing.JTextField();
+        txtAlumnoFilter = new javax.swing.JTextField();
+        jtbMateriaLock = new javax.swing.JToggleButton();
+        jtbAlumnoLock = new javax.swing.JToggleButton();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        txtAlumnoData = new javax.swing.JTextField();
+        txtMateriaData = new javax.swing.JTextField();
         jPanel8 = new javax.swing.JPanel();
         jButton4 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -78,6 +82,8 @@ public class VistaInscripciones extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -169,26 +175,16 @@ public class VistaInscripciones extends javax.swing.JFrame {
         jLabel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 8, 555, -1));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel2.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, 240, -1));
+        jcbAlumnos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel2.add(jcbAlumnos, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, 240, -1));
 
-        jLabel6.setBackground(new java.awt.Color(255, 204, 153));
-        jLabel6.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel6.setText("Alumno");
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 76, -1));
-
-        jLabel7.setBackground(new java.awt.Color(255, 204, 153));
-        jLabel7.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel7.setText("Materia");
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 258, -1));
-
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel2.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, 240, -1));
+        jcbMateria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcbMateria.setEnabled(false);
+        jPanel2.add(jcbMateria, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, 240, -1));
 
         jPanel5.setBackground(new java.awt.Color(255, 153, 102));
         jPanel5.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel8.setBackground(new java.awt.Color(255, 153, 153));
         jLabel8.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
@@ -196,86 +192,64 @@ public class VistaInscripciones extends javax.swing.JFrame {
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("Filtros de Búsqueda");
         jLabel8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel5.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 390, -1));
 
         jPanel6.setBackground(new java.awt.Color(255, 204, 153));
         jPanel6.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel9.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("Filtros");
         jLabel9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel6.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 8, 170, -1));
 
         jCheckBox1.setBackground(new java.awt.Color(255, 204, 153));
         jCheckBox1.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jCheckBox1.setForeground(new java.awt.Color(0, 0, 0));
         jCheckBox1.setText("Mostrar Libres");
+        jPanel6.add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 58, -1, -1));
 
+        jCheckBox2.setBackground(new java.awt.Color(255, 204, 153));
         jCheckBox2.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jCheckBox2.setForeground(new java.awt.Color(0, 0, 0));
         jCheckBox2.setText("por Apellidos");
+        jPanel6.add(jCheckBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 84, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Alumnos");
         jLabel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel6.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 36, 170, -1));
 
         jLabel11.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setText("Materias");
         jLabel11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel6.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 110, 170, -1));
 
+        jCheckBox3.setBackground(new java.awt.Color(255, 204, 153));
         jCheckBox3.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jCheckBox3.setForeground(new java.awt.Color(0, 0, 0));
         jCheckBox3.setText("por Nombre");
+        jCheckBox3.setEnabled(false);
+        jPanel6.add(jCheckBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 132, -1, -1));
 
+        jCheckBox4.setBackground(new java.awt.Color(255, 204, 153));
         jCheckBox4.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jCheckBox4.setForeground(new java.awt.Color(0, 0, 0));
         jCheckBox4.setText("por Año");
+        jCheckBox4.setEnabled(false);
+        jPanel6.add(jCheckBox4, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 158, 85, -1));
 
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jCheckBox2)
-                            .addComponent(jCheckBox1)
-                            .addComponent(jCheckBox3)
-                            .addComponent(jCheckBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 76, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel9)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel5)
-                .addGap(1, 1, 1)
-                .addComponent(jCheckBox1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBox2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel11)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBox3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBox4)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        jPanel5.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 190, 190));
 
         jPanel7.setBackground(new java.awt.Color(255, 204, 153));
         jPanel7.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel10.setBackground(new java.awt.Color(0, 0, 0));
         jLabel10.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
@@ -283,69 +257,54 @@ public class VistaInscripciones extends javax.swing.JFrame {
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel10.setText("Materias");
         jLabel10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel7.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 8, 150, -1));
 
+        jRadioButton1.setBackground(new java.awt.Color(255, 204, 153));
+        bgMat.add(jRadioButton1);
         jRadioButton1.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jRadioButton1.setForeground(new java.awt.Color(0, 0, 0));
         jRadioButton1.setText("Mostrar todo");
+        jRadioButton1.setEnabled(false);
+        jPanel7.add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 32, 150, -1));
 
+        jRadioButton2.setBackground(new java.awt.Color(255, 204, 153));
+        bgMat.add(jRadioButton2);
         jRadioButton2.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jRadioButton2.setForeground(new java.awt.Color(0, 0, 0));
         jRadioButton2.setText("Mostrar Inscriptas");
+        jRadioButton2.setEnabled(false);
+        jPanel7.add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 59, 150, -1));
 
+        jRadioButton3.setBackground(new java.awt.Color(255, 204, 153));
+        bgMat.add(jRadioButton3);
         jRadioButton3.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jRadioButton3.setForeground(new java.awt.Color(0, 0, 0));
         jRadioButton3.setText("Mostrar No Inscriptas");
+        jRadioButton3.setEnabled(false);
+        jPanel7.add(jRadioButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 86, 160, -1));
 
-        jLabel15.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel15.setText("Para habilitar Seleccione");
+        lblInstruc1.setBackground(new java.awt.Color(255, 204, 153));
+        lblInstruc1.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        lblInstruc1.setForeground(new java.awt.Color(0, 0, 0));
+        lblInstruc1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblInstruc1.setText("Para habilitar Seleccione");
+        jPanel7.add(lblInstruc1, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 135, 160, -1));
 
-        jLabel16.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel16.setText("un Alumno (Lock)");
+        lblInstruc2.setBackground(new java.awt.Color(255, 204, 153));
+        lblInstruc2.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        lblInstruc2.setForeground(new java.awt.Color(0, 0, 0));
+        lblInstruc2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblInstruc2.setText("un Alumno (Lock)");
+        jPanel7.add(lblInstruc2, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 157, 160, -1));
 
-        jLabel17.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
-        jLabel17.setForeground(new java.awt.Color(204, 51, 0));
-        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel17.setText("DESHABILITADO");
+        lblMsgHab.setBackground(new java.awt.Color(255, 204, 153));
+        lblMsgHab.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        lblMsgHab.setForeground(new java.awt.Color(204, 51, 0));
+        lblMsgHab.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblMsgHab.setText("DESHABILITADO");
+        jPanel7.add(lblMsgHab, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 113, 160, -1));
 
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jRadioButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jRadioButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jRadioButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
-                    .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel10)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jRadioButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jRadioButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jRadioButton3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel17)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel15)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel16)
-                .addContainerGap())
-        );
+        jPanel5.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 30, 180, 190));
 
         jLabel14.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(0, 0, 0));
@@ -353,76 +312,57 @@ public class VistaInscripciones extends javax.swing.JFrame {
         jLabel14.setText("Listas");
         jLabel14.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         jLabel14.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel5.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 100, 129, -1));
 
         jButton2.setText("Reiniciar todo");
+        jPanel5.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 30, 129, -1));
 
         jButton1.setText("Listar Inscripciones");
+        jPanel5.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 130, 130, -1));
 
         jButton7.setText("Listar Alumnos");
+        jPanel5.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 170, 129, -1));
 
         jToggleButton1.setText("Habilitar Listas");
+        jPanel5.add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 70, 129, -1));
+        jPanel5.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 60, 129, 10));
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                    .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jToggleButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jSeparator1))
-                .addContainerGap())
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel8)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jButton2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jToggleButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel14)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton7))
-                    .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(11, Short.MAX_VALUE))
-        );
+        jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        jPanel5.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 10, 10, 210));
 
-        jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 124, 564, -1));
+        jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 124, 564, 230));
 
-        jTextField1.setText("jTextField1");
-        jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 80, 130, -1));
+        txtMateriaFilter.setEnabled(false);
+        jPanel2.add(txtMateriaFilter, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 80, 130, -1));
 
-        jTextField4.setText("jTextField1");
-        jPanel2.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 40, 130, -1));
+        txtAlumnoFilter.setEnabled(false);
+        jPanel2.add(txtAlumnoFilter, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 40, 130, -1));
 
-        jToggleButton2.setText("Lock");
-        jPanel2.add(jToggleButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 80, 64, -1));
+        jtbMateriaLock.setText("Elejir");
+        jtbMateriaLock.setEnabled(false);
+        jPanel2.add(jtbMateriaLock, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 80, 64, -1));
 
-        jToggleButton3.setText("Lock");
-        jPanel2.add(jToggleButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 40, 64, -1));
+        jtbAlumnoLock.setText("Elejir");
+        jtbAlumnoLock.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtbAlumnoLockActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jtbAlumnoLock, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 40, 64, -1));
 
-        pnlSistemasInsc.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 580, 340));
+        jLabel18.setBackground(new java.awt.Color(255, 204, 153));
+        jLabel18.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel18.setText("Alumno");
+        jPanel2.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 76, -1));
+
+        jLabel19.setBackground(new java.awt.Color(255, 204, 153));
+        jLabel19.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel19.setText("Materia");
+        jPanel2.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 70, -1));
+
+        pnlSistemasInsc.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 580, 360));
 
         jPanel3.setBackground(new java.awt.Color(255, 204, 102));
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -432,10 +372,6 @@ public class VistaInscripciones extends javax.swing.JFrame {
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Acciones de sistema Inscripciones");
         jLabel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        jTextField2.setText("jTextField2");
-
-        jTextField3.setText("jTextField3");
 
         jPanel8.setBackground(new java.awt.Color(255, 204, 153));
         jPanel8.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -523,6 +459,16 @@ public class VistaInscripciones extends javax.swing.JFrame {
             }
         });
 
+        jLabel6.setBackground(new java.awt.Color(255, 204, 153));
+        jLabel6.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel6.setText("Alumno");
+
+        jLabel7.setBackground(new java.awt.Color(255, 204, 153));
+        jLabel7.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel7.setText("Materia");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -532,35 +478,46 @@ public class VistaInscripciones extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField2)
-                    .addComponent(jTextField3)
                     .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(12, 12, 12)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtAlumnoData, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtMateriaData, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel4)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtAlumnoData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel6))
                 .addGap(18, 18, 18)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtMateriaData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
                 .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
-        pnlSistemasInsc.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 0, 420, 340));
+        pnlSistemasInsc.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 0, 420, 350));
 
-        panelMaterias.add(pnlSistemasInsc, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 1000, 340));
+        panelMaterias.add(pnlSistemasInsc, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 1000, 370));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -570,7 +527,9 @@ public class VistaInscripciones extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelMaterias, javax.swing.GroupLayout.PREFERRED_SIZE, 622, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(panelMaterias, javax.swing.GroupLayout.PREFERRED_SIZE, 636, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -592,9 +551,15 @@ public class VistaInscripciones extends javax.swing.JFrame {
         ventanaDeInicio.mostrarInicio();
     }//GEN-LAST:event_btnBackActionPerformed
 
+    private void jtbAlumnoLockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtbAlumnoLockActionPerformed
+        JOptionPane.showMessageDialog(null, "", "", HEIGHT);
+        jtbMateriaLock.setEnabled(true);
+    }//GEN-LAST:event_jtbAlumnoLockActionPerformed
+
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup bgMat;
     private javax.swing.JButton btnBack;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -607,17 +572,14 @@ public class VistaInscripciones extends javax.swing.JFrame {
     private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JCheckBox jCheckBox3;
     private javax.swing.JCheckBox jCheckBox4;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -639,16 +601,22 @@ public class VistaInscripciones extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JToggleButton jToggleButton1;
-    private javax.swing.JToggleButton jToggleButton2;
-    private javax.swing.JToggleButton jToggleButton3;
+    private javax.swing.JComboBox<String> jcbAlumnos;
+    private javax.swing.JComboBox<String> jcbMateria;
+    private javax.swing.JToggleButton jtbAlumnoLock;
+    private javax.swing.JToggleButton jtbMateriaLock;
+    private javax.swing.JLabel lblInstruc1;
+    private javax.swing.JLabel lblInstruc2;
+    private javax.swing.JLabel lblMsgHab;
     private javax.swing.JPanel panelMaterias;
     private javax.swing.JPanel pnlSistemasInsc;
     private javax.swing.JPanel pnlSuperior;
     private javax.swing.JTable tabGeneral;
+    private javax.swing.JTextField txtAlumnoData;
+    private javax.swing.JTextField txtAlumnoFilter;
+    private javax.swing.JTextField txtMateriaData;
+    private javax.swing.JTextField txtMateriaFilter;
     // End of variables declaration//GEN-END:variables
 }

@@ -700,24 +700,32 @@ public class VistaAlumnos extends javax.swing.JFrame {
         jRporId.setEnabled(true);
         jRporApellido.setEnabled(true);
         grpSelection.clearSelection();
+        txtBusqueda.setText("");
+        txtBusqueda.setEditable(false);
+        btnSrc.setEnabled(false);
+        btnAccept.setEnabled(false);
     }//GEN-LAST:event_btnSrcActionPerformed
 
     private void btnAcceptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcceptActionPerformed
+        txtBusqueda.setEnabled(true);
         txtBusqueda.requestFocus();
         if (jRporId.isSelected()) {
             jRporApellido.setEnabled(false);
             jRporDni.setEnabled(false);
+            jRporId.setEnabled(false);
             txtBusqueda.setEditable(true);
             txtMsg.setText("Realizará una búsqueda por ID, asegúrese de ingresar solo NUMEROS en el campo de búsqueda.");
         } else if (jRporApellido.isSelected()) {
             jRporId.setEnabled(false);
             jRporDni.setEnabled(false);
+            jRporApellido.setEnabled(false);
             txtBusqueda.setEditable(true);
             txtMsg.setText("Realizará una búsqueda por Apellido, asegúrese de conocer el apellido de los alumnos que desea buscar con este método de búsqueda.");
 
         } else if (jRporDni.isSelected()) {
             jRporId.setEnabled(false);
             jRporApellido.setEnabled(false);
+            jRporDni.setEnabled(false);
             txtBusqueda.setEditable(true);
             txtMsg.setText("Realizará una búsqueda por DNI, asegúrese de ingresar solo NUMEROS en el campo de busqueda.");
         }
@@ -739,6 +747,7 @@ public class VistaAlumnos extends javax.swing.JFrame {
         btnAccept.setEnabled(false);
         btnSrc.setEnabled(false);
         txtBusqueda.setText("");
+        txtBusqueda.setEnabled(false);
         modelo.setRowCount(0);
         llenarTabla();
         txtMsg.setText("");
@@ -845,6 +854,7 @@ public class VistaAlumnos extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNameKeyReleased
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+        
         Long dniAlu = Long.valueOf(txtDni.getText());
         String ape = txtApe.getText();
         String nom = txtName.getText();
@@ -866,7 +876,7 @@ public class VistaAlumnos extends javax.swing.JFrame {
         alumnoData.guardarAlumno(nwAlu);
         modelo.setRowCount(0);
         llenarTabla();
-        JOptionPane.showMessageDialog(null, "Alumno " + nwAlu.getApellido()+ " con ID " + nwAlu.getIdAlumno() + " DNI " + nwAlu.getDni() + " agregado con éxito.");
+        JOptionPane.showMessageDialog(null, "Alumno " + nwAlu.getApellido()+ " DNI " + nwAlu.getDni() + " agregado con éxito.");
         btnAdd.setEnabled(false);
         txtId.setText("");
         txtDni.setText("");
