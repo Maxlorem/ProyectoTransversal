@@ -3,9 +3,12 @@ package vistas;
 import entidades.Alumno;
 import entidades.Conexion;
 import java.sql.Connection;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
@@ -20,7 +23,7 @@ public class VistaAlumnos extends javax.swing.JFrame {
     int xMouse, yMouse;
     int x, y;
     private final DefaultTableModel modelo = new NonEditableTableModel();
-
+    
    
     public VistaAlumnos(VentanaDeInicio ventanaDeInicio) {
         
@@ -45,13 +48,14 @@ public class VistaAlumnos extends javax.swing.JFrame {
                         //java.sql.Date sqlFecha = (java.sql.Date) tabAlumnos.getValueAt(fila, 4);
                         //LocalDate fecNac = sqlFecha.toLocalDate();
                         LocalDate fecNac = (LocalDate) tabAlumnos.getValueAt(fila, 4);
+                        Date date = Date.from(fecNac.atStartOfDay(ZoneId.systemDefault()).toInstant());
                         String stat = (String) tabAlumnos.getValueAt(fila, 5);
 
                         txtId.setText(String.valueOf(idAlu));
                         txtDni.setText(String.valueOf(dni));
                         txtApe.setText(ape);
                         txtName.setText(nom);
-                        txtFnacFormated.setText(fecNac.toString());
+                        txtFnacFormated.setDate(date);
                         txtState.setText(stat.equals("Regular") ? "1" : "0");
                         jRedit.setEnabled(true);
                         jRfisicBaja.setEnabled(true);
@@ -81,6 +85,7 @@ public class VistaAlumnos extends javax.swing.JFrame {
 
         grpSelection = new javax.swing.ButtonGroup();
         grpEdit = new javax.swing.ButtonGroup();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
         panelMaterias = new javax.swing.JPanel();
         pnlSuperior = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -121,7 +126,7 @@ public class VistaAlumnos extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         txtState = new javax.swing.JTextField();
-        txtFnacFormated = new javax.swing.JFormattedTextField();
+        txtFnacFormated = new com.toedter.calendar.JDateChooser();
         jLabel4 = new javax.swing.JLabel();
         btnAdd = new javax.swing.JButton();
         jRfisicBaja = new javax.swing.JRadioButton();
@@ -461,15 +466,7 @@ public class VistaAlumnos extends javax.swing.JFrame {
             }
         });
 
-        txtFnacFormated.setEditable(false);
-        txtFnacFormated.setBackground(new java.awt.Color(255, 255, 255));
-        txtFnacFormated.setForeground(new java.awt.Color(0, 0, 0));
-        txtFnacFormated.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("yyyy-M-dd"))));
-        txtFnacFormated.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtFnacFormatedKeyReleased(evt);
-            }
-        });
+        txtFnacFormated.setDateFormatString("yyyy-MM-dd");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -496,7 +493,7 @@ public class VistaAlumnos extends javax.swing.JFrame {
                             .addComponent(txtApe, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
                             .addComponent(txtName, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
                             .addComponent(txtState, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
-                            .addComponent(txtFnacFormated))
+                            .addComponent(txtFnacFormated, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(63, 63, 63))))
         );
         jPanel2Layout.setVerticalGroup(
@@ -519,7 +516,7 @@ public class VistaAlumnos extends javax.swing.JFrame {
                     .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtFnacFormated, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -745,7 +742,7 @@ public class VistaAlumnos extends javax.swing.JFrame {
         txtDni.setEditable(true);
         txtApe.setEditable(true);
         txtName.setEditable(true);
-        txtFnacFormated.setEditable(true);
+        txtFnacFormated.setEnabled(true);
         txtState.setEditable(true);
         txtDni.requestFocus();
     }//GEN-LAST:event_btnNwActionPerformed
@@ -763,7 +760,10 @@ public class VistaAlumnos extends javax.swing.JFrame {
         Long dniAlu = Long.valueOf(txtDni.getText());
         String ape = txtApe.getText();
         String name = txtName.getText();
-        String fText = txtFnacFormated.getText();
+        //AK HAY QUE VER
+        Date campoDeTextoFecha = txtFnacFormated.getDate();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String fText = dateFormat.format(campoDeTextoFecha);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate fNac = LocalDate.parse(fText, formatter);
        
@@ -796,7 +796,7 @@ public class VistaAlumnos extends javax.swing.JFrame {
         txtDni.setText("");
         txtName.setText("");
         txtApe.setText("");
-        txtFnacFormated.setText("");
+        txtFnacFormated.setDate(null);
         txtState.setText("");
         jRedit.setEnabled(false);
         jRfisicBaja.setEnabled(false);
@@ -805,7 +805,7 @@ public class VistaAlumnos extends javax.swing.JFrame {
         txtDni.setEditable(false);
         txtApe.setEditable(false);
         txtName.setEditable(false);
-        txtFnacFormated.setEditable(false);
+        txtFnacFormated.setEnabled(false);
         
         modelo.setRowCount(0);
         llenarTabla();
@@ -836,7 +836,10 @@ public class VistaAlumnos extends javax.swing.JFrame {
         Long dniAlu = Long.valueOf(txtDni.getText());
         String ape = txtApe.getText();
         String nom = txtName.getText();
-        String fText = txtFnacFormated.getText();
+        //Ver si funciona
+        Date campoDeTextoFecha = txtFnacFormated.getDate();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String fText = dateFormat.format(campoDeTextoFecha);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate fNac = LocalDate.parse(fText, formatter);
         
@@ -889,7 +892,7 @@ public class VistaAlumnos extends javax.swing.JFrame {
             txtDni.setEditable(true);
             txtApe.setEditable(true);
             txtName.setEditable(true);
-            txtFnacFormated.setEditable(true);
+            txtFnacFormated.setEnabled(true);
             txtDni.requestFocus();
             txtPanel.setText("Cambie el DNI, Apellido, Nombre o la Fecha de Nacimiento, luego presione 'Ejecutar' para guardar los cambios.");
             jRfisicBaja.setEnabled(false);
@@ -941,10 +944,6 @@ public class VistaAlumnos extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtStateKeyTyped
 
-    private void txtFnacFormatedKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFnacFormatedKeyReleased
-        validarCamposNw();
-    }//GEN-LAST:event_txtFnacFormatedKeyReleased
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAccept;
@@ -958,6 +957,7 @@ public class VistaAlumnos extends javax.swing.JFrame {
     private javax.swing.JButton btnSrc;
     private javax.swing.ButtonGroup grpEdit;
     private javax.swing.ButtonGroup grpSelection;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -990,7 +990,7 @@ public class VistaAlumnos extends javax.swing.JFrame {
     private javax.swing.JTextField txtApe;
     private javax.swing.JTextField txtBusqueda;
     private javax.swing.JTextField txtDni;
-    private javax.swing.JFormattedTextField txtFnacFormated;
+    private com.toedter.calendar.JDateChooser txtFnacFormated;
     private javax.swing.JTextField txtId;
     private javax.swing.JTextArea txtMsg;
     private javax.swing.JTextField txtName;
@@ -1057,7 +1057,7 @@ public class VistaAlumnos extends javax.swing.JFrame {
 
     private void validarCamposNw() {
         if (!txtDni.getText().isEmpty() && !txtApe.getText().isEmpty() && !txtName.getText().isEmpty() && 
-            !txtFnacFormated.getText().isEmpty() && !txtState.getText().isEmpty() && btnNw.isEnabled()) {
+            !txtFnacFormated.getDateFormatString().isEmpty() && !txtState.getText().isEmpty() && btnNw.isEnabled()) {
             btnAdd.setEnabled(true);
         }
 
