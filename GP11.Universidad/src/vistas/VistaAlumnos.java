@@ -187,6 +187,7 @@ private VentanaDeInicio ventanaDeInicio;
                 return canEdit [columnIndex];
             }
         });
+        tabAlumnos.setEnabled(false);
         tabAlumnos.setFocusable(false);
         jScrollPane1.setViewportView(tabAlumnos);
 
@@ -577,7 +578,7 @@ private VentanaDeInicio ventanaDeInicio;
         grpEdit.add(jRlogAlta);
         jRlogAlta.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jRlogAlta.setForeground(new java.awt.Color(0, 0, 0));
-        jRlogAlta.setText("Alta Lógica");
+        jRlogAlta.setText("Estado Regular");
         jRlogAlta.setEnabled(false);
         jRlogAlta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -590,7 +591,7 @@ private VentanaDeInicio ventanaDeInicio;
         grpEdit.add(jRlogBaja);
         jRlogBaja.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jRlogBaja.setForeground(new java.awt.Color(0, 0, 0));
-        jRlogBaja.setText("Baja Lógica");
+        jRlogBaja.setText("Estado Libre");
         jRlogBaja.setEnabled(false);
         jRlogBaja.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -750,6 +751,7 @@ private VentanaDeInicio ventanaDeInicio;
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
         txtPanel.setText("Seleccione el Alumno a editar en la tabla, luego seleccione el metodo de edicion que desea utilizar.");
+        tabAlumnos.setEnabled(true);
         btnClear.setEnabled(false);
         btnNw.setEnabled(false);
 
@@ -806,7 +808,7 @@ private VentanaDeInicio ventanaDeInicio;
         
         modelo.setRowCount(0);
         llenarTabla();
-        tabAlumnos.setEnabled(true);
+        tabAlumnos.setEnabled(false);
         txtPanel.setText("");
 
     }//GEN-LAST:event_btnExeActionPerformed
