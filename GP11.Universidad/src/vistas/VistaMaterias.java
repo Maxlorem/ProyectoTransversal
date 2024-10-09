@@ -179,6 +179,7 @@ public class VistaMaterias extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tabMaterias.setEnabled(false);
         tabMaterias.setFocusable(false);
         jScrollPane1.setViewportView(tabMaterias);
 
@@ -772,6 +773,7 @@ public class VistaMaterias extends javax.swing.JFrame {
         txtPanel.setText("Seleccione la materia a editar en la tabla, luego seleccione el metodo de edicion que desea utilizar.");
         btnClear.setEnabled(false);
         btnNw.setEnabled(false);
+        tabMaterias.setEnabled(true);
         
 
 
@@ -837,7 +839,7 @@ public class VistaMaterias extends javax.swing.JFrame {
         txtYear.setEditable(false);
         modelo.setRowCount(0);
         llenarTabla();
-        tabMaterias.setEnabled(true);
+        tabMaterias.setEnabled(false);
         txtPanel.setText("");
         
 
