@@ -688,10 +688,26 @@ public class VistaAlumnos extends javax.swing.JFrame {
             //actualizarTablaAlu(alumnoData.buscarAlumnoPorId(Integer.parseInt(txtBusqueda.getText())));
         }
         if (jRporApellido.isSelected()) {
-            actualizarTablaList(alumnoData.buscarAlumnoPorApellido(txtBusqueda.getText()));
+            String apellidoEnviado = txtBusqueda.getText();
+            ArrayList<Alumno> alumnoBuscado = alumnoData.buscarAlumnoPorApellido(apellidoEnviado);
+            if(!alumnoBuscado.isEmpty()){
+                actualizarTablaList(alumnoBuscado);
+            }else{
+                txtMsg.setText("No se encontraron alumnos con ese apellido");
+            }
+            //actualizarTablaList(alumnoData.buscarAlumnoPorApellido(txtBusqueda.getText()));
         }
         if (jRporDni.isSelected()) {
-            actualizarTablaAlu(alumnoData.buscarAlumnoPorDni(Integer.parseInt(txtBusqueda.getText())));
+            String dniEnviado = txtBusqueda.getText();
+            Integer dniParseado = Integer.parseInt(dniEnviado);
+            Alumno alumnoBuscado = alumnoData.buscarAlumnoPorId(dniParseado);
+            if(alumnoBuscado != null){
+                txtMsg.setText("Alumno Encontrado");
+                actualizarTablaAlu(alumnoBuscado);
+            }else{
+                txtMsg.setText("No se encontro el alumno");
+            }
+            //actualizarTablaAlu(alumnoData.buscarAlumnoPorDni(Integer.parseInt(txtBusqueda.getText())));
         }
         txtMsg.setText("Se ha completado la busqueda");
         btnSrc.setEnabled(false);
