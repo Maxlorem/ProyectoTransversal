@@ -107,6 +107,7 @@ public class AlumnoData {
         } catch (SQLException ex) {            
             System.out.println("Error, no se pudo encontrar el registro!");
             System.out.println("Mensaje de error: " + ex.getMessage());
+            
         }
         return a;
    
