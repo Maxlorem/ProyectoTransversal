@@ -598,7 +598,7 @@
                                       <Component id="txtApe" alignment="0" pref="270" max="32767" attributes="0"/>
                                       <Component id="txtName" alignment="0" pref="270" max="32767" attributes="0"/>
                                       <Component id="txtState" pref="270" max="32767" attributes="0"/>
-                                      <Component id="txtFnacFormated" max="32767" attributes="0"/>
+                                      <Component id="calendar" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
                               </Group>
@@ -632,7 +632,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Component id="jLabel5" min="-2" pref="30" max="-2" attributes="0"/>
-                              <Component id="txtFnacFormated" min="-2" max="-2" attributes="0"/>
+                              <Component id="calendar" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -835,10 +835,14 @@
                     <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtStateKeyTyped"/>
                   </Events>
                 </Component>
-                <Component class="com.toedter.calendar.JDateChooser" name="txtFnacFormated">
+                <Component class="com.toedter.calendar.JDateChooser" name="calendar">
                   <Properties>
                     <Property name="dateFormatString" type="java.lang.String" value="yyyy-MM-dd"/>
+                    <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="calendarPropertyChange"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
