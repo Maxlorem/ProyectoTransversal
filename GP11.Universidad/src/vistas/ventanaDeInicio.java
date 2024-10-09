@@ -443,6 +443,11 @@ public class VentanaDeInicio extends javax.swing.JFrame {
         btnAccesAlumnos.setText("Ingresar");
         btnAccesAlumnos.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnAccesAlumnos.setEnabled(false);
+        btnAccesAlumnos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAccesAlumnosActionPerformed(evt);
+            }
+        });
         pnlIngresoAlumnos.add(btnAccesAlumnos, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 490, 110, -1));
 
         btnBackAlumnos.setBackground(new java.awt.Color(102, 102, 102));
@@ -1074,6 +1079,7 @@ public class VentanaDeInicio extends javax.swing.JFrame {
             pnlAccesMsg2.setText("Acceso concedido");
             btnAcceso.setText("Log Out");
             btnAccessMaterias.setEnabled(true);
+            btnAccesAlumnos.setEnabled(true);
         } else {
             pnlMsgInicio.setVisible(true);
             btnSistemaAlumnos.setVisible(false);
@@ -1141,6 +1147,14 @@ public class VentanaDeInicio extends javax.swing.JFrame {
         desktop.moveToFront(nw);
 
     }//GEN-LAST:event_btnAccessMateriasActionPerformed
+
+    private void btnAccesAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAccesAlumnosActionPerformed
+        backgroundPnl.setVisible(false);
+        desktop.repaint();
+        VistaAlumnos nw = new VistaAlumnos(this);
+        nw.setVisible(true);
+        desktop.moveToFront(nw);
+    }//GEN-LAST:event_btnAccesAlumnosActionPerformed
     public void mostrarInicio() {
         desktop.repaint();
         VentanaDeInicio nw = new VentanaDeInicio();

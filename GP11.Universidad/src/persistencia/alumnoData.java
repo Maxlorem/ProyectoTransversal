@@ -114,16 +114,48 @@ public class AlumnoData {
  
     //BUSCAR POR NOMBRE
     
-    public  Alumno buscarAlumnoPorName(String name){
+    public  ArrayList<Alumno> buscarAlumnoPorApellido(String sername){
         
-            Alumno a = null;
+             ArrayList<Alumno> alumnosApellido = new ArrayList<>();   
             
-            String query = "SELECT * FROM alumnos WHERE nombre = ?";
+            String query = "SELECT * FROM alumnos WHERE apellido = ?";
         try {   
             PreparedStatement ps;
             
             ps = conexionAlumoData.prepareStatement(query);
-            ps.setString(1, name);
+            ps.setString(1, sername);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+               Alumno a = new Alumno();
+               a.setIdAlumno(rs.getInt("idAlumno"));
+               a.setDni(rs.getLong("dni"));
+               a.setApellido(rs.getString("apellido"));
+               a.setNombre(rs.getString("nombre"));
+               a.setFechaNac(rs.getDate("fechaNacimiento").toLocalDate());
+               a.setEstado(rs.getBoolean("estado"));
+               alumnosApellido.add(a);
+            }
+              ps.close();
+            if(alumnosApellido.isEmpty()){
+                throw new SQLException();
+            }
+        } catch (SQLException ex) {            
+            System.out.println("Error, no se pudo encontrar el registro!");
+            System.out.println("Mensaje de error: " + ex.getMessage());
+        }
+        return alumnosApellido;
+    }
+    
+    public  Alumno buscarAlumnoPorDni(int doc){
+        
+            Alumno a = null;
+            
+            String query = "SELECT * FROM alumnos WHERE dni = ?";
+        try {   
+            PreparedStatement ps;
+            
+            ps = conexionAlumoData.prepareStatement(query);
+            ps.setInt(1, doc);
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
                a = new Alumno();
@@ -277,19 +309,18 @@ public class AlumnoData {
     
     public void bajaLogicaAlumno(Alumno a){
         //aca es UPDATE alumno SET estado=0 WHERE idAlumno=?.
-        String query = "UPDATE alumnos SET estado= ? WHERE idAlumno = ?";
+        String query = "UPDATE alumnos SET estado= 0 WHERE idAlumno = ?";
         try {
-            if(!a.isEstado()){
+            if(a.isEstado()){
                 System.out.println("El alumno ya está dado de baja");
                 throw new SQLException();
             } else{
                 PreparedStatement ps = conexionAlumoData.prepareStatement(query) ;
-                ps.setBoolean(1, false);
-                ps.setInt(2, a.getIdAlumno());         
+                ps.setInt(1, a.getIdAlumno());         
                 ps.executeUpdate();
                 ps.close();
                 System.out.println("Usuario dado de baja");
-            }
+        }
            
         } catch (SQLException ex) {
             System.out.println("No se pudo dar la baja al registro");
