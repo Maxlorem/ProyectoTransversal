@@ -149,7 +149,7 @@ public class InscripcionData {
                 materiasObtenidas.add(materias);
                 
             }
-            if (materiasObtenidas.size() > 0) {
+            if (!materiasObtenidas.isEmpty()) {
                 
                 System.out.println("Materias NO cursadas por el alumno enviadas");
             } else{
@@ -229,7 +229,7 @@ public class InscripcionData {
                 alumno.setEstado(rs.getBoolean("estado"));
                 alumnosPorMateria.add(alumno);
             }
-            if(alumnosPorMateria.size() > 0){
+            if(!alumnosPorMateria.isEmpty()){
                 System.out.println("Alumnos por Materias enviados");
             } else{
                 System.out.println("No hay alumnos registrados en la materia");
