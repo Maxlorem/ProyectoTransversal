@@ -82,7 +82,7 @@ public class AlumnoData {
     
     public  Alumno buscarAlumnoPorId(int id){
         
-            Alumno alumnoEnviado = null;
+            Alumno alumnoEnviado = new Alumno();
             
             String query = "SELECT * FROM alumnos WHERE idAlumno = ?";
         try {   
@@ -149,7 +149,7 @@ public class AlumnoData {
     
     public  Alumno buscarAlumnoPorDni(int doc){
         
-            Alumno alumnoDevuelto = null;
+            Alumno alumnoDevuelto = new Alumno();
             
             String query = "SELECT * FROM alumnos WHERE dni = ?";
         try {   
