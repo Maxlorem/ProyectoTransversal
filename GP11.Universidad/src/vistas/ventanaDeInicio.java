@@ -124,7 +124,7 @@ public class VentanaDeInicio extends javax.swing.JFrame {
         jLabel27 = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
         pnlIngresoInsc = new javax.swing.JPanel();
-        btnAccesAlumnos1 = new javax.swing.JButton();
+        btnAccesInsc = new javax.swing.JButton();
         btnBackInsc = new javax.swing.JButton();
         jLabel16 = new javax.swing.JLabel();
         jSeparator8 = new javax.swing.JSeparator();
@@ -742,13 +742,18 @@ public class VentanaDeInicio extends javax.swing.JFrame {
         pnlIngresoInsc.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 102, 0), 1, true));
         pnlIngresoInsc.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnAccesAlumnos1.setBackground(new java.awt.Color(102, 102, 102));
-        btnAccesAlumnos1.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
-        btnAccesAlumnos1.setForeground(new java.awt.Color(255, 255, 255));
-        btnAccesAlumnos1.setText("Ingresar");
-        btnAccesAlumnos1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnAccesAlumnos1.setEnabled(false);
-        pnlIngresoInsc.add(btnAccesAlumnos1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 490, 110, -1));
+        btnAccesInsc.setBackground(new java.awt.Color(102, 102, 102));
+        btnAccesInsc.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        btnAccesInsc.setForeground(new java.awt.Color(255, 255, 255));
+        btnAccesInsc.setText("Ingresar");
+        btnAccesInsc.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnAccesInsc.setEnabled(false);
+        btnAccesInsc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAccesInscActionPerformed(evt);
+            }
+        });
+        pnlIngresoInsc.add(btnAccesInsc, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 490, 110, -1));
 
         btnBackInsc.setBackground(new java.awt.Color(102, 102, 102));
         btnBackInsc.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
@@ -1155,6 +1160,14 @@ public class VentanaDeInicio extends javax.swing.JFrame {
         nw.setVisible(true);
         desktop.moveToFront(nw);
     }//GEN-LAST:event_btnAccesAlumnosActionPerformed
+
+    private void btnAccesInscActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAccesInscActionPerformed
+        backgroundPnl.setVisible(false);
+        desktop.repaint();
+        VistaInscripciones nw = new VistaInscripciones(this);
+        nw.setVisible(true);
+        desktop.moveToFront(nw);
+    }//GEN-LAST:event_btnAccesInscActionPerformed
     public void mostrarInicio() {
         desktop.repaint();
         VentanaDeInicio nw = new VentanaDeInicio();
@@ -1177,7 +1190,7 @@ public class VentanaDeInicio extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel backgroundPnl;
     private javax.swing.JButton btnAccesAlumnos;
-    private javax.swing.JButton btnAccesAlumnos1;
+    private javax.swing.JButton btnAccesInsc;
     private javax.swing.JButton btnAcceso;
     private javax.swing.JButton btnAccessMaterias;
     private javax.swing.JButton btnBackAlumnos;

@@ -2,7 +2,6 @@
 package vistas;
 import entidades.Alumno;
 import entidades.Conexion;
-import entidades.Materias;
 import java.sql.Connection;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -15,7 +14,8 @@ import javax.swing.table.DefaultTableModel;
 import persistencia.AlumnoData;
 
 public class VistaAlumnos extends javax.swing.JFrame {
-private VentanaDeInicio ventanaDeInicio;
+    
+    private VentanaDeInicio ventanaDeInicio;
     AlumnoData alumnoData;
     int xMouse, yMouse;
     int x, y;
@@ -23,6 +23,7 @@ private VentanaDeInicio ventanaDeInicio;
 
    
     public VistaAlumnos(VentanaDeInicio ventanaDeInicio) {
+        
         initComponents();
         this.ventanaDeInicio = ventanaDeInicio;
         Connection con = Conexion.getConexion();
@@ -173,7 +174,7 @@ private VentanaDeInicio ventanaDeInicio;
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Boolean.class
+                java.lang.Integer.class, java.lang.Long.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Boolean.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false, false

@@ -20,6 +20,7 @@ public class VistaMaterias extends javax.swing.JFrame {
     private final DefaultTableModel modelo = new NonEditableTableModel();
 
     public VistaMaterias(VentanaDeInicio ventanaDeInicio) {
+        
         initComponents();
         this.ventanaDeInicio = ventanaDeInicio;
         Connection con = Conexion.getConexion();
