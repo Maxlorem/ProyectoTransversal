@@ -663,23 +663,35 @@ public class VistaAlumnos extends javax.swing.JFrame {
     }//GEN-LAST:event_txtBusquedaKeyTyped
 
     private void jRporIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRporIdActionPerformed
+        txtBusqueda.setText("");
         txtMsg.setText("Busqueda por ID de Alumno, presione Aceptar para comenzar.");
         btnAccept.setEnabled(true);
     }//GEN-LAST:event_jRporIdActionPerformed
 
     private void jRporApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRporApellidoActionPerformed
+        txtBusqueda.setText("");
         txtMsg.setText("Busqueda por Apellido, presione Aceptar para comenzar.");
         btnAccept.setEnabled(true);
     }//GEN-LAST:event_jRporApellidoActionPerformed
 
     private void jRporDniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRporDniActionPerformed
+        txtBusqueda.setText("");
         txtMsg.setText("Busqueda por DNI, presione Aceptar para comenzar.");
         btnAccept.setEnabled(true);
     }//GEN-LAST:event_jRporDniActionPerformed
 
     private void btnSrcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSrcActionPerformed
         if (jRporId.isSelected()) {
-            actualizarTablaAlu(alumnoData.buscarAlumnoPorId(Integer.parseInt(txtBusqueda.getText())));
+            String idEnviado = txtBusqueda.getText();
+            Integer idParseado = Integer.parseInt(idEnviado);
+            Alumno alumnoBuscado = alumnoData.buscarAlumnoPorId(idParseado);
+            if(alumnoBuscado != null){
+                txtMsg.setText("Alumno Encotrado");
+                actualizarTablaAlu(alumnoBuscado);
+            }else{
+                txtMsg.setText("No se encontro el alumno");
+            }
+            //actualizarTablaAlu(alumnoData.buscarAlumnoPorId(Integer.parseInt(txtBusqueda.getText())));
         }
         if (jRporApellido.isSelected()) {
             actualizarTablaList(alumnoData.buscarAlumnoPorApellido(txtBusqueda.getText()));
