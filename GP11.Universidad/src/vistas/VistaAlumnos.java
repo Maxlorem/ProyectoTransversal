@@ -55,7 +55,7 @@ public class VistaAlumnos extends javax.swing.JFrame {
                         txtDni.setText(String.valueOf(dni));
                         txtApe.setText(ape);
                         txtName.setText(nom);
-                        txtFnacFormated.setDate(date);
+                        calendar.setDate(date);
                         txtState.setText(stat.equals("Regular") ? "1" : "0");
                         jRedit.setEnabled(true);
                         jRfisicBaja.setEnabled(true);
@@ -126,7 +126,7 @@ public class VistaAlumnos extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         txtState = new javax.swing.JTextField();
-        txtFnacFormated = new com.toedter.calendar.JDateChooser();
+        calendar = new com.toedter.calendar.JDateChooser();
         jLabel4 = new javax.swing.JLabel();
         btnAdd = new javax.swing.JButton();
         jRfisicBaja = new javax.swing.JRadioButton();
@@ -466,7 +466,13 @@ public class VistaAlumnos extends javax.swing.JFrame {
             }
         });
 
-        txtFnacFormated.setDateFormatString("yyyy-MM-dd");
+        calendar.setDateFormatString("yyyy-MM-dd");
+        calendar.setEnabled(false);
+        calendar.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                calendarPropertyChange(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -493,7 +499,7 @@ public class VistaAlumnos extends javax.swing.JFrame {
                             .addComponent(txtApe, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
                             .addComponent(txtName, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
                             .addComponent(txtState, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
-                            .addComponent(txtFnacFormated, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(calendar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(63, 63, 63))))
         );
         jPanel2Layout.setVerticalGroup(
@@ -518,7 +524,7 @@ public class VistaAlumnos extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtFnacFormated, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(calendar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -779,7 +785,7 @@ public class VistaAlumnos extends javax.swing.JFrame {
         txtDni.setEditable(true);
         txtApe.setEditable(true);
         txtName.setEditable(true);
-        txtFnacFormated.setEnabled(true);
+        calendar.setEnabled(true);
         txtState.setEditable(true);
         txtDni.requestFocus();
     }//GEN-LAST:event_btnNwActionPerformed
@@ -798,7 +804,7 @@ public class VistaAlumnos extends javax.swing.JFrame {
         String ape = txtApe.getText();
         String name = txtName.getText();
         //AK HAY QUE VER
-        Date campoDeTextoFecha = txtFnacFormated.getDate();
+        Date campoDeTextoFecha = calendar.getDate();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String fText = dateFormat.format(campoDeTextoFecha);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
@@ -833,7 +839,7 @@ public class VistaAlumnos extends javax.swing.JFrame {
         txtDni.setText("");
         txtName.setText("");
         txtApe.setText("");
-        txtFnacFormated.setDate(null);
+        calendar.setDate(null);
         txtState.setText("");
         jRedit.setEnabled(false);
         jRfisicBaja.setEnabled(false);
@@ -842,7 +848,7 @@ public class VistaAlumnos extends javax.swing.JFrame {
         txtDni.setEditable(false);
         txtApe.setEditable(false);
         txtName.setEditable(false);
-        txtFnacFormated.setEnabled(false);
+        calendar.setEnabled(false);
         
         modelo.setRowCount(0);
         llenarTabla();
@@ -875,7 +881,7 @@ public class VistaAlumnos extends javax.swing.JFrame {
         String ape = txtApe.getText();
         String nom = txtName.getText();
         //Ver si funciona
-        Date campoDeTextoFecha = txtFnacFormated.getDate();
+        Date campoDeTextoFecha = calendar.getDate();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String fText = dateFormat.format(campoDeTextoFecha);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
@@ -899,6 +905,8 @@ public class VistaAlumnos extends javax.swing.JFrame {
         txtName.setText("");
         txtApe.setText("");
         txtMsg.setText("");
+        calendar.setDate(null);
+        txtState.setText("");
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void jRfisicBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRfisicBajaActionPerformed
@@ -930,7 +938,7 @@ public class VistaAlumnos extends javax.swing.JFrame {
             txtDni.setEditable(true);
             txtApe.setEditable(true);
             txtName.setEditable(true);
-            txtFnacFormated.setEnabled(true);
+            calendar.setEnabled(true);
             txtDni.requestFocus();
             txtPanel.setText("Cambie el DNI, Apellido, Nombre o la Fecha de Nacimiento, luego presione 'Ejecutar' para guardar los cambios.");
             jRfisicBaja.setEnabled(false);
@@ -982,6 +990,10 @@ public class VistaAlumnos extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtStateKeyTyped
 
+    private void calendarPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_calendarPropertyChange
+        validarCamposNw();
+    }//GEN-LAST:event_calendarPropertyChange
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAccept;
@@ -993,6 +1005,7 @@ public class VistaAlumnos extends javax.swing.JFrame {
     private javax.swing.JButton btnNw;
     private javax.swing.JButton btnSeleccionar;
     private javax.swing.JButton btnSrc;
+    private com.toedter.calendar.JDateChooser calendar;
     private javax.swing.ButtonGroup grpEdit;
     private javax.swing.ButtonGroup grpSelection;
     private com.toedter.calendar.JDateChooser jDateChooser1;
@@ -1028,7 +1041,6 @@ public class VistaAlumnos extends javax.swing.JFrame {
     private javax.swing.JTextField txtApe;
     private javax.swing.JTextField txtBusqueda;
     private javax.swing.JTextField txtDni;
-    private com.toedter.calendar.JDateChooser txtFnacFormated;
     private javax.swing.JTextField txtId;
     private javax.swing.JTextArea txtMsg;
     private javax.swing.JTextField txtName;
@@ -1095,7 +1107,7 @@ public class VistaAlumnos extends javax.swing.JFrame {
 
     private void validarCamposNw() {
         if (!txtDni.getText().isEmpty() && !txtApe.getText().isEmpty() && !txtName.getText().isEmpty() && 
-            !txtFnacFormated.getDateFormatString().isEmpty() && !txtState.getText().isEmpty() && btnNw.isEnabled()) {
+            !calendar.getDate().toString().isEmpty() && !txtState.getText().isEmpty() && btnNw.isEnabled()) {
             btnAdd.setEnabled(true);
         }
 
