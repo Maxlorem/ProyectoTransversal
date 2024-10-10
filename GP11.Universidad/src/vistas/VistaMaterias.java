@@ -617,17 +617,20 @@ public class VistaMaterias extends javax.swing.JFrame {
         if (jRporId.isSelected()) {
             jRporNombre.setEnabled(false);
             jRporAño.setEnabled(false);
+            jRporId.setEnabled(false);
             txtBusqueda.setEditable(true);
             txtMsg.setText("Realizará una búsqueda por ID, asegúrese de ingresar solo NUMEROS en el campo de búsqueda.");
         } else if (jRporNombre.isSelected()) {
             jRporId.setEnabled(false);
             jRporAño.setEnabled(false);
+            jRporNombre.setEnabled(false);
             txtBusqueda.setEditable(true);
             txtMsg.setText("Realizará una búsqueda por Nombre, asegúrese de conocer los nombres de las materias que desea buscar con este método de búsqueda.");
 
         } else if (jRporAño.isSelected()) {
             jRporId.setEnabled(false);
             jRporNombre.setEnabled(false);
+            jRporAño.setEnabled(false);
             txtBusqueda.setEditable(true);
             txtMsg.setText("Realizará una búsqueda por Año de cursada, asegúrese de ingresar solo NUMEROS en el campo de busqueda. Los años de cursada son desde 1ro a 5to año.");
         }
@@ -681,6 +684,8 @@ public class VistaMaterias extends javax.swing.JFrame {
         jRporId.setEnabled(true);
         jRporNombre.setEnabled(true);
         grpSelection.clearSelection();
+        btnAccept.setEnabled(false);
+        btnSrc.setEnabled(false);
     }//GEN-LAST:event_btnSrcActionPerformed
 
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
