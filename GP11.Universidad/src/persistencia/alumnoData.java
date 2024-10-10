@@ -49,8 +49,8 @@ public class AlumnoData {
             PreparedStatement ps = conexionAlumoData.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             
             ps.setLong(1, a.getDni());
-            ps.setString(2, a.getApellido());
-            ps.setString(3, a.getNombre());
+            ps.setString(2, a.getApellido().trim());
+            ps.setString(3, a.getNombre().trim());
             ps.setDate(4, Date.valueOf(a.getFechaNac()));
             ps.setBoolean(5, a.isEstado());
             ps.executeUpdate();
@@ -126,7 +126,7 @@ public class AlumnoData {
             PreparedStatement ps;
             
             ps = conexionAlumoData.prepareStatement(query);
-            ps.setString(1, sername);
+            ps.setString(1, sername.trim());
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
                Alumno a = new Alumno();
@@ -255,8 +255,8 @@ public class AlumnoData {
             }else{
                 PreparedStatement ps = conexionAlumoData.prepareStatement(query) ;
                 ps.setLong(1,alumnoPorParametro.getDni());
-                ps.setString(2, alumnoPorParametro.getApellido());
-                ps.setString(3, alumnoPorParametro.getNombre());
+                ps.setString(2, alumnoPorParametro.getApellido().trim());
+                ps.setString(3, alumnoPorParametro.getNombre().trim());
                 ps.setDate(4,Date.valueOf(alumnoPorParametro.getFechaNac()));
                 ps.setBoolean(5, alumnoPorParametro.isEstado());
                 ps.setInt(6, alumnoPorParametro.getIdAlumno());

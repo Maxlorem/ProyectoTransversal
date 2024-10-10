@@ -49,7 +49,7 @@ public class MateriaData {
             try {
             PreparedStatement ps = conexionMateriaData.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             
-            ps.setString(1, a.getNombre());
+            ps.setString(1, a.getNombre().trim());
             ps.setInt(2,a.getAnioMateria());
             ps.setBoolean(3, a.isEstado());
             ps.executeUpdate();
@@ -85,7 +85,7 @@ public class MateriaData {
             while(rs.next()){       
                 materias = new Materias();
                 materias.setIdMateria(rs.getInt("idMateria"));
-                materias.setNombre(rs.getString("nombre"));
+                materias.setNombre(rs.getString("nombre").trim());
                 materias.setAnioMateria(rs.getInt("año"));
                 materias.setEstado(rs.getBoolean("estado"));
                 
@@ -115,12 +115,12 @@ public class MateriaData {
         try {   
                         
             PreparedStatement ps = conexionMateriaData.prepareStatement(query);
-            ps.setString(1, name);
+            ps.setString(1, name.trim());
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
                 materia = new Materias();
                 materia.setIdMateria(rs.getInt("idMateria"));
-                materia.setNombre(rs.getString("nombre"));
+                materia.setNombre(rs.getString("nombre").trim());
                 materia.setAnioMateria(rs.getInt("año"));
                 materia.setEstado(rs.getBoolean("estado"));
             }
@@ -152,7 +152,7 @@ public class MateriaData {
             while(rs.next()){
                 Materias materia = new Materias();
                 materia.setIdMateria(rs.getInt("idMateria"));
-                materia.setNombre(rs.getString("nombre"));
+                materia.setNombre(rs.getString("nombre").trim());
                 materia.setAnioMateria(rs.getInt("año"));
                 materia.setEstado(rs.getBoolean("estado"));
                 materiasEncontradasPorAño.add(materia);
@@ -187,7 +187,7 @@ public class MateriaData {
             while(rs.next()){
                 Materias materias = new Materias();
                 materias.setIdMateria(rs.getInt("idMateria"));
-                materias.setNombre(rs.getString("nombre"));
+                materias.setNombre(rs.getString("nombre").trim());
                 materias.setAnioMateria(rs.getInt("año"));
                 materias.setEstado(rs.getBoolean("estado"));
                 materiasEncontradasPorEstado.add(materias);
@@ -216,7 +216,7 @@ public class MateriaData {
             while(rs.next()){
                 materias = new Materias();
                 materias.setIdMateria(rs.getInt("idMateria"));
-                materias.setNombre(rs.getString("nombre"));
+                materias.setNombre(rs.getString("nombre").trim());
                 materias.setAnioMateria(rs.getInt("año"));
                 materias.setEstado(rs.getBoolean("estado"));
                 System.out.println(materias);
@@ -255,7 +255,7 @@ public class MateriaData {
             while(rs.next()){
                Materias materias = new Materias();
                materias.setIdMateria(rs.getInt("idMateria"));
-               materias.setNombre(rs.getString("nombre"));
+               materias.setNombre(rs.getString("nombre").trim());
                materias.setAnioMateria(rs.getInt("año"));
                materias.setEstado(rs.getBoolean("estado"));
                listadoMaterias.add(materias);

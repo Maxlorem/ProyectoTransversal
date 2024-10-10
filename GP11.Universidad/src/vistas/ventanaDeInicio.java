@@ -1146,14 +1146,7 @@ public class VentanaDeInicio extends javax.swing.JFrame {
         desktop.moveToFront(nw);
 
     }
-    public static void main(String args[]) {
-
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new VentanaDeInicio().setVisible(true);
-            }
-        });
-    }
+    
 
     
 
