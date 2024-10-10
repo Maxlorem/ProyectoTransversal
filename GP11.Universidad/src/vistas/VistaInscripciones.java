@@ -3,6 +3,7 @@ package vistas;
 import entidades.Conexion;
 import java.sql.Connection;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 
 public class VistaInscripciones extends javax.swing.JFrame {
@@ -10,6 +11,7 @@ public class VistaInscripciones extends javax.swing.JFrame {
     private VentanaDeInicio ventanaDeInicio;
     int xMouse, yMouse;
     int x, y;
+    private final DefaultTableModel modelo = new NonEditableTableModel();
    
     public VistaInscripciones(VentanaDeInicio ventanaDeInicio) {
         
@@ -18,6 +20,14 @@ public class VistaInscripciones extends javax.swing.JFrame {
         Connection con = Conexion.getConexion();
         this.setLocationRelativeTo(null);
         JOptionPane.showMessageDialog(null, "Para comenzar seleccione y elija un alumno, puede utilizar los filtros para Alumno en la esquina inferior izquierda. Si selecciona por DNI el campo de texto se habilita para filtrar letra a letra.", "Sistema Alumnos", HEIGHT);
+    }
+    
+    private class NonEditableTableModel extends DefaultTableModel {
+
+        @Override
+        public boolean isCellEditable(int row, int column) {
+            return false;
+        }
     }
 
     
@@ -64,6 +74,13 @@ public class VistaInscripciones extends javax.swing.JFrame {
         jToggleButton1 = new javax.swing.JToggleButton();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
+        jSeparator4 = new javax.swing.JSeparator();
+        jButton5 = new javax.swing.JButton();
+        jLabel12 = new javax.swing.JLabel();
+        btnEraseInsc = new javax.swing.JButton();
+        jSeparator5 = new javax.swing.JSeparator();
+        jSeparator6 = new javax.swing.JSeparator();
+        jCheckBox5 = new javax.swing.JCheckBox();
         txtMateriaFilter = new javax.swing.JTextField();
         txtAlumnoFilter = new javax.swing.JTextField();
         jtbMateriaLock = new javax.swing.JToggleButton();
@@ -74,29 +91,32 @@ public class VistaInscripciones extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         txtAlumnoData = new javax.swing.JTextField();
         txtMateriaData = new javax.swing.JTextField();
-        jPanel8 = new javax.swing.JPanel();
-        btnEraseInsc = new javax.swing.JButton();
-        btnSrcInsc = new javax.swing.JButton();
-        jLabel12 = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
-        btnSrcCalif = new javax.swing.JButton();
         btnCalif = new javax.swing.JButton();
+        jLabel17 = new javax.swing.JLabel();
+        jSpinner1 = new javax.swing.JSpinner();
+        jButton3 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
         jPanel10 = new javax.swing.JPanel();
         btnInsc = new javax.swing.JButton();
-        btnValidarInsc = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
+        jPanel11 = new javax.swing.JPanel();
+        jLabel16 = new javax.swing.JLabel();
+        btnSrcCalif = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         panelMaterias.setBackground(new java.awt.Color(51, 51, 51));
-        panelMaterias.setMaximumSize(new java.awt.Dimension(1000, 550));
-        panelMaterias.setMinimumSize(new java.awt.Dimension(1000, 550));
+        panelMaterias.setMaximumSize(new java.awt.Dimension(1000, 621));
+        panelMaterias.setMinimumSize(new java.awt.Dimension(1000, 621));
         panelMaterias.setName(""); // NOI18N
-        panelMaterias.setPreferredSize(new java.awt.Dimension(1000, 550));
+        panelMaterias.setPreferredSize(new java.awt.Dimension(1000, 621));
         panelMaterias.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pnlSuperior.setBackground(new java.awt.Color(102, 102, 102));
@@ -137,7 +157,7 @@ public class VistaInscripciones extends javax.swing.JFrame {
         tabGeneral.setFocusable(false);
         jScrollPane1.setViewportView(tabGeneral);
 
-        panelMaterias.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 1000, 210));
+        panelMaterias.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 1000, 110));
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 51), 2, true));
@@ -159,25 +179,23 @@ public class VistaInscripciones extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(263, 263, 263)
+                .addContainerGap(264, Short.MAX_VALUE)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 122, Short.MAX_VALUE)
+                .addGap(121, 121, 121)
                 .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnBack)
-                .addGap(14, 14, 14))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnBack)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(13, 13, 13))
         );
 
-        panelMaterias.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 1000, 40));
+        panelMaterias.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 1000, 40));
 
         pnlSistemasInsc.setBackground(new java.awt.Color(255, 204, 153));
         pnlSistemasInsc.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -263,7 +281,7 @@ public class VistaInscripciones extends javax.swing.JFrame {
         jCheckBox4.setEnabled(false);
         jPanel6.add(jCheckBox4, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 158, 85, -1));
 
-        jPanel5.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 190, 190));
+        jPanel5.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 190, 200));
 
         jPanel7.setBackground(new java.awt.Color(255, 204, 153));
         jPanel7.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -322,7 +340,7 @@ public class VistaInscripciones extends javax.swing.JFrame {
         lblMsgHab.setText("DESHABILITADO");
         jPanel7.add(lblMsgHab, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 113, 160, -1));
 
-        jPanel5.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 30, 180, 190));
+        jPanel5.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 30, 180, 200));
 
         jLabel14.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(0, 0, 0));
@@ -330,27 +348,52 @@ public class VistaInscripciones extends javax.swing.JFrame {
         jLabel14.setText("Listas");
         jLabel14.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         jLabel14.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel5.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 100, 129, -1));
+        jPanel5.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 10, 129, -1));
 
         jButton2.setText("Reiniciar todo");
-        jPanel5.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 30, 129, -1));
+        jPanel5.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 129, 30));
 
         jButton1.setText("Listar Inscripciones");
         jButton1.setEnabled(false);
-        jPanel5.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 130, 130, -1));
+        jPanel5.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 90, 130, -1));
 
         jButton7.setText("Listar Alumnos");
         jButton7.setEnabled(false);
-        jPanel5.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 170, 129, -1));
+        jPanel5.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 130, 129, -1));
 
         jToggleButton1.setText("Habilitar Listas");
-        jPanel5.add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 70, 129, -1));
-        jPanel5.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 60, 129, 10));
+        jPanel5.add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 40, 129, -1));
+        jPanel5.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 390, 10));
 
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        jPanel5.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 10, 10, 210));
+        jPanel5.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 10, 10, 290));
+        jPanel5.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 73, 130, 10));
 
-        jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 124, 564, 230));
+        jButton5.setText("Enviar");
+        jPanel5.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 260, 130, 30));
+
+        jLabel12.setBackground(new java.awt.Color(255, 153, 102));
+        jLabel12.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel12.setText("Borrar Inscripción");
+        jLabel12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel5.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 170, 130, -1));
+
+        btnEraseInsc.setText("Borrar Incripción");
+        btnEraseInsc.setEnabled(false);
+        jPanel5.add(btnEraseInsc, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 263, 130, 30));
+        jPanel5.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 160, -1, -1));
+        jPanel5.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 160, 130, 10));
+
+        jCheckBox5.setBackground(new java.awt.Color(255, 153, 102));
+        jCheckBox5.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        jCheckBox5.setForeground(new java.awt.Color(0, 0, 0));
+        jCheckBox5.setText("Activar Borrar");
+        jCheckBox5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel5.add(jCheckBox5, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 210, -1, -1));
+
+        jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 124, 570, 310));
 
         txtMateriaFilter.setBackground(new java.awt.Color(255, 255, 255));
         txtMateriaFilter.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
@@ -388,7 +431,7 @@ public class VistaInscripciones extends javax.swing.JFrame {
         jLabel19.setText("Materia");
         jPanel2.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 70, -1));
 
-        pnlSistemasInsc.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 580, 360));
+        pnlSistemasInsc.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 580, 440));
 
         jPanel3.setBackground(new java.awt.Color(255, 204, 102));
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -397,7 +440,7 @@ public class VistaInscripciones extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("Acciones de sistema Inscripciones");
+        jLabel4.setText("Sistema Inscripciones");
         jLabel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 8, 404, -1));
 
@@ -415,50 +458,6 @@ public class VistaInscripciones extends javax.swing.JFrame {
         txtMateriaData.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel3.add(txtMateriaData, new org.netbeans.lib.awtextra.AbsoluteConstraints(72, 76, 340, 20));
 
-        jPanel8.setBackground(new java.awt.Color(255, 204, 153));
-        jPanel8.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-
-        btnEraseInsc.setText("Borrar Incripción");
-        btnEraseInsc.setEnabled(false);
-
-        btnSrcInsc.setText("Buscar Inscripcion");
-        btnSrcInsc.setEnabled(false);
-
-        jLabel12.setBackground(new java.awt.Color(255, 204, 153));
-        jLabel12.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel12.setText("Borrar Inscripción");
-        jLabel12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
-        jPanel8.setLayout(jPanel8Layout);
-        jPanel8Layout.setHorizontalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel8Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addComponent(btnSrcInsc, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnEraseInsc, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
-        );
-        jPanel8Layout.setVerticalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel12)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnEraseInsc, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSrcInsc, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-        );
-
-        jPanel3.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 404, -1));
-
         jPanel9.setBackground(new java.awt.Color(255, 204, 153));
         jPanel9.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
@@ -468,11 +467,15 @@ public class VistaInscripciones extends javax.swing.JFrame {
         jLabel13.setText("Calificar");
         jLabel13.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        btnSrcCalif.setText("Buscar Inscripcion");
-        btnSrcCalif.setEnabled(false);
-
         btnCalif.setText("Calificar");
         btnCalif.setEnabled(false);
+
+        jLabel17.setBackground(new java.awt.Color(255, 204, 102));
+        jLabel17.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel17.setText("Nota:");
+
+        jButton3.setText("Aceptar");
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -481,11 +484,15 @@ public class VistaInscripciones extends javax.swing.JFrame {
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
                     .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addComponent(btnSrcCalif, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98, Short.MAX_VALUE)
-                        .addComponent(btnCalif, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnCalif, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel17)
+                        .addGap(18, 18, 18)
+                        .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel9Layout.setVerticalGroup(
@@ -494,13 +501,15 @@ public class VistaInscripciones extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel13)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnSrcCalif, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
-                    .addComponent(btnCalif, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCalif, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel17)
+                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton3))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel3.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 177, -1, -1));
+        jPanel3.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 400, 60));
 
         jLabel6.setBackground(new java.awt.Color(255, 204, 153));
         jLabel6.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
@@ -521,9 +530,6 @@ public class VistaInscripciones extends javax.swing.JFrame {
         btnInsc.setText("Inscribir");
         btnInsc.setEnabled(false);
 
-        btnValidarInsc.setText("Validar Datos");
-        btnValidarInsc.setEnabled(false);
-
         jLabel15.setBackground(new java.awt.Color(255, 204, 153));
         jLabel15.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(0, 0, 0));
@@ -535,33 +541,78 @@ public class VistaInscripciones extends javax.swing.JFrame {
         jPanel10.setLayout(jPanel10Layout);
         jPanel10Layout.setHorizontalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel10Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel10Layout.createSequentialGroup()
-                        .addComponent(btnValidarInsc, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnInsc, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
+                .addContainerGap(19, Short.MAX_VALUE)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
+                    .addComponent(btnInsc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(22, 22, 22))
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel15)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnInsc, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnValidarInsc, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnInsc)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel3.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 100, 404, -1));
+        jPanel3.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 100, 180, 60));
 
-        pnlSistemasInsc.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 0, 420, 350));
+        jPanel11.setBackground(new java.awt.Color(255, 204, 153));
+        jPanel11.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        panelMaterias.add(pnlSistemasInsc, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 1000, 370));
+        jLabel16.setBackground(new java.awt.Color(255, 204, 153));
+        jLabel16.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel16.setText("Buscar");
+        jLabel16.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        btnSrcCalif.setText("Buscar Inscripcion");
+        btnSrcCalif.setEnabled(false);
+
+        javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
+        jPanel11.setLayout(jPanel11Layout);
+        jPanel11Layout.setHorizontalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
+                .addContainerGap(25, Short.MAX_VALUE)
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnSrcCalif, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE))
+                .addGap(27, 27, 27))
+        );
+        jPanel11Layout.setVerticalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel16)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnSrcCalif)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel3.add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 200, 60));
+
+        jButton4.setText("Finalizar");
+        jPanel3.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 240, 140, 30));
+
+        jTextArea1.setEditable(false);
+        jTextArea1.setBackground(new java.awt.Color(255, 255, 255));
+        jTextArea1.setColumns(20);
+        jTextArea1.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        jTextArea1.setForeground(new java.awt.Color(0, 0, 0));
+        jTextArea1.setRows(5);
+        jTextArea1.setText("INFORMACIÓN");
+        jScrollPane2.setViewportView(jTextArea1);
+
+        jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 400, 150));
+
+        pnlSistemasInsc.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 0, 420, 440));
+
+        panelMaterias.add(pnlSistemasInsc, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 1000, 440));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -571,9 +622,7 @@ public class VistaInscripciones extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(panelMaterias, javax.swing.GroupLayout.PREFERRED_SIZE, 636, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(panelMaterias, javax.swing.GroupLayout.PREFERRED_SIZE, 619, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -609,15 +658,17 @@ public class VistaInscripciones extends javax.swing.JFrame {
     private javax.swing.JButton btnEraseInsc;
     private javax.swing.JButton btnInsc;
     private javax.swing.JButton btnSrcCalif;
-    private javax.swing.JButton btnSrcInsc;
-    private javax.swing.JButton btnValidarInsc;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton7;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JCheckBox jCheckBox3;
     private javax.swing.JCheckBox jCheckBox4;
+    private javax.swing.JCheckBox jCheckBox5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -625,6 +676,8 @@ public class VistaInscripciones extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
@@ -637,20 +690,26 @@ public class VistaInscripciones extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JSeparator jSeparator6;
+    private javax.swing.JSpinner jSpinner1;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JComboBox<String> jcbAlumnos;
     private javax.swing.JComboBox<String> jcbMateria;
