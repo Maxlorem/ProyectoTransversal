@@ -22,7 +22,7 @@ public class Prueba {
         Alumno alumno6 = new Alumno(6,3232322, "Sosa ","Marcos Antonio", LocalDate.of(2006, 5, 30), true);
 //        
         AlumnoData alumnoData = new AlumnoData(conexion);
-        System.out.println("RESULTADO DNI BUSCADO: " + alumnoData.buscarAlumnoPorDni(44642651));
+        
 //        //Guardado
 //        alumnoData.guardarAlumno(alumno);
 //        alumnoData.guardarAlumno(alumno2);
