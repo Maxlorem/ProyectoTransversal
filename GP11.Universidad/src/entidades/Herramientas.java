@@ -2,8 +2,6 @@
 package entidades;
 
 import com.toedter.calendar.JDateChooser;
-import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 public class Herramientas {

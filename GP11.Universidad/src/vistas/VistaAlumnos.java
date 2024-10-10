@@ -348,7 +348,7 @@ public class VistaAlumnos extends javax.swing.JFrame {
                 btnNwActionPerformed(evt);
             }
         });
-        panelGralABMC.add(btnNw, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 300, 110, 30));
+        panelGralABMC.add(btnNw, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 300, 130, 30));
 
         btnEdit.setText("Editar");
         btnEdit.addActionListener(new java.awt.event.ActionListener() {
@@ -551,7 +551,7 @@ public class VistaAlumnos extends javax.swing.JFrame {
                 btnAddActionPerformed(evt);
             }
         });
-        panelGralABMC.add(btnAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 300, 110, 30));
+        panelGralABMC.add(btnAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 300, 120, 30));
 
         jRfisicBaja.setBackground(new java.awt.Color(255, 204, 153));
         grpEdit.add(jRfisicBaja);
