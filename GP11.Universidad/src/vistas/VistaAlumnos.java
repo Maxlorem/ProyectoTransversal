@@ -683,14 +683,21 @@ public class VistaAlumnos extends javax.swing.JFrame {
     private void btnSrcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSrcActionPerformed
         if (jRporId.isSelected()) {
             String idEnviado = txtBusqueda.getText();
-            Integer idParseado = Integer.parseInt(idEnviado);
-            Alumno alumnoBuscado = alumnoData.buscarAlumnoPorId(idParseado);
-            if(alumnoBuscado != null){
-                txtMsg.setText("Alumno Encotrado");
-                actualizarTablaAlu(alumnoBuscado);
+            
+            if(idEnviado.isEmpty()){
+                txtMsg.setText("no puede estar vacio");
             }else{
-                txtMsg.setText("No se encontro el alumno");
+                Integer idParseado = Integer.parseInt(idEnviado);
+                Alumno alumnoBuscado = alumnoData.buscarAlumnoPorId(idParseado);
+                if(alumnoBuscado != null){
+                    txtMsg.setText("Se ha completado la busqueda: Alumno Encontrado");
+                    actualizarTablaAlu(alumnoBuscado);
+                }else{
+                    txtMsg.setText("No se encontro el alumno");
+                }
             }
+             
+            
             //actualizarTablaAlu(alumnoData.buscarAlumnoPorId(Integer.parseInt(txtBusqueda.getText())));
         }
         if (jRporApellido.isSelected()) {
@@ -698,6 +705,7 @@ public class VistaAlumnos extends javax.swing.JFrame {
             ArrayList<Alumno> alumnoBuscado = alumnoData.buscarAlumnoPorApellido(apellidoEnviado);
             if(!alumnoBuscado.isEmpty()){
                 actualizarTablaList(alumnoBuscado);
+                txtMsg.setText("Se ha completado la busqueda: Alumno Encontrado");
             }else{
                 txtMsg.setText("No se encontraron alumnos con ese apellido");
             }
@@ -708,14 +716,15 @@ public class VistaAlumnos extends javax.swing.JFrame {
             Integer dniParseado = Integer.parseInt(dniEnviado);
             Alumno alumnoBuscado = alumnoData.buscarAlumnoPorId(dniParseado);
             if(alumnoBuscado != null){
-                txtMsg.setText("Alumno Encontrado");
+                txtMsg.setText("Se ha completado la busqueda: Alumno Encontrado");
+                
                 actualizarTablaAlu(alumnoBuscado);
             }else{
                 txtMsg.setText("No se encontro el alumno");
             }
             //actualizarTablaAlu(alumnoData.buscarAlumnoPorDni(Integer.parseInt(txtBusqueda.getText())));
         }
-        txtMsg.setText("Se ha completado la busqueda");
+        
         btnSrc.setEnabled(false);
         btnAccept.setEnabled(true);
         jRporDni.setEnabled(true);
