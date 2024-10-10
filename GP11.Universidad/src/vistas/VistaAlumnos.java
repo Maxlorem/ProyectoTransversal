@@ -2,6 +2,7 @@
 package vistas;
 import entidades.Alumno;
 import entidades.Conexion;
+import entidades.Herramientas;
 import java.sql.Connection;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -705,13 +706,18 @@ public class VistaAlumnos extends javax.swing.JFrame {
         }
         if (jRporApellido.isSelected()) {
             String apellidoEnviado = txtBusqueda.getText();
-            ArrayList<Alumno> alumnoBuscado = alumnoData.buscarAlumnoPorApellido(apellidoEnviado);
-            if(!alumnoBuscado.isEmpty()){
-                actualizarTablaList(alumnoBuscado);
-                txtMsg.setText("Se ha completado la busqueda: Alumno Encontrado");
-            }else{
-                txtMsg.setText("No se encontraron alumnos con ese apellido");
+            if(apellidoEnviado.trim().isEmpty()){
+                txtMsg.setText("Ingresó un campo vacio, esto no va a devolverle un resultado");
+            } else{
+                ArrayList<Alumno> alumnoBuscado = alumnoData.buscarAlumnoPorApellido(apellidoEnviado);
+                if(!alumnoBuscado.isEmpty()){
+                    actualizarTablaList(alumnoBuscado);
+                    txtMsg.setText("Se ha completado la busqueda: Alumno Encontrado");
+                }else{
+                    txtMsg.setText("No se encontraron alumnos con ese apellido");
+                }
             }
+            
             //actualizarTablaList(alumnoData.buscarAlumnoPorApellido(txtBusqueda.getText()));
         }
         if (jRporDni.isSelected()) {
@@ -818,61 +824,65 @@ public class VistaAlumnos extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEditActionPerformed
 
     private void btnExeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExeActionPerformed
-        int idAlu = Integer.parseInt(txtId.getText());
-        Long dniAlu = Long.valueOf(txtDni.getText());
-        String ape = txtApe.getText();
-        String name = txtName.getText();
-        //AK HAY QUE VER
-        Date campoDeTextoFecha = calendar.getDate();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        String fText = dateFormat.format(campoDeTextoFecha);
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        LocalDate fNac = LocalDate.parse(fText, formatter);
-       
-        boolean stat = true;
-        if (txtState.getText().equals("0")) {
-            stat = false;
+        if(Herramientas.revisarSiEstaVacio(calendar, txtApe, txtDni, txtName, txtState)){
+            JOptionPane.showMessageDialog(this,"No pueden haber campos vacios");
+        } else{
+            int idAlu = Integer.parseInt(txtId.getText());
+            Long dniAlu = Long.valueOf(txtDni.getText());
+            String ape = txtApe.getText();
+            String name = txtName.getText();
+            //AK HAY QUE VER
+            Date campoDeTextoFecha = calendar.getDate();
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            String fText = dateFormat.format(campoDeTextoFecha);
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            LocalDate fNac = LocalDate.parse(fText, formatter);
+
+            boolean stat = true;
+            if (txtState.getText().equals("0")) {
+                stat = false;
+            }
+            if (txtState.getText().equals("1")) {
+                stat = true;
+            }
+            Alumno nwAlu = new Alumno(idAlu, dniAlu, ape, name, fNac, stat);
+            if(jRedit.isSelected()){
+                alumnoData.actualizarAlumno(nwAlu);
+            }
+            if(jRfisicBaja.isSelected()){
+                alumnoData.borrarAlumnoFisico(idAlu);
+            }
+            if(jRlogAlta.isSelected()) {
+                alumnoData.altaLogicaAlumno(nwAlu);
+            }
+            if(jRlogBaja.isSelected()) {
+                alumnoData.bajaLogicaAlumno(nwAlu);
+            }
+            btnNw.setEnabled(true);
+            btnExe.setEnabled(false);
+            btnEdit.setEnabled(true);
+            btnClear.setEnabled(true);
+            grpEdit.clearSelection();
+            txtId.setText("");
+            txtDni.setText("");
+            txtName.setText("");
+            txtApe.setText("");
+            calendar.setDate(null);
+            txtState.setText("");
+            jRedit.setEnabled(false);
+            jRfisicBaja.setEnabled(false);
+            jRlogBaja.setEnabled(false);
+            jRlogAlta.setEnabled(false);
+            txtDni.setEditable(false);
+            txtApe.setEditable(false);
+            txtName.setEditable(false);
+            calendar.setEnabled(false);
+            modelo.setRowCount(0);
+            llenarTabla();
+            tabAlumnos.setEnabled(false);
+            txtPanel.setText("");
         }
-        if (txtState.getText().equals("1")) {
-            stat = true;
-        }
-        Alumno nwAlu = new Alumno(idAlu, dniAlu, ape, name, fNac, stat);
-        if(jRedit.isSelected()){
-            alumnoData.actualizarAlumno(nwAlu);
-        }
-        if(jRfisicBaja.isSelected()){
-            alumnoData.borrarAlumnoFisico(idAlu);
-        }
-        if(jRlogAlta.isSelected()) {
-            alumnoData.altaLogicaAlumno(nwAlu);
-        }
-        if(jRlogBaja.isSelected()) {
-            alumnoData.bajaLogicaAlumno(nwAlu);
-        }
-        btnNw.setEnabled(true);
-        btnExe.setEnabled(false);
-        btnEdit.setEnabled(true);
-        btnClear.setEnabled(true);
-        grpEdit.clearSelection();
-        txtId.setText("");
-        txtDni.setText("");
-        txtName.setText("");
-        txtApe.setText("");
-        calendar.setDate(null);
-        txtState.setText("");
-        jRedit.setEnabled(false);
-        jRfisicBaja.setEnabled(false);
-        jRlogBaja.setEnabled(false);
-        jRlogAlta.setEnabled(false);
-        txtDni.setEditable(false);
-        txtApe.setEditable(false);
-        txtName.setEditable(false);
-        calendar.setEnabled(false);
         
-        modelo.setRowCount(0);
-        llenarTabla();
-        tabAlumnos.setEnabled(false);
-        txtPanel.setText("");
 
     }//GEN-LAST:event_btnExeActionPerformed
 
@@ -895,37 +905,46 @@ public class VistaAlumnos extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNameKeyReleased
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-        
-        Long dniAlu = Long.valueOf(txtDni.getText());
-        String ape = txtApe.getText();
-        String nom = txtName.getText();
-        //Ver si funciona
-        Date campoDeTextoFecha = calendar.getDate();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        String fText = dateFormat.format(campoDeTextoFecha);
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        LocalDate fNac = LocalDate.parse(fText, formatter);
-        
-        boolean stat = false;
-        if (txtState.getText().equals("0")) {
-            stat = false;
-        } else if (txtState.getText().equals("1")) {
-            stat = true;
-        }
+        if(Herramientas.revisarSiEstaVacio(calendar, txtApe, txtDni, txtName, txtState)){
+            JOptionPane.showMessageDialog(this, "No pueden haber campos vacios");
+        }else{
+            Long dniAlu = Long.valueOf(txtDni.getText());
+            String ape = txtApe.getText().trim();
+            String nom = txtName.getText().trim();
+            //Ver si funciona
+            Date campoDeTextoFecha = calendar.getDate();
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            String fText = dateFormat.format(campoDeTextoFecha);
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            LocalDate fNac = LocalDate.parse(fText, formatter);
 
-        Alumno nwAlu = new Alumno(dniAlu, ape, nom, fNac, stat);
-        alumnoData.guardarAlumno(nwAlu);
-        modelo.setRowCount(0);
-        llenarTabla();
-        JOptionPane.showMessageDialog(null, "Alumno " + nwAlu.getApellido()+ " DNI " + nwAlu.getDni() + " agregado con éxito.");
-        btnAdd.setEnabled(false);
-        txtId.setText("");
-        txtDni.setText("");
-        txtName.setText("");
-        txtApe.setText("");
-        txtMsg.setText("");
-        calendar.setDate(null);
-        txtState.setText("");
+            boolean stat = false;
+            if (txtState.getText().equals("0")) {
+                stat = false;
+            } else if (txtState.getText().equals("1")) {
+                stat = true;
+            }
+
+            Alumno nwAlu = new Alumno(dniAlu, ape.trim(), nom.trim(), fNac, stat);
+            
+            if(alumnoData.guardarAlumno(nwAlu) == 1062){
+                JOptionPane.showMessageDialog(this, "No se puede guardar ya que dicho alumno ya está registrado");
+            }else{
+                alumnoData.guardarAlumno(nwAlu);
+                modelo.setRowCount(0);
+                llenarTabla();
+                JOptionPane.showMessageDialog(null, "Alumno " + nwAlu.getApellido()+ " DNI " + nwAlu.getDni() + " agregado con éxito.");
+                btnAdd.setEnabled(false);
+                txtId.setText("");
+                txtDni.setText("");
+                txtName.setText("");
+                txtApe.setText("");
+                txtMsg.setText("");
+                calendar.setDate(null);
+                txtState.setText("");
+            }
+           
+        }        
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void jRfisicBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRfisicBajaActionPerformed
@@ -1012,7 +1031,7 @@ public class VistaAlumnos extends javax.swing.JFrame {
     private void calendarPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_calendarPropertyChange
         validarCamposNw();
     }//GEN-LAST:event_calendarPropertyChange
-
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAccept;
@@ -1068,7 +1087,7 @@ public class VistaAlumnos extends javax.swing.JFrame {
     private javax.swing.JTextField txtWarningMsg;
     // End of variables declaration//GEN-END:variables
 
-        private void crearCabecera() {
+    private void crearCabecera() {
         modelo.addColumn("ID Alumno");
         modelo.addColumn("DNI");
         modelo.addColumn("Apellido");

@@ -19,10 +19,10 @@ public class AlumnoData {
         this.conexionAlumoData = conexion;
     }
 
-    public void guardarAlumno(Alumno a){ //sin id porque es autoincremental por la BD en XAMPP
+    public int guardarAlumno(Alumno a){ //sin id porque es autoincremental por la BD en XAMPP
         //Tenemos que validar que en la base de datos no haya un usuario con el mismo DNI que el enviado
         boolean validado = false;   
-        
+        int codigoDevuelto = 1;
         List<Alumno> alumnos = this.listarAlumnos();
         
         if(alumnos.isEmpty()){           
@@ -67,10 +67,12 @@ public class AlumnoData {
             } catch (SQLException ex) {
                 System.out.println("No se ha podido guardar el alumno");
                 System.out.println("Mensaje de error: " + ex.getMessage());
+                System.out.println("Codigo de error: " + ex.getErrorCode());
+                codigoDevuelto = ex.getErrorCode();
             }
         }      
         
-
+        return codigoDevuelto;
     }
     /*ps es un objeto que guarda los datos que ingresamos parseados para ingresar a la BD, la frase Statement.RETURN KEYS es para 
     que cuando le pido a la BD me entregue los datos del Alumno nuevo guardado, obtenga el ID auntoincremenal que genera la BD.

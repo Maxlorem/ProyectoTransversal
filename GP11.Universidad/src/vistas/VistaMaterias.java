@@ -1,11 +1,15 @@
 package vistas;
 
 import entidades.Conexion;
+import entidades.Herramientas;
 import entidades.Materias;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
@@ -598,16 +602,19 @@ public class VistaMaterias extends javax.swing.JFrame {
     }//GEN-LAST:event_pnlSuperiorMousePressed
 
     private void jRporIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRporIdActionPerformed
+        txtBusqueda.setText("");
         txtMsg.setText("Busqueda por ID de Materia, presione Aceptar para comenzar.");
         btnAccept.setEnabled(true);
     }//GEN-LAST:event_jRporIdActionPerformed
 
     private void jRporNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRporNombreActionPerformed
+        txtBusqueda.setText("");
         txtMsg.setText("Busqueda por Nombre de materia, presione Aceptar para comenzar.");
         btnAccept.setEnabled(true);
     }//GEN-LAST:event_jRporNombreActionPerformed
 
     private void jRporAñoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRporAñoActionPerformed
+        txtBusqueda.setText("");
         txtMsg.setText("Busqueda por Año de cursada de materia, presione Aceptar para comenzar.");
         btnAccept.setEnabled(true);
     }//GEN-LAST:event_jRporAñoActionPerformed
@@ -669,15 +676,58 @@ public class VistaMaterias extends javax.swing.JFrame {
 
     private void btnSrcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSrcActionPerformed
         if (jRporId.isSelected()) {
-            actualizarTablaMat(materiaData.buscarMateriaPorId(Integer.parseInt(txtBusqueda.getText())));
+            String idEnviado = txtBusqueda.getText().trim();           
+            if(idEnviado.isEmpty()){
+                txtMsg.setText("Ingresó un campo vacio, esto no va a devolverle un resultado");
+            }else{
+                Integer idParseado = Integer.parseInt(idEnviado);                
+                Materias materiaBuscada = materiaData.buscarMateriaPorId(idParseado);           
+                if(materiaBuscada == null){
+                    txtMsg.setText("No se encontro la materia");
+                }else if(materiaBuscada.getIdMateria()== 0 || materiaBuscada.getNombre()== ""){
+                    txtMsg.setText("La materia no se encuentra registrado con dicho ID");
+                }
+                else{
+                    txtMsg.setText("Se ha completado la busqueda: Materia Encontrad");
+                    actualizarTablaMat(materiaBuscada);                    
+                }
+            }
+            
+            //actualizarTablaMat(materiaData.buscarMateriaPorId(Integer.parseInt(txtBusqueda.getText())));
         }
         if (jRporNombre.isSelected()) {
-            actualizarTablaMat(materiaData.buscarMateriaPorName(txtBusqueda.getText()));
+            String nombreEnviado = txtBusqueda.getText();
+            if(nombreEnviado.isEmpty()){
+                txtMsg.setText("Ingresó un campo vacio, esto no va a devolverle un resultado");
+            }else{
+                Materias materiaBuscada = materiaData.buscarMateriaPorName(nombreEnviado);
+                if(!(materiaBuscada == null)){
+                    txtMsg.setText("Se ha completado la busqueda: Materia Encontrada");
+                    actualizarTablaMat(materiaBuscada);
+                }else{
+                    txtMsg.setText("No se encontró una materia con ese nombre");
+                }
+            }
+            
+            //actualizarTablaMat(materiaData.buscarMateriaPorName(txtBusqueda.getText()));
         }
         if (jRporAño.isSelected()) {
-            actualizarTablaList(materiaData.buscarMateriaPorAño(Integer.parseInt(txtBusqueda.getText())));
+            String añoEnviado = txtBusqueda.getText();
+            if(añoEnviado.isEmpty()){
+                txtMsg.setText("Ingresó un campo vacio, esto no va a devolverle un resultado");
+            } else{
+                Integer añoConvertido = Integer.parseInt(añoEnviado);
+                ArrayList<Materias> materiaBuscado = materiaData.buscarMateriaPorAño(añoConvertido);
+                if(materiaBuscado.size() > 0){
+                    actualizarTablaList(materiaBuscado);
+                    txtMsg.setText("Se ha completado la busqueda: Materia Encontrada");
+                }else{
+                    txtMsg.setText("No se encontraron materias registradas de ese año");
+                }
+            }
+            //actualizarTablaList(materiaData.buscarMateriaPorAño(Integer.parseInt(txtBusqueda.getText())));
         }
-        txtMsg.setText("Se ha completado la busqueda");
+        
         btnSrc.setEnabled(false);
         btnAccept.setEnabled(true);
         jRporAño.setEnabled(true);
@@ -753,26 +803,37 @@ public class VistaMaterias extends javax.swing.JFrame {
     }//GEN-LAST:event_txtStateKeyTyped
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-        String nom = txtName.getText();
-        int year = Integer.parseInt(txtYear.getText());
-        boolean stat = false;
-        if (txtState.getText().equals("0")) {
-            stat = false;
-        } else if (txtState.getText().equals("1")) {
-            stat = true;
-        }
+        if(Herramientas.revisarSiEstaVacio( txtYear, txtName, txtState)){
+            JOptionPane.showMessageDialog(this, "Ingresó un campo vacio, esto no va a devolverle un resultado");
+        } else{
+            String nom = txtName.getText().trim();
+            int year = Integer.parseInt(txtYear.getText());
+            boolean stat = false;
+            if (txtState.getText().equals("0")) {
+                stat = false;
+            } else if (txtState.getText().equals("1")) {
+                stat = true;
+            }
 
-        Materias nwMat = new Materias(nom, year, stat);
-        materiaData.guardarMateria(nwMat);
-        modelo.setRowCount(0);
-        llenarTabla();
-        JOptionPane.showMessageDialog(null, "Materia " + nwMat.getNombre() + " con ID " + nwMat.getIdMateria() + " de " + nwMat.getAnioMateria() + " agregada con éxito.");
-        btnAdd.setEnabled(false);
-        txtId.setText("");
-        txtName.setText("");
-        txtState.setText("");
-        txtYear.setText("");
-        txtMsg.setText("");
+            Materias nwMat = new Materias(nom.trim(), year, stat);
+            
+            if(materiaData.guardarMateria(nwMat) == 1062){ //La base de datos devuelve ese valor, dicho valor significa que las materias son identicas, mirar log
+                JOptionPane.showMessageDialog(this, "No se puede guardar una materia que ya existe");
+            }else{
+                materiaData.guardarMateria(nwMat);
+                modelo.setRowCount(0);
+                llenarTabla();
+                JOptionPane.showMessageDialog(null, "Materia " + nwMat.getNombre() + " con ID " + nwMat.getIdMateria() + " de " + nwMat.getAnioMateria() + " agregada con éxito.");
+                btnAdd.setEnabled(false);
+                txtId.setText("");
+                txtName.setText("");
+                txtState.setText("");
+                txtYear.setText("");
+                txtMsg.setText("");
+            }
+            
+        }
+        
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
@@ -806,47 +867,55 @@ public class VistaMaterias extends javax.swing.JFrame {
     }//GEN-LAST:event_jRfisicBajaActionPerformed
 
     private void btnExeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExeActionPerformed
-        int idMat = Integer.parseInt(txtId.getText());
-        String nom = txtName.getText();
-        int year = Integer.parseInt(txtYear.getText());
-        boolean stat = false;
-        if (txtState.getText().equals("0")) {
-            stat = false;
-        } else if (txtState.getText().equals("1")) {
-            stat = true;
-        }
-        Materias nwMat = new Materias(idMat, nom, year, stat);
-        if(jRedit.isSelected()){
-            materiaData.actualizarMateria(nwMat);
-        }
-        if(jRfisicBaja.isSelected()){
-            materiaData.borrarMateriaFisico(idMat);
-        }
-        if(jRlogAlta.isSelected()) {
-            materiaData.altaLogicaMateria(nwMat);
-        }
-        if(jRlogBaja.isSelected()) {
-            materiaData.bajaLogicaMateria(nwMat);
-        }
-        btnNw.setEnabled(true);
-        btnExe.setEnabled(false);
-        btnEdit.setEnabled(true);
-        btnClear.setEnabled(true);
-        grpEdit.clearSelection();
-        txtId.setText("");
-        txtName.setText("");
-        txtState.setText("");
-        txtYear.setText("");
-        jRedit.setEnabled(false);
-        jRfisicBaja.setEnabled(false);
-        jRlogBaja.setEnabled(false);
-        jRlogAlta.setEnabled(false);
-        txtName.setEditable(false);
-        txtYear.setEditable(false);
-        modelo.setRowCount(0);
-        llenarTabla();
-        tabMaterias.setEnabled(false);
-        txtPanel.setText("");
+        if(Herramientas.revisarSiEstaVacio(txtYear, txtName, txtState)){
+            JOptionPane.showMessageDialog(this,"No pueden haber campos vacios");
+        } else{
+            int idMat = Integer.parseInt(txtId.getText().trim());
+            String nom = txtName.getText().trim();
+            int year = Integer.parseInt(txtYear.getText().trim());
+            boolean stat = false;
+            if (txtState.getText().equals("0")) {
+                stat = false;
+            } else if (txtState.getText().equals("1")) {
+                stat = true;
+            }
+            Materias nwMat = new Materias(idMat, nom, year, stat);
+            if(jRedit.isSelected()){
+                materiaData.actualizarMateria(nwMat);
+                JOptionPane.showMessageDialog(this,"Registro actualizado");
+            }
+            if(jRfisicBaja.isSelected()){
+                materiaData.borrarMateriaFisico(idMat);
+                JOptionPane.showMessageDialog(this,"Registro eliminado");
+            }
+            if(jRlogAlta.isSelected()) {
+                materiaData.altaLogicaMateria(nwMat);
+                JOptionPane.showMessageDialog(this,"Registro dado de ALTA");
+            }
+            if(jRlogBaja.isSelected()) {
+                materiaData.bajaLogicaMateria(nwMat);
+                JOptionPane.showMessageDialog(this,"Registro dado de BAJA");
+            }
+            btnNw.setEnabled(true);
+            btnExe.setEnabled(false);
+            btnEdit.setEnabled(true);
+            btnClear.setEnabled(true);
+            grpEdit.clearSelection();
+            txtId.setText("");
+            txtName.setText("");
+            txtState.setText("");
+            txtYear.setText("");
+            jRedit.setEnabled(false);
+            jRfisicBaja.setEnabled(false);
+            jRlogBaja.setEnabled(false);
+            jRlogAlta.setEnabled(false);
+            txtName.setEditable(false);
+            txtYear.setEditable(false);
+            modelo.setRowCount(0);
+            llenarTabla();
+            tabMaterias.setEnabled(false);
+            txtPanel.setText("");
+        }           
         
 
         
@@ -887,7 +956,7 @@ public class VistaMaterias extends javax.swing.JFrame {
             }
         
     }//GEN-LAST:event_btnSeleccionarActionPerformed
-
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAccept;
@@ -961,6 +1030,8 @@ public class VistaMaterias extends javax.swing.JFrame {
         }
 
     }
+    
+
 
     private void actualizarTablaMat(Materias materia) {
         modelo.setRowCount(0);

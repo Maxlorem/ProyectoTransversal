@@ -20,10 +20,10 @@ public class MateriaData {
         this.conexionMateriaData = conexion;
     }
 
-    public void guardarMateria(Materias a){ //sin id porque es autoincremental por la BD en XAMPP
+    public int guardarMateria(Materias a){ //sin id porque es autoincremental por la BD en XAMPP
         
         boolean validado = false;   
-        
+        int codigoDevuelto = 1;
         List<Materias> materias = this.listarMaterias();
         
         if(materias.isEmpty()){           
@@ -36,7 +36,8 @@ public class MateriaData {
                     
                 }else{
                     validado = false;
-                    System.out.println("Materias identicas no admitidas");                    
+                    System.out.println("Materias identicas no admitidas");                 
+                    codigoDevuelto = 1500;
                     break;
                 }
             }
@@ -65,8 +66,12 @@ public class MateriaData {
                 System.out.println("Error: || metodo: guardarMateria");
                 System.out.println("No se ha podido guardar la materia");
                 System.out.println("Mensaje de error: " + ex.getMessage());
+                System.out.println("Codigo de error: " + ex.getErrorCode());
+                codigoDevuelto = ex.getErrorCode();
             }
         }
+        
+        return codigoDevuelto;
     }
     public  Materias  buscarMateriaPorId(int id){
             

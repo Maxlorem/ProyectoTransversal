@@ -5,6 +5,7 @@ import entidades.Materias;
 import java.awt.Color;
 import javax.swing.BorderFactory;
 import java.sql.Connection;
+import javax.swing.SwingUtilities;
 import persistencia.MateriaData;
 
 public class VentanaDeInicio extends javax.swing.JFrame {
@@ -274,7 +275,6 @@ public class VentanaDeInicio extends javax.swing.JFrame {
         menuPnl.add(btnSistemaMaterias, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 240, 60));
 
         lblInageSistema.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblInageSistema.setIcon(new javax.swing.ImageIcon("C:\\Users\\mauri\\OneDrive\\Documentos\\GitHub\\ProyectoTransversal\\GP11.Universidad\\src\\imagenes\\Sistema Ingreso.png")); // NOI18N
         menuPnl.add(lblInageSistema, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 240, 250));
 
         lblDoubleclick.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
@@ -313,7 +313,6 @@ public class VentanaDeInicio extends javax.swing.JFrame {
         pnlAccess.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setIcon(new javax.swing.ImageIcon("C:\\Users\\mauri\\OneDrive\\Documentos\\GitHub\\ProyectoTransversal\\GP11.Universidad\\src\\imagenes\\Access.png")); // NOI18N
         pnlAccess.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 190, 185));
 
         pnlAccesMsg2.setBackground(new java.awt.Color(0, 0, 0));
@@ -447,7 +446,6 @@ public class VentanaDeInicio extends javax.swing.JFrame {
         pnlIngresoAlumnos.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, 250, 10));
 
         jLabel4.setBackground(new java.awt.Color(102, 102, 102));
-        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\mauri\\OneDrive\\Documentos\\GitHub\\ProyectoTransversal\\GP11.Universidad\\src\\imagenes\\Alumnos.png")); // NOI18N
         jLabel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         pnlIngresoAlumnos.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 10, 190, 190));
 
@@ -706,7 +704,6 @@ public class VentanaDeInicio extends javax.swing.JFrame {
         pnlIngresoMaterias.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 290, 170, -1));
 
         jLabel28.setBackground(new java.awt.Color(102, 102, 102));
-        jLabel28.setIcon(new javax.swing.ImageIcon("C:\\Users\\mauri\\OneDrive\\Documentos\\GitHub\\ProyectoTransversal\\GP11.Universidad\\src\\imagenes\\Alumnos.png")); // NOI18N
         jLabel28.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         pnlIngresoMaterias.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 10, 190, 190));
 
@@ -752,7 +749,6 @@ public class VentanaDeInicio extends javax.swing.JFrame {
         pnlIngresoInsc.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, 250, 10));
 
         jLabel17.setBackground(new java.awt.Color(102, 102, 102));
-        jLabel17.setIcon(new javax.swing.ImageIcon("C:\\Users\\mauri\\OneDrive\\Documentos\\GitHub\\ProyectoTransversal\\GP11.Universidad\\src\\imagenes\\Alumnos.png")); // NOI18N
         jLabel17.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         pnlIngresoInsc.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 10, 190, 190));
 
@@ -1160,6 +1156,7 @@ public class VentanaDeInicio extends javax.swing.JFrame {
     }
 
     
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
