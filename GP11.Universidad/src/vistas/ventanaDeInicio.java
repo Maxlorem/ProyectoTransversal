@@ -275,6 +275,7 @@ public class VentanaDeInicio extends javax.swing.JFrame {
         menuPnl.add(btnSistemaMaterias, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 240, 60));
 
         lblInageSistema.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblInageSistema.setIcon(new javax.swing.ImageIcon("C:\\Users\\mauri\\OneDrive\\Documentos\\GitHub\\ProyectoTransversal\\GP11.Universidad\\src\\imagenes\\Sistema Ingreso.png")); // NOI18N
         menuPnl.add(lblInageSistema, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 240, 250));
 
         lblDoubleclick.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
@@ -313,6 +314,7 @@ public class VentanaDeInicio extends javax.swing.JFrame {
         pnlAccess.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vistas/Access.png"))); // NOI18N
         pnlAccess.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 190, 185));
 
         pnlAccesMsg2.setBackground(new java.awt.Color(0, 0, 0));
