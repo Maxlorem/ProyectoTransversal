@@ -245,6 +245,39 @@ public class AlumnoData {
     return listadoAlumnos;   
     }
     
+    public List<Alumno> listarAlumnosRegulares(){
+    //copiar el buscar u aggregar el add a la lista, el SELECT es * FROM alumnos. y return nombre del array.
+        Alumno alumnos;
+        List<Alumno> listadoAlumnos = new ArrayList<>();    
+            String query = "SELECT * FROM alumnos WHERE estado = 1";
+        try {   
+            PreparedStatement ps;
+            
+            ps = conexionAlumoData.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+               alumnos = new Alumno();
+               alumnos.setIdAlumno(rs.getInt("idAlumno"));
+               alumnos.setDni(rs.getLong("dni"));
+               alumnos.setApellido(rs.getString("apellido"));
+               alumnos.setNombre(rs.getString("nombre"));
+               alumnos.setFechaNac(rs.getDate("fechaNacimiento").toLocalDate());
+               alumnos.setEstado(rs.getBoolean("estado"));
+               listadoAlumnos.add(alumnos);
+            }
+              ps.close();
+            if(listadoAlumnos == null){
+                throw new SQLException();
+            }
+        } catch (SQLException ex) {            
+            System.out.println("No hay alumnos registrados");
+            System.out.println("Mensaje de error: " + ex.getMessage());
+        }
+    
+    return listadoAlumnos;   
+    }
+    
+        
     public void actualizarAlumno(Alumno alumnoPorParametro){
         //aca se usa UPDATE alumno SET ... Atributos ... WHERE idAlumno=?.
         String query = "UPDATE alumnos SET dni = ?, apellido = ?, nombre= ?, fechaNacimiento= ?, estado= ? WHERE idAlumno = ?";

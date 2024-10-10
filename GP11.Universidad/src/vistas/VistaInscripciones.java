@@ -1,27 +1,31 @@
 package vistas;
 
+import entidades.Alumno;
 import entidades.Conexion;
 import java.sql.Connection;
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-
+import persistencia.AlumnoData;
 
 public class VistaInscripciones extends javax.swing.JFrame {
-    
+
     private VentanaDeInicio ventanaDeInicio;
+    AlumnoData alumnoData;
     int xMouse, yMouse;
     int x, y;
     private final DefaultTableModel modelo = new NonEditableTableModel();
-   
+
     public VistaInscripciones(VentanaDeInicio ventanaDeInicio) {
-        
         initComponents();
         this.ventanaDeInicio = ventanaDeInicio;
         Connection con = Conexion.getConexion();
+        alumnoData = new AlumnoData(con);
         this.setLocationRelativeTo(null);
         JOptionPane.showMessageDialog(null, "Para comenzar seleccione y elija un alumno, puede utilizar los filtros para Alumno en la esquina inferior izquierda. Si selecciona por DNI el campo de texto se habilita para filtrar letra a letra.", "Sistema Alumnos", HEIGHT);
+        cargarComboAlumnosReg();
     }
-    
+
     private class NonEditableTableModel extends DefaultTableModel {
 
         @Override
@@ -30,7 +34,6 @@ public class VistaInscripciones extends javax.swing.JFrame {
         }
     }
 
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -52,8 +55,8 @@ public class VistaInscripciones extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jCheckBox2 = new javax.swing.JCheckBox();
+        chckLibres = new javax.swing.JCheckBox();
+        chckFiltroApellidos = new javax.swing.JCheckBox();
         jLabel5 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jCheckBox3 = new javax.swing.JCheckBox();
@@ -107,7 +110,7 @@ public class VistaInscripciones extends javax.swing.JFrame {
         btnSrcCalif = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        infoBox = new javax.swing.JTextArea();
         btnBack = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -157,7 +160,7 @@ public class VistaInscripciones extends javax.swing.JFrame {
         tabGeneral.setFocusable(false);
         jScrollPane1.setViewportView(tabGeneral);
 
-        panelMaterias.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 1000, 110));
+        panelMaterias.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 1000, 120));
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 51), 2, true));
@@ -172,16 +175,16 @@ public class VistaInscripciones extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(264, Short.MAX_VALUE)
+                .addGap(268, 268, 268)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(282, 282, 282))
+                .addContainerGap(278, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(16, 16, 16))
+                .addContainerGap(15, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         panelMaterias.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 1000, 40));
@@ -200,7 +203,6 @@ public class VistaInscripciones extends javax.swing.JFrame {
         jLabel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 8, 555, -1));
 
-        jcbAlumnos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jPanel2.add(jcbAlumnos, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, 240, -1));
 
         jcbMateria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -230,17 +232,27 @@ public class VistaInscripciones extends javax.swing.JFrame {
         jLabel9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel6.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 8, 170, -1));
 
-        jCheckBox1.setBackground(new java.awt.Color(255, 204, 153));
-        jCheckBox1.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jCheckBox1.setForeground(new java.awt.Color(0, 0, 0));
-        jCheckBox1.setText("Mostrar Libres");
-        jPanel6.add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 58, -1, -1));
+        chckLibres.setBackground(new java.awt.Color(255, 204, 153));
+        chckLibres.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        chckLibres.setForeground(new java.awt.Color(0, 0, 0));
+        chckLibres.setText("Mostrar Libres");
+        chckLibres.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                chckLibresStateChanged(evt);
+            }
+        });
+        jPanel6.add(chckLibres, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 58, -1, -1));
 
-        jCheckBox2.setBackground(new java.awt.Color(255, 204, 153));
-        jCheckBox2.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jCheckBox2.setForeground(new java.awt.Color(0, 0, 0));
-        jCheckBox2.setText("por Apellidos");
-        jPanel6.add(jCheckBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 84, -1, -1));
+        chckFiltroApellidos.setBackground(new java.awt.Color(255, 204, 153));
+        chckFiltroApellidos.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        chckFiltroApellidos.setForeground(new java.awt.Color(0, 0, 0));
+        chckFiltroApellidos.setText("por Apellidos");
+        chckFiltroApellidos.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                chckFiltroApellidosStateChanged(evt);
+            }
+        });
+        jPanel6.add(chckFiltroApellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 84, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
@@ -391,10 +403,10 @@ public class VistaInscripciones extends javax.swing.JFrame {
         txtMateriaFilter.setEnabled(false);
         jPanel2.add(txtMateriaFilter, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 80, 130, -1));
 
+        txtAlumnoFilter.setEditable(false);
         txtAlumnoFilter.setBackground(new java.awt.Color(255, 255, 255));
         txtAlumnoFilter.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         txtAlumnoFilter.setForeground(new java.awt.Color(0, 0, 0));
-        txtAlumnoFilter.setEnabled(false);
         jPanel2.add(txtAlumnoFilter, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 40, 130, -1));
 
         jtbMateriaLock.setText("Elejir");
@@ -593,14 +605,14 @@ public class VistaInscripciones extends javax.swing.JFrame {
         jButton4.setEnabled(false);
         jPanel3.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, 140, 20));
 
-        jTextArea1.setEditable(false);
-        jTextArea1.setBackground(new java.awt.Color(255, 255, 255));
-        jTextArea1.setColumns(20);
-        jTextArea1.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jTextArea1.setForeground(new java.awt.Color(0, 0, 0));
-        jTextArea1.setRows(5);
-        jTextArea1.setText("INFORMACIÓN");
-        jScrollPane2.setViewportView(jTextArea1);
+        infoBox.setEditable(false);
+        infoBox.setBackground(new java.awt.Color(255, 255, 255));
+        infoBox.setColumns(20);
+        infoBox.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        infoBox.setForeground(new java.awt.Color(0, 0, 0));
+        infoBox.setRows(5);
+        infoBox.setText("INFORMACIÓN");
+        jScrollPane2.setViewportView(infoBox);
 
         jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 400, 120));
 
@@ -647,11 +659,39 @@ public class VistaInscripciones extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void jtbAlumnoLockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtbAlumnoLockActionPerformed
-        JOptionPane.showMessageDialog(null, "", "", HEIGHT);
+        if(jcbAlumnos.getSelectedItem().toString().isEmpty()){
+            infoBox.setText("Debe elejir un alumno váido");
+        }else{
         jtbMateriaLock.setEnabled(true);
+        jtbAlumnoLock.setEnabled(false);
+        jcbAlumnos.setEnabled(false);
+        jcbMateria.setEnabled(true);
+        infoBox.setText("Usted ha elejido a "+jcbAlumnos.getSelectedItem().toString());
+        }
     }//GEN-LAST:event_jtbAlumnoLockActionPerformed
-
     
+    private void chckLibresStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_chckLibresStateChanged
+        if (chckLibres.isSelected()) {
+            jcbAlumnos.removeAllItems();
+            cargarComboAlumnos();
+        }
+        if (!chckLibres.isSelected()) {
+            jcbAlumnos.removeAllItems();
+            cargarComboAlumnosReg();
+        }
+    }//GEN-LAST:event_chckLibresStateChanged
+
+    private void chckFiltroApellidosStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_chckFiltroApellidosStateChanged
+        if(chckFiltroApellidos.isSelected()) {
+            txtAlumnoFilter.setEditable(true);
+            txtAlumnoFilter.requestFocus();
+        }
+        if(!chckFiltroApellidos.isSelected()) {
+            txtAlumnoFilter.setEditable(false);
+            
+        }
+    }//GEN-LAST:event_chckFiltroApellidosStateChanged
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup bgMat;
@@ -660,14 +700,15 @@ public class VistaInscripciones extends javax.swing.JFrame {
     private javax.swing.JButton btnEraseInsc;
     private javax.swing.JButton btnInsc;
     private javax.swing.JButton btnSrcCalif;
+    private javax.swing.JCheckBox chckFiltroApellidos;
+    private javax.swing.JCheckBox chckLibres;
+    private javax.swing.JTextArea infoBox;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton7;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JCheckBox jCheckBox3;
     private javax.swing.JCheckBox jCheckBox4;
     private javax.swing.JCheckBox jCheckBox5;
@@ -711,7 +752,6 @@ public class VistaInscripciones extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JComboBox<String> jcbAlumnos;
     private javax.swing.JComboBox<String> jcbMateria;
@@ -729,4 +769,47 @@ public class VistaInscripciones extends javax.swing.JFrame {
     private javax.swing.JTextField txtMateriaData;
     private javax.swing.JTextField txtMateriaFilter;
     // End of variables declaration//GEN-END:variables
+
+    private void cargarComboAlumnosReg() {
+        jcbAlumnos.addItem("");
+        List<Alumno> listadoAlumnos = alumnoData.listarAlumnosRegulares();
+        for (Alumno alumno : listadoAlumnos) {
+            jcbAlumnos.addItem(alumno.getApellido() + " " + alumno.getNombre());
+        }
+    }    
+
+    private void cargarComboAlumnos() {
+        jcbAlumnos.addItem("");
+        List<Alumno> listadoAlumnos = alumnoData.listarAlumnos();
+        for (Alumno alumno : listadoAlumnos) {
+            jcbAlumnos.addItem(alumno.getApellido() + " " + alumno.getNombre());
+        }
+
+    }
+    
+    private void crearCabecera() {
+        modelo.addColumn("ID Alumno");
+        modelo.addColumn("DNI");
+        modelo.addColumn("Apellido");
+        modelo.addColumn("Nombre");
+        modelo.addColumn("Fecha Nacimiento");
+        modelo.addColumn("Estado");
+        tabGeneral.setModel(modelo);
+    }
+
+    private void llenarTabla() {
+        List<Alumno> listadoAlu = alumnoData.listarAlumnos();
+        for (Alumno alu : listadoAlu) {
+            modelo.addRow(new Object[]{
+                alu.getIdAlumno(),
+                alu.getDni(),
+                alu.getApellido(),
+                alu.getNombre(),
+                alu.getFechaNac(),
+                alu.isEstado() ? "Regular" : "Libre"
+             });
+
+        }
+
+    }
 }
