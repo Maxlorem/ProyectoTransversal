@@ -46,8 +46,6 @@ public class VistaAlumnos extends javax.swing.JFrame {
                         Long dni = (Long) tabAlumnos.getValueAt(fila, 1);
                         String ape = (String) tabAlumnos.getValueAt(fila, 2);
                         String nom = (String) tabAlumnos.getValueAt(fila, 3);
-                        //java.sql.Date sqlFecha = (java.sql.Date) tabAlumnos.getValueAt(fila, 4);
-                        //LocalDate fecNac = sqlFecha.toLocalDate();
                         LocalDate fecNac = (LocalDate) tabAlumnos.getValueAt(fila, 4);
                         Date date = Date.from(fecNac.atStartOfDay(ZoneId.systemDefault()).toInstant());
                         String stat = (String) tabAlumnos.getValueAt(fila, 5);
