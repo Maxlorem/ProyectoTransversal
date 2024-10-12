@@ -2,6 +2,8 @@
 package entidades;
 
 import com.toedter.calendar.JDateChooser;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JTextField;
 
 public class Herramientas {
@@ -30,6 +32,18 @@ public class Herramientas {
            campoArevisar4.getText().strip().isEmpty();
        
         return devolver;
+    }
+    public static ArrayList<Inscripcion> cambiarNotaDeNullACero(List<Inscripcion> inscripcionEnviada){
+        ArrayList<Inscripcion> inscripcionCorregida = new ArrayList<Inscripcion>();
+        
+        for(Inscripcion inscripcion : inscripcionEnviada){
+            if(null == inscripcion.getNota() || inscripcion.getNota().isNaN()){
+                inscripcion.setNota(0.0);
+            }
+            inscripcionCorregida.add(inscripcion);
+        }
+        
+        return inscripcionCorregida;
     }
 
 }
