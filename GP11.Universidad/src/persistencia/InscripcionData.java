@@ -24,8 +24,12 @@ public class InscripcionData {
    
    public void guardarInscripcion(Inscripcion inscripcion){
        try{
+
            
-            if(this.obtenerInscripcionesPorAlumno(inscripcion.getAlumno().getIdAlumno()).size()> 0){
+            
+
+            if(this.obtenerMateriasCursadasPorAlumno(inscripcion.getAlumno().getIdAlumno()).size() > 0){
+
                 throw new Error();
             } else{
                try {
@@ -47,15 +51,16 @@ public class InscripcionData {
                     
                 } 
             } 
-       } catch(Error e){
-           System.out.println("El alumno ya esta inscripto a la materia");
+      } catch(Error e){
+          System.out.println("El alumno ya esta inscripto a la materia");
+          System.out.println("mensaje de error " + e.getMessage());
        }
               
        
    }
    public ArrayList<Inscripcion> obtenerInscripcionesPorAlumno(int id){
         ArrayList<Inscripcion> inscripciones = new ArrayList<>();
-        Inscripcion inscripcion = new Inscripcion();
+        
         try {
             String query = " SELECT * FROM inscripcion WHERE idAlumno = ? ";
             
@@ -64,7 +69,7 @@ public class InscripcionData {
             ResultSet resultados = ps.executeQuery();
             ps.close();
             while(resultados.next()){
-                
+                Inscripcion inscripcion = new Inscripcion();
                
                 inscripcion.setIdInscripcion(resultados.getInt("idInscripcion"));
                 inscripcion.setAlumno(alumnoData.buscarAlumnoPorId(resultados.getInt("idAlumno")));
@@ -74,16 +79,6 @@ public class InscripcionData {
             }
             if(inscripciones.size() == 0){
                 System.out.println("El alumno no tiene inscripciones");
-            } else{
-                System.out.println(
-                        "Inscripciones del alumno enviadas\n DATOS="
-                        + "\n     -ID_INSCRIPCION: " + inscripcion.getIdInscripcion()
-                        + "\n     -ID_ALUMNO: "  + inscripcion.getAlumno().getIdAlumno()
-                        + "\n     -DNI: " + inscripcion.getAlumno().getDni() 
-                        + "\n     -Nombre: " + inscripcion.getAlumno().getNombre()
-                        + "\n     -ID_MATERIA: " + inscripcion.getMateria().getIdMateria()                               
-                        + "\n     -NOMBRE_MATERIA: " + inscripcion.getMateria().getNombre()
-                        );
             }
             
         } catch (SQLException ex) {
