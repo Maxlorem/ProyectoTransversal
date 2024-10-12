@@ -5,7 +5,6 @@ import entidades.Materias;
 import java.awt.Color;
 import javax.swing.BorderFactory;
 import java.sql.Connection;
-import javax.swing.SwingUtilities;
 import persistencia.MateriaData;
 
 public class VentanaDeInicio extends javax.swing.JFrame {

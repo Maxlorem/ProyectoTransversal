@@ -746,9 +746,9 @@ public class VistaInscripciones extends javax.swing.JFrame {
         jbElegirMat.setEnabled(false);
         jcbMateria.setEnabled(false);
         jcbMateria.setSelectedIndex(0);
-        txtAlumnoData.setText(nombreApellido);
-        txtIdAlumno.setText(idAlumnotxt);
-        infoBox.setText("Usted ha elejido a "+nombreApellido+" puede elegir Inscripciones para listar las materias a las "
+        txtAlumnoData.setText(nombreMat);
+        txtIdAlumno.setText(idMattxt);
+        infoBox.setText("Usted ha elejido a "+nombreMat+" puede elegir Inscripciones para listar las materias a las "
             + "que el alumno está inscripto o puede elegir Select Materia para una nueva inscripción.");
         }
     }//GEN-LAST:event_jbElegirMatActionPerformed
