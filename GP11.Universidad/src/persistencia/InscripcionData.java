@@ -24,7 +24,16 @@ public class InscripcionData {
    
    public void guardarInscripcion(Inscripcion inscripcion){
        try{
-            if(this.obtenerMateriasCursadasPorAlumno(inscripcion.getAlumno().getIdAlumno()).size() > 0){
+            boolean validado = true;
+            ArrayList<Materias> chequeo = this.obtenerMateriasCursadasPorAlumno(inscripcion.getAlumno().getIdAlumno());
+            for(Materias materia: chequeo ){
+                System.out.println("MateriasBDID= " + materia.getIdMateria() + "\n MateriaEnviadaID= " + inscripcion.getMateria().getIdMateria());
+                if(materia.getIdMateria() == inscripcion.getMateria().getIdMateria()){
+                    validado = false;
+                }
+            }
+            if(!validado){
+
                 throw new Error();
             } else{
                try {

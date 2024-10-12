@@ -838,11 +838,13 @@ public class VistaInscripciones extends javax.swing.JFrame {
     private void btnInscActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInscActionPerformed
         Inscripcion inscribir = new Inscripcion();
         Alumno alumno = alumnoData.buscarAlumnoPorId(Integer.parseInt(txtIdAlumno.getText()));
+        System.out.println("Alumno boyon: " + alumno.toString());
         Materias materia = materiaData.buscarMateriaPorId(Integer.parseInt(txtIdMateria.getText()));
-        
+        System.out.println("Materia boyon: " + materia.toString());
         inscribir.setAlumno(alumno);
+        System.out.println("Alumno boyon Despues del set: " + alumno.toString());
         inscribir.setMateria(materia);
-        
+        System.out.println("Materia boyon despues del set: " + materia.toString());
         inscripcionData.guardarInscripcion(inscribir);
         modelo.setRowCount(0);
         crearCabeceraInscriptasAlumnos();
