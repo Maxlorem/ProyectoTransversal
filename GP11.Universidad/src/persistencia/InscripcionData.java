@@ -241,5 +241,44 @@ public class InscripcionData {
         }
         return alumnosPorMateria;
    }
-           
+   
+    public ArrayList<Inscripcion> obtenerInscripcionesPorAlumnoInfo(int id){
+        ArrayList<Inscripcion> inscripciones = new ArrayList<>();
+        Inscripcion inscripcion = new Inscripcion();
+        try {
+            String query = " SELECT m.nombre, m.año, i.nota FROM inscripcion i JOIN materia m WHERE i.idmateria = m.idmateria AND i.idalumno = ? ";
+            
+            PreparedStatement ps = conexion.prepareStatement(query);
+            ps.setInt(1, id);
+            ResultSet resultados = ps.executeQuery();
+            ps.close();
+            while(resultados.next()){
+                
+                inscripcion.setAlumno(alumnoData.buscarAlumnoPorId(resultados.getInt("idAlumno")));
+                inscripcion.setMateria(materiaData.buscarMateriaPorId(resultados.getInt("idMateria")));
+                inscripcion.getMateria().setNombre(resultados.getString("m.nombre"));
+                inscripcion.getMateria().setAnioMateria(resultados.getInt("m.año"));
+                inscripcion.setNota(resultados.getDouble("nota"));
+                
+                inscripciones.add(inscripcion);
+            }
+            if(inscripciones.size() == 0){
+                System.out.println("El alumno no tiene inscripciones");
+            } else{
+                System.out.println(
+                        "Inscripciones del alumno enviadas\n DATOS="
+                        + "\n     -ID_INSCRIPCION: " + inscripcion.getIdInscripcion()
+                        + "\n     -ID_ALUMNO: "  + inscripcion.getAlumno().getIdAlumno()
+                        + "\n     -DNI: " + inscripcion.getAlumno().getDni() 
+                        + "\n     -Nombre: " + inscripcion.getAlumno().getNombre()
+                        + "\n     -ID_MATERIA: " + inscripcion.getMateria().getIdMateria()                               
+                        + "\n     -NOMBRE_MATERIA: " + inscripcion.getMateria().getNombre()
+                        );
+            }
+            
+        } catch (SQLException ex) {
+            System.out.println("No se pudo Obtener las inscripciones del alumno");
+        }
+       return inscripciones;
+   }
 }

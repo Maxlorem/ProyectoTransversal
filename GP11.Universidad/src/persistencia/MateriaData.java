@@ -275,6 +275,39 @@ public class MateriaData {
     return listadoMaterias;   
     }
     
+    public List<Materias> listarMateriasPorNameActivas(){
+    //copiar el buscar u aggregar el add a la lista, el SELECT es * FROM alumnos. y return nombre del array.
+        
+        List<Materias> listadoMaterias = new ArrayList<>();    
+            String query = "SELECT * FROM materia WHERE estado = 1";
+        try {   
+            
+            
+            PreparedStatement ps = conexionMateriaData.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+               Materias materias = new Materias();
+               materias.setIdMateria(rs.getInt("idMateria"));
+               materias.setNombre(rs.getString("nombre").trim());
+               materias.setAnioMateria(rs.getInt("año"));
+               materias.setEstado(rs.getBoolean("estado"));
+               listadoMaterias.add(materias);
+            }
+            ps.close();
+            if(!listadoMaterias.isEmpty()){
+                System.out.println("Todas las materias han sido enviadas");
+            } else{
+                System.out.println("No se encuentran materias registradas");
+            }
+        } catch (SQLException ex) {            
+            System.out.println("Error: || metodo: listarMaterias");
+            System.out.println("No hay materias registrados");
+            System.out.println("Mensaje de error: " + ex.getMessage());
+        }
+    
+    return listadoMaterias;   
+    }
+    
     public void actualizarMateria(Materias materiaEnviada){
         //aca se usa UPDATE alumno SET ... Atributos ... WHERE idAlumno=?.
         String query = "UPDATE materia SET  nombre= ?, año = ?, estado= ? WHERE idMateria = ?";
