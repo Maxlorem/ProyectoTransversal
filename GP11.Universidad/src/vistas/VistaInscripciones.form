@@ -450,7 +450,7 @@
                             </Constraint>
                           </Constraints>
                         </Component>
-                        <Component class="javax.swing.JCheckBox" name="jCheckBox3">
+                        <Component class="javax.swing.JCheckBox" name="chckMatPorNombre">
                           <Properties>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="99" green="cc" red="ff" type="rgb"/>
@@ -470,7 +470,7 @@
                             </Constraint>
                           </Constraints>
                         </Component>
-                        <Component class="javax.swing.JCheckBox" name="jCheckBox4">
+                        <Component class="javax.swing.JCheckBox" name="chckMatPorA&#xf1;o">
                           <Properties>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="99" green="cc" red="ff" type="rgb"/>
@@ -716,11 +716,14 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="javax.swing.JButton" name="jbSelectMat">
+                    <Component class="javax.swing.JButton" name="btnSelectMat">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Select Materia"/>
                         <Property name="enabled" type="boolean" value="false"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSelectMatActionPerformed"/>
+                      </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                           <AbsoluteConstraints x="420" y="130" width="129" height="-1"/>
@@ -1192,7 +1195,7 @@
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="8" y="78" width="70" height="-1"/>
+                      <AbsoluteConstraints x="10" y="70" width="70" height="-1"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -1251,6 +1254,9 @@
                         <Property name="text" type="java.lang.String" value="Inscribir"/>
                         <Property name="enabled" type="boolean" value="false"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnInscActionPerformed"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel15">
                       <Properties>

@@ -17,7 +17,7 @@ import persistencia.MateriaData;
 import persistencia.InscripcionData;
 
 public class VistaInscripciones extends javax.swing.JFrame {
-
+    
     private VentanaDeInicio ventanaDeInicio;
     AlumnoData alumnoData;
     MateriaData materiaData;
@@ -25,7 +25,7 @@ public class VistaInscripciones extends javax.swing.JFrame {
     int xMouse, yMouse;
     int x, y;
     private final DefaultTableModel modelo = new NonEditableTableModel();
-
+    
     public VistaInscripciones(VentanaDeInicio ventanaDeInicio) {
         initComponents();
         this.ventanaDeInicio = ventanaDeInicio;
@@ -37,8 +37,8 @@ public class VistaInscripciones extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Para comenzar seleccione y elija un alumno, puede utilizar los filtros para Alumno en la esquina inferior izquierda. Si selecciona por DNI el campo de texto se habilita para filtrar letra a letra.", "Sistema Alumnos", HEIGHT);
         cargarComboAlumnosReg();
         cargarComboMateriasActivas();
-     
-         tabGeneral.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+        
+        tabGeneral.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
                 if (!e.getValueIsAdjusting()) {
@@ -46,21 +46,20 @@ public class VistaInscripciones extends javax.swing.JFrame {
                     if (fila != -1 && chckBorrar.isSelected()) {
                         txtIdMateria.setText((tabGeneral.getValueAt(fila, 0)).toString());
                         
-                        
                     }
                 }
             }
         });
     }
-
+    
     private class NonEditableTableModel extends DefaultTableModel {
-
+        
         @Override
         public boolean isCellEditable(int row, int column) {
             return false;
         }
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -86,8 +85,8 @@ public class VistaInscripciones extends javax.swing.JFrame {
         chckFiltroApellidos = new javax.swing.JCheckBox();
         jLabel5 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        jCheckBox3 = new javax.swing.JCheckBox();
-        jCheckBox4 = new javax.swing.JCheckBox();
+        chckMatPorNombre = new javax.swing.JCheckBox();
+        chckMatPorAño = new javax.swing.JCheckBox();
         jPanel7 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jRadioButton1 = new javax.swing.JRadioButton();
@@ -99,7 +98,7 @@ public class VistaInscripciones extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jbInscripciones = new javax.swing.JButton();
-        jbSelectMat = new javax.swing.JButton();
+        btnSelectMat = new javax.swing.JButton();
         jToggleButton1 = new javax.swing.JToggleButton();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
@@ -286,19 +285,19 @@ public class VistaInscripciones extends javax.swing.JFrame {
         jLabel11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel6.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 110, 170, -1));
 
-        jCheckBox3.setBackground(new java.awt.Color(255, 204, 153));
-        jCheckBox3.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jCheckBox3.setForeground(new java.awt.Color(0, 0, 0));
-        jCheckBox3.setText("por Nombre");
-        jCheckBox3.setEnabled(false);
-        jPanel6.add(jCheckBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 132, -1, -1));
+        chckMatPorNombre.setBackground(new java.awt.Color(255, 204, 153));
+        chckMatPorNombre.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        chckMatPorNombre.setForeground(new java.awt.Color(0, 0, 0));
+        chckMatPorNombre.setText("por Nombre");
+        chckMatPorNombre.setEnabled(false);
+        jPanel6.add(chckMatPorNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 132, -1, -1));
 
-        jCheckBox4.setBackground(new java.awt.Color(255, 204, 153));
-        jCheckBox4.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jCheckBox4.setForeground(new java.awt.Color(0, 0, 0));
-        jCheckBox4.setText("por Año");
-        jCheckBox4.setEnabled(false);
-        jPanel6.add(jCheckBox4, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 158, 85, -1));
+        chckMatPorAño.setBackground(new java.awt.Color(255, 204, 153));
+        chckMatPorAño.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        chckMatPorAño.setForeground(new java.awt.Color(0, 0, 0));
+        chckMatPorAño.setText("por Año");
+        chckMatPorAño.setEnabled(false);
+        jPanel6.add(chckMatPorAño, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 158, 85, -1));
 
         jPanel5.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 190, 200));
 
@@ -381,9 +380,14 @@ public class VistaInscripciones extends javax.swing.JFrame {
         });
         jPanel5.add(jbInscripciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 90, 130, -1));
 
-        jbSelectMat.setText("Select Materia");
-        jbSelectMat.setEnabled(false);
-        jPanel5.add(jbSelectMat, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 130, 129, -1));
+        btnSelectMat.setText("Select Materia");
+        btnSelectMat.setEnabled(false);
+        btnSelectMat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSelectMatActionPerformed(evt);
+            }
+        });
+        jPanel5.add(btnSelectMat, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 130, 129, -1));
 
         jToggleButton1.setText("Habilitar Listas");
         jPanel5.add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 40, 129, -1));
@@ -566,7 +570,7 @@ public class VistaInscripciones extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Materia");
-        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 78, 70, -1));
+        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 70, -1));
         jPanel3.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 60, -1, -1));
 
         jPanel10.setBackground(new java.awt.Color(255, 204, 153));
@@ -574,6 +578,11 @@ public class VistaInscripciones extends javax.swing.JFrame {
 
         btnInsc.setText("Inscribir");
         btnInsc.setEnabled(false);
+        btnInsc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInscActionPerformed(evt);
+            }
+        });
 
         jLabel15.setBackground(new java.awt.Color(255, 204, 153));
         jLabel15.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
@@ -726,69 +735,78 @@ public class VistaInscripciones extends javax.swing.JFrame {
     }//GEN-LAST:event_chckLibresStateChanged
 
     private void chckFiltroApellidosStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_chckFiltroApellidosStateChanged
-        if(chckFiltroApellidos.isSelected()) {
+        if (chckFiltroApellidos.isSelected()) {
             txtAlumnoFilter.setEditable(true);
             txtAlumnoFilter.requestFocus();
         }
-        if(!chckFiltroApellidos.isSelected()) {
+        if (!chckFiltroApellidos.isSelected()) {
             txtAlumnoFilter.setEditable(false);
             
         }
     }//GEN-LAST:event_chckFiltroApellidosStateChanged
 
     private void jbElegirAluActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbElegirAluActionPerformed
-        if(jcbAlumnos.getSelectedItem().toString().isEmpty()){
+        if (jcbAlumnos.getSelectedItem().toString().isEmpty()) {
             infoBox.setText("Debe elegir un alumno váido");
-        }else{
-        String cadena = jcbAlumnos.getSelectedItem().toString();
-        String[] partes = cadena.split("-");
-        String idAlumnotxt = partes[0];
-        String nombreApellido = partes [1];
-        jbElegirAlu.setEnabled(false);
-        jcbAlumnos.setEnabled(false);
-        jcbAlumnos.setSelectedIndex(0);
-        jbInscripciones.setEnabled(true);
-        jbSelectMat.setEnabled(true);
-        txtAlumnoData.setText(nombreApellido);
-        txtIdAlumno.setText(idAlumnotxt);
-        infoBox.setText("Usted ha elejido a "+nombreApellido+" puede elegir Inscripciones para listar las materias a las "
-            + "que el alumno está inscripto o puede elegir Select Materia para una nueva inscripción.");
+        } else {
+            String cadena = jcbAlumnos.getSelectedItem().toString();
+            String[] partes = cadena.split("-");
+            String idAlumnotxt = partes[0];
+            String nombreApellido = partes[1];
+            jbElegirAlu.setEnabled(false);
+            jcbAlumnos.setEnabled(false);
+            jcbAlumnos.setSelectedIndex(0);
+            jbInscripciones.setEnabled(true);
+            btnSelectMat.setEnabled(true);
+            txtAlumnoData.setText(nombreApellido);
+            txtIdAlumno.setText(idAlumnotxt);
+            infoBox.setText("Usted ha elejido a " + nombreApellido + " puede elegir Inscripciones para listar las materias a las "
+                    + "que el alumno está inscripto o puede elegir Select Materia para una nueva inscripción.");
+            chckFiltroApellidos.setEnabled(false);
+            chckLibres.setEnabled(false);
         }
     }//GEN-LAST:event_jbElegirAluActionPerformed
 
     private void jbInscripcionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbInscripcionesActionPerformed
-        jbSelectMat.setEnabled(false);
+        btnSelectMat.setEnabled(false);
         jbInscripciones.setEnabled(false);
-        btnCalif.setEnabled(true);
-        chckBorrar.setEnabled(true);
+        
         crearCabeceraInscriptasAlumnos();
         modelo.setRowCount(0);
         llenarTablaInscriptasAlumno(Integer.parseInt(txtIdAlumno.getText()));
         infoBox.setText("El alumno seleccionado está inscripto en las materias que se muestran en la tabla, puede: Calificar o borrar la inscripción. Para borrar la"
                 + "inscripción, primero debe Activar Borrar");
-        
+        if (tabGeneral.getRowCount() != 0) {
+            btnCalif.setEnabled(true);            
+            chckBorrar.setEnabled(true);
+        } else {
+            chckBorrar.setEnabled(false);
+            btnCalif.setEnabled(false);
+            btnSelectMat.setEnabled(true);
+            infoBox.setText("El alumno no se encuentra inscripto en ninguna materia. Seleccione Select Materia para una nueva inscripcion o Reiniciar todo para comenzar de nuevo.");
+        }
     }//GEN-LAST:event_jbInscripcionesActionPerformed
 
     private void jbElegirMatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbElegirMatActionPerformed
-        if(jcbMateria.getSelectedItem().toString().isEmpty()){
+        if (jcbMateria.getSelectedItem().toString().isEmpty()) {
             infoBox.setText("Debe elegir una Materia válida");
-        }else{
-        String cadena = jcbMateria.getSelectedItem().toString();
-        String[] partes = cadena.split("-");
-        String idMattxt = partes[0];
-        String nombreMat = partes [1];
-        jbElegirMat.setEnabled(false);
-        jcbMateria.setEnabled(false);
-        jcbMateria.setSelectedIndex(0);
-        txtAlumnoData.setText(nombreMat);
-        txtIdAlumno.setText(idMattxt);
-        infoBox.setText("Usted ha elejido a "+nombreMat+" puede elegir Inscripciones para listar las materias a las "
-            + "que el alumno está inscripto o puede elegir Select Materia para una nueva inscripción.");
+        } else {
+            String cadena = jcbMateria.getSelectedItem().toString();
+            String[] partes = cadena.split("-");
+            String idMattxt = partes[0];
+            String nombreMat = partes[1];
+            jbElegirMat.setEnabled(false);
+            jcbMateria.setEnabled(false);
+            jcbMateria.setSelectedIndex(0);
+            txtMateriaData.setText(nombreMat);
+            txtIdMateria.setText(idMattxt);
+            btnInsc.setEnabled(true);
+            infoBox.setText("Usted ha elejido a " + nombreMat + "para inscribir al alumno "+ txtAlumnoData.getText()+" presione inscribir.");
         }
     }//GEN-LAST:event_jbElegirMatActionPerformed
 
     private void chckBorrarItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_chckBorrarItemStateChanged
-        if(chckBorrar.isSelected()) {
+        if (chckBorrar.isSelected()) {
             btnEraseInsc.setEnabled(true);
             tabGeneral.setEnabled(true);
             chckBorrar.setEnabled(false);
@@ -796,16 +814,42 @@ public class VistaInscripciones extends javax.swing.JFrame {
     }//GEN-LAST:event_chckBorrarItemStateChanged
 
     private void btnEraseInscActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEraseInscActionPerformed
-        if(!txtIdMateria.getText().isEmpty()) {
-        btnEraseInsc.setEnabled(false);
-        inscripcionData.borrarInscripcionMateriaAlumno(Integer.parseInt(txtIdAlumno.getText()), Integer.parseInt(txtIdMateria.getText()));
-        modelo.setRowCount(0);
+        if (!txtIdMateria.getText().isEmpty()) {
+            btnEraseInsc.setEnabled(false);
+            inscripcionData.borrarInscripcionMateriaAlumno(Integer.parseInt(txtIdAlumno.getText()), Integer.parseInt(txtIdMateria.getText()));
+            modelo.setRowCount(0);
             llenarTablaInscriptasAlumno(Integer.parseInt(txtIdAlumno.getText()));
-        
-        }else{
+            infoBox.setText("Inscripcion borrada con éxito presione Reiniciar Todo para continuar.");
+        } else {
             infoBox.setText("Debe seleccionar una materia desde la tabla.");
         }
     }//GEN-LAST:event_btnEraseInscActionPerformed
+
+    private void btnSelectMatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectMatActionPerformed
+        jcbMateria.setEnabled(true);
+        cargarComboMateriasActivas();
+        btnSelectMat.setEnabled(false);
+        chckMatPorNombre.setEnabled(true);
+        chckMatPorAño.setEnabled(true);
+        jbElegirMat.setEnabled(true);
+        jbInscripciones.setEnabled(false);
+    }//GEN-LAST:event_btnSelectMatActionPerformed
+
+    private void btnInscActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInscActionPerformed
+        Inscripcion inscribir = new Inscripcion();
+        Alumno alumno = alumnoData.buscarAlumnoPorId(Integer.parseInt(txtIdAlumno.getText()));
+        Materias materia = materiaData.buscarMateriaPorId(Integer.parseInt(txtIdMateria.getText()));
+        
+        inscribir.setAlumno(alumno);
+        inscribir.setMateria(materia);
+        
+        inscripcionData.guardarInscripcion(inscribir);
+        modelo.setRowCount(0);
+        crearCabeceraInscriptasAlumnos();
+        llenarTablaInscriptasAlumno(Integer.parseInt(txtIdAlumno.getText()));
+        btnInsc.setEnabled(false);
+        
+    }//GEN-LAST:event_btnInscActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -814,17 +858,18 @@ public class VistaInscripciones extends javax.swing.JFrame {
     private javax.swing.JButton btnCalif;
     private javax.swing.JButton btnEraseInsc;
     private javax.swing.JButton btnInsc;
+    private javax.swing.JButton btnSelectMat;
     private javax.swing.JButton btnSrcCalif;
     private javax.swing.JCheckBox chckBorrar;
     private javax.swing.JCheckBox chckFiltroApellidos;
     private javax.swing.JCheckBox chckLibres;
+    private javax.swing.JCheckBox chckMatPorAño;
+    private javax.swing.JCheckBox chckMatPorNombre;
     private javax.swing.JTextArea infoBox;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JCheckBox jCheckBox3;
-    private javax.swing.JCheckBox jCheckBox4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -869,7 +914,6 @@ public class VistaInscripciones extends javax.swing.JFrame {
     private javax.swing.JButton jbElegirAlu;
     private javax.swing.JButton jbElegirMat;
     private javax.swing.JButton jbInscripciones;
-    private javax.swing.JButton jbSelectMat;
     private javax.swing.JComboBox<String> jcbAlumnos;
     private javax.swing.JComboBox<String> jcbMateria;
     private javax.swing.JLabel lblInstruc1;
@@ -891,24 +935,24 @@ public class VistaInscripciones extends javax.swing.JFrame {
         jcbAlumnos.addItem("");
         List<Alumno> listadoAlumnos = alumnoData.listarAlumnosRegulares();
         for (Alumno alumno : listadoAlumnos) {
-            jcbAlumnos.addItem(alumno.getIdAlumno()+"-"+alumno.getApellido() + " " + alumno.getNombre());
+            jcbAlumnos.addItem(alumno.getIdAlumno() + "-" + alumno.getApellido() + " " + alumno.getNombre());
         }
     }    
-
+    
     private void cargarComboAlumnos() {
         jcbAlumnos.addItem("");
         List<Alumno> listadoAlumnos = alumnoData.listarAlumnos();
         for (Alumno alumno : listadoAlumnos) {
-            jcbAlumnos.addItem(alumno.getIdAlumno()+"-"+alumno.getApellido() + " " + alumno.getNombre());
+            jcbAlumnos.addItem(alumno.getIdAlumno() + "-" + alumno.getApellido() + " " + alumno.getNombre());
         }
-
+        
     }
     
-    private void cargarComboMateriasActivas () {
+    private void cargarComboMateriasActivas() {
         jcbMateria.addItem("");
         List<Materias> listadoMaterias = materiaData.listarMateriasPorNameActivas();
-        for(Materias materias : listadoMaterias) {
-            jcbMateria.addItem(materias.getIdMateria()+"-"+materias.getNombre());
+        for (Materias materias : listadoMaterias) {
+            jcbMateria.addItem(materias.getIdMateria() + "-" + materias.getNombre());
         }
     }
     
@@ -920,21 +964,21 @@ public class VistaInscripciones extends javax.swing.JFrame {
         
         tabGeneral.setModel(modelo);
     }
-
+    
     private void llenarTablaInscriptasAlumno(int idAlumno) {
         List<Inscripcion> listadoMaterias = inscripcionData.AlumnoInfo(idAlumno);
         listadoMaterias = Herramientas.cambiarNotaDeNullACero(listadoMaterias);
         
         for (Inscripcion materiasCursadas : listadoMaterias) {
             modelo.addRow(new Object[]{
-            materiasCursadas.getMateria().getIdMateria(),
-            materiasCursadas.getMateria().getNombre(),
-            materiasCursadas.getMateria().getAnioMateria(),
-            materiasCursadas.getNota()
+                materiasCursadas.getMateria().getIdMateria(),
+                materiasCursadas.getMateria().getNombre(),
+                materiasCursadas.getMateria().getAnioMateria(),
+                materiasCursadas.getNota()
             
-             });
-
+            });
+            
         }
-
+        
     }
 }
