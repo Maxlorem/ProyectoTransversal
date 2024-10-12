@@ -24,6 +24,7 @@ public class InscripcionData {
    
    public void guardarInscripcion(Inscripcion inscripcion){
        try{
+           
             if(this.obtenerInscripcionesPorAlumno(inscripcion.getAlumno().getIdAlumno()).size()> 0){
                 throw new Error();
             } else{
