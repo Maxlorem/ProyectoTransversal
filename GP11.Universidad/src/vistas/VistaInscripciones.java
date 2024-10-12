@@ -8,6 +8,7 @@ import entidades.Inscripcion;
 import java.sql.Connection;
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
@@ -43,7 +44,8 @@ public class VistaInscripciones extends javax.swing.JFrame {
                 if (!e.getValueIsAdjusting()) {
                     int fila = tabGeneral.getSelectedRow();
                     if (fila != -1 && chckBorrar.isSelected()) {
-                        btnEraseInsc.setEnabled(true);
+                        txtIdMateria.setText((tabGeneral.getValueAt(fila, 0)).toString());
+                        
                         
                     }
                 }
@@ -117,7 +119,7 @@ public class VistaInscripciones extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         txtIdAlumno = new javax.swing.JTextField();
-        txtMateriaData = new javax.swing.JTextField();
+        txtIdMateria = new javax.swing.JTextField();
         jPanel9 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         btnCalif = new javax.swing.JButton();
@@ -138,6 +140,7 @@ public class VistaInscripciones extends javax.swing.JFrame {
         infoBox = new javax.swing.JTextArea();
         btnBack = new javax.swing.JButton();
         txtAlumnoData = new javax.swing.JTextField();
+        txtMateriaData = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -249,6 +252,7 @@ public class VistaInscripciones extends javax.swing.JFrame {
         chckLibres.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         chckLibres.setForeground(new java.awt.Color(0, 0, 0));
         chckLibres.setText("Mostrar Libres");
+        chckLibres.setFocusable(false);
         chckLibres.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 chckLibresStateChanged(evt);
@@ -260,6 +264,7 @@ public class VistaInscripciones extends javax.swing.JFrame {
         chckFiltroApellidos.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         chckFiltroApellidos.setForeground(new java.awt.Color(0, 0, 0));
         chckFiltroApellidos.setText("por Apellidos");
+        chckFiltroApellidos.setFocusable(false);
         chckFiltroApellidos.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 chckFiltroApellidosStateChanged(evt);
@@ -402,6 +407,11 @@ public class VistaInscripciones extends javax.swing.JFrame {
 
         btnEraseInsc.setText("Borrar Incripción");
         btnEraseInsc.setEnabled(false);
+        btnEraseInsc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEraseInscActionPerformed(evt);
+            }
+        });
         jPanel5.add(btnEraseInsc, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 263, 130, 30));
         jPanel5.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 160, -1, -1));
         jPanel5.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 160, 130, 10));
@@ -411,6 +421,13 @@ public class VistaInscripciones extends javax.swing.JFrame {
         chckBorrar.setForeground(new java.awt.Color(0, 0, 0));
         chckBorrar.setText("Activar Borrar");
         chckBorrar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        chckBorrar.setEnabled(false);
+        chckBorrar.setFocusable(false);
+        chckBorrar.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                chckBorrarItemStateChanged(evt);
+            }
+        });
         jPanel5.add(chckBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 210, -1, -1));
 
         jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 124, 570, 310));
@@ -476,12 +493,12 @@ public class VistaInscripciones extends javax.swing.JFrame {
         txtIdAlumno.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel3.add(txtIdAlumno, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 40, 50, 20));
 
-        txtMateriaData.setEditable(false);
-        txtMateriaData.setBackground(new java.awt.Color(255, 204, 102));
-        txtMateriaData.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        txtMateriaData.setForeground(new java.awt.Color(0, 0, 0));
-        txtMateriaData.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel3.add(txtMateriaData, new org.netbeans.lib.awtextra.AbsoluteConstraints(72, 76, 340, 20));
+        txtIdMateria.setEditable(false);
+        txtIdMateria.setBackground(new java.awt.Color(255, 204, 102));
+        txtIdMateria.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        txtIdMateria.setForeground(new java.awt.Color(0, 0, 0));
+        txtIdMateria.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel3.add(txtIdMateria, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 70, 50, 20));
 
         jPanel9.setBackground(new java.awt.Color(255, 204, 153));
         jPanel9.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -654,7 +671,14 @@ public class VistaInscripciones extends javax.swing.JFrame {
         txtAlumnoData.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         txtAlumnoData.setForeground(new java.awt.Color(0, 0, 0));
         txtAlumnoData.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel3.add(txtAlumnoData, new org.netbeans.lib.awtextra.AbsoluteConstraints(72, 42, 270, 20));
+        jPanel3.add(txtAlumnoData, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 40, 270, 20));
+
+        txtMateriaData.setEditable(false);
+        txtMateriaData.setBackground(new java.awt.Color(255, 204, 102));
+        txtMateriaData.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        txtMateriaData.setForeground(new java.awt.Color(0, 0, 0));
+        txtMateriaData.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel3.add(txtMateriaData, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, 270, 20));
 
         pnlSistemasInsc.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 0, 420, 440));
 
@@ -735,7 +759,10 @@ public class VistaInscripciones extends javax.swing.JFrame {
     private void jbInscripcionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbInscripcionesActionPerformed
         jbSelectMat.setEnabled(false);
         jbInscripciones.setEnabled(false);
+        btnCalif.setEnabled(true);
+        chckBorrar.setEnabled(true);
         crearCabeceraInscriptasAlumnos();
+        modelo.setRowCount(0);
         llenarTablaInscriptasAlumno(Integer.parseInt(txtIdAlumno.getText()));
         infoBox.setText("El alumno seleccionado está inscripto en las materias que se muestran en la tabla, puede: Calificar o borrar la inscripción. Para borrar la"
                 + "inscripción, primero debe Activar Borrar");
@@ -759,6 +786,26 @@ public class VistaInscripciones extends javax.swing.JFrame {
             + "que el alumno está inscripto o puede elegir Select Materia para una nueva inscripción.");
         }
     }//GEN-LAST:event_jbElegirMatActionPerformed
+
+    private void chckBorrarItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_chckBorrarItemStateChanged
+        if(chckBorrar.isSelected()) {
+            btnEraseInsc.setEnabled(true);
+            tabGeneral.setEnabled(true);
+            chckBorrar.setEnabled(false);
+        }
+    }//GEN-LAST:event_chckBorrarItemStateChanged
+
+    private void btnEraseInscActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEraseInscActionPerformed
+        if(!txtIdMateria.getText().isEmpty()) {
+        btnEraseInsc.setEnabled(false);
+        inscripcionData.borrarInscripcionMateriaAlumno(Integer.parseInt(txtIdAlumno.getText()), Integer.parseInt(txtIdMateria.getText()));
+        modelo.setRowCount(0);
+            llenarTablaInscriptasAlumno(Integer.parseInt(txtIdAlumno.getText()));
+        
+        }else{
+            infoBox.setText("Debe seleccionar una materia desde la tabla.");
+        }
+    }//GEN-LAST:event_btnEraseInscActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -835,6 +882,7 @@ public class VistaInscripciones extends javax.swing.JFrame {
     private javax.swing.JTextField txtAlumnoData;
     private javax.swing.JTextField txtAlumnoFilter;
     private javax.swing.JTextField txtIdAlumno;
+    private javax.swing.JTextField txtIdMateria;
     private javax.swing.JTextField txtMateriaData;
     private javax.swing.JTextField txtMateriaFilter;
     // End of variables declaration//GEN-END:variables
