@@ -34,6 +34,7 @@ public class VistaInscripciones extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Para comenzar seleccione y elija un alumno, puede utilizar los filtros para Alumno en la esquina inferior izquierda. Si selecciona por DNI el campo de texto se habilita para filtrar letra a letra.", "Sistema Alumnos", HEIGHT);
         cargarComboAlumnosReg();
         cargarComboMateriasActivas();
+        
     }
 
     private class NonEditableTableModel extends DefaultTableModel {
@@ -869,9 +870,7 @@ public class VistaInscripciones extends javax.swing.JFrame {
     private void llenarTablaInscriptasAlumno(int idAlumno) {
         List<Inscripcion> listadoMaterias = inscripcionData.AlumnoInfo(idAlumno);
         listadoMaterias = Herramientas.cambiarNotaDeNullACero(listadoMaterias);
-        for(Inscripcion inscripcion : listadoMaterias){
-            System.out.println(inscripcion.getMateria().getNombre());
-        }
+        
         for (Inscripcion materiasCursadas : listadoMaterias) {
             modelo.addRow(new Object[]{
             materiasCursadas.getMateria().getNombre(),
