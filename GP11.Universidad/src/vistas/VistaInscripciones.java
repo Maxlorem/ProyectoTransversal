@@ -8,6 +8,8 @@ import entidades.Inscripcion;
 import java.sql.Connection;
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 import persistencia.AlumnoData;
 import persistencia.MateriaData;
@@ -34,7 +36,39 @@ public class VistaInscripciones extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Para comenzar seleccione y elija un alumno, puede utilizar los filtros para Alumno en la esquina inferior izquierda. Si selecciona por DNI el campo de texto se habilita para filtrar letra a letra.", "Sistema Alumnos", HEIGHT);
         cargarComboAlumnosReg();
         cargarComboMateriasActivas();
-        
+     
+         /*tabGeneral.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                if (!e.getValueIsAdjusting()) {
+                    int fila = tabGeneral.getSelectedRow();
+                    if (fila != -1) {
+
+                        Integer idAlu = (Integer) tabAlumnos.getValueAt(fila, 0); //CUANDO NO LO ENCUENTRA EXPLOTA
+                        Long dni = (Long) tabAlumnos.getValueAt(fila, 1);
+                        String ape = (String) tabAlumnos.getValueAt(fila, 2);
+                        String nom = (String) tabAlumnos.getValueAt(fila, 3);
+                        LocalDate fecNac = (LocalDate) tabAlumnos.getValueAt(fila, 4);
+                        Date date = Date.from(fecNac.atStartOfDay(ZoneId.systemDefault()).toInstant());
+                        String stat = (String) tabAlumnos.getValueAt(fila, 5);
+
+                        txtId.setText(String.valueOf(idAlu));
+                        txtDni.setText(String.valueOf(dni));
+                        txtApe.setText(ape);
+                        txtName.setText(nom);
+                        calendar.setDate(date);
+                        txtState.setText(stat.equals("Regular") ? "1" : "0");
+                        jRedit.setEnabled(true);
+                        jRfisicBaja.setEnabled(true);
+                        jRlogAlta.setEnabled(true);
+                        jRlogBaja.setEnabled(true);
+                        txtPanel.setText("Una vez elija que Alumno desea modificar, seleccione uno de los metodos de edición");
+                        btnSeleccionar.setEnabled(true);
+                        btnEdit.setEnabled(false);
+                    }
+                }
+            }
+        });*/
     }
 
     private class NonEditableTableModel extends DefaultTableModel {
@@ -157,18 +191,6 @@ public class VistaInscripciones extends javax.swing.JFrame {
 
         panelMaterias.add(pnlSuperior, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 30));
 
-        tabGeneral.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {},
-                {},
-                {},
-                {}
-            },
-            new String [] {
-
-            }
-        ));
-        tabGeneral.setEnabled(false);
         tabGeneral.setFocusable(false);
         jScrollPane1.setViewportView(tabGeneral);
 
@@ -731,6 +753,7 @@ public class VistaInscripciones extends javax.swing.JFrame {
 
     private void jbInscripcionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbInscripcionesActionPerformed
         jbSelectMat.setEnabled(false);
+        crearCabeceraInscriptasAlumnos();
         llenarTablaInscriptasAlumno(Integer.parseInt(txtIdAlumno.getText()));
         infoBox.setText("El alumno seleccionado está inscripto en las materias que se muestran en la tabla, puede: Calificar o borrar la inscripción. Para borrar la"
                 + "inscripción, primero debe Activar Borrar");
