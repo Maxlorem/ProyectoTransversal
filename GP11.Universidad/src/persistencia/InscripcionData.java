@@ -86,6 +86,7 @@ public class InscripcionData {
             }
             
         } catch (SQLException ex) {
+            System.out.println("Error obtenerInscripcionesPorAlumno");
             System.out.println("No se pudo Obtener las inscripciones del alumno");
         }
        return inscripciones;
@@ -242,41 +243,33 @@ public class InscripcionData {
         return alumnosPorMateria;
    }
    
-    public ArrayList<Inscripcion> obtenerInscripcionesPorAlumnoInfo(int id){
+    public ArrayList<Inscripcion> AlumnoInfo(int id){
         ArrayList<Inscripcion> inscripciones = new ArrayList<>();
-        Inscripcion inscripcion = new Inscripcion();
+        
         try {
-            String query = " SELECT m.nombre, m.año, i.nota FROM inscripcion i JOIN materia m WHERE i.idmateria = m.idmateria AND i.idalumno = ? ";
+            String query = "SELECT materia.nombre, materia.año, inscripcion.nota FROM inscripcion JOIN materia WHERE inscripcion.idMateria = materia.idMateria AND inscripcion.idAlumno = ?";
             
             PreparedStatement ps = conexion.prepareStatement(query);
             ps.setInt(1, id);
             ResultSet resultados = ps.executeQuery();
             ps.close();
             while(resultados.next()){
-                
+                Inscripcion inscripcion = new Inscripcion();
                 inscripcion.setAlumno(alumnoData.buscarAlumnoPorId(resultados.getInt("idAlumno")));
                 inscripcion.setMateria(materiaData.buscarMateriaPorId(resultados.getInt("idMateria")));
-                inscripcion.getMateria().setNombre(resultados.getString("m.nombre"));
-                inscripcion.getMateria().setAnioMateria(resultados.getInt("m.año"));
+                inscripcion.getMateria().setNombre(resultados.getString("materia.nombre"));
+                inscripcion.getMateria().setAnioMateria(resultados.getInt("materia.año"));
                 inscripcion.setNota(resultados.getDouble("nota"));
                 
                 inscripciones.add(inscripcion);
             }
             if(inscripciones.size() == 0){
                 System.out.println("El alumno no tiene inscripciones");
-            } else{
-                System.out.println(
-                        "Inscripciones del alumno enviadas\n DATOS="
-                        + "\n     -ID_INSCRIPCION: " + inscripcion.getIdInscripcion()
-                        + "\n     -ID_ALUMNO: "  + inscripcion.getAlumno().getIdAlumno()
-                        + "\n     -DNI: " + inscripcion.getAlumno().getDni() 
-                        + "\n     -Nombre: " + inscripcion.getAlumno().getNombre()
-                        + "\n     -ID_MATERIA: " + inscripcion.getMateria().getIdMateria()                               
-                        + "\n     -NOMBRE_MATERIA: " + inscripcion.getMateria().getNombre()
-                        );
             }
             
         } catch (SQLException ex) {
+            System.out.println("Error en metodillo AlumnoInfo");
+            System.out.println("Mensaje: "+ex.getMessage());
             System.out.println("No se pudo Obtener las inscripciones del alumno");
         }
        return inscripciones;

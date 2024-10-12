@@ -34,13 +34,13 @@ public class VentanaDeInicio extends javax.swing.JFrame {
         lblDoubleclick.setText("BIENVENIDO");
         materiaData = new MateriaData(con);
 
-        materiaData.guardarMateria(materia);
-        materiaData.guardarMateria(materia2);
-        materiaData.guardarMateria(materia3);
-        materiaData.guardarMateria(materia4);
-        materiaData.guardarMateria(materia5);
-        materiaData.guardarMateria(materia6);
-        materiaData.guardarMateria(materia7);
+//        materiaData.guardarMateria(materia);
+//        materiaData.guardarMateria(materia2);
+//        materiaData.guardarMateria(materia3);
+//        materiaData.guardarMateria(materia4);
+//        materiaData.guardarMateria(materia5);
+//        materiaData.guardarMateria(materia6);
+//        materiaData.guardarMateria(materia7);
     }
 
     @SuppressWarnings("unchecked")
