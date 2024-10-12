@@ -3,6 +3,7 @@ package vistas;
 import entidades.Alumno;
 import entidades.Materias;
 import entidades.Conexion;
+import entidades.Herramientas;
 import entidades.Inscripcion;
 import java.sql.Connection;
 import java.util.List;
@@ -867,6 +868,7 @@ public class VistaInscripciones extends javax.swing.JFrame {
 
     private void llenarTablaInscriptasAlumno(int idAlumno) {
         List<Inscripcion> listadoMaterias = inscripcionData.obtenerInscripcionesPorAlumnoInfo(idAlumno);
+        listadoMaterias = Herramientas.cambiarNotaDeNullACero(listadoMaterias);
         for (Inscripcion materiasCursadas : listadoMaterias) {
             modelo.addRow(new Object[]{
             materiasCursadas.getMateria().getNombre(),
