@@ -8,6 +8,7 @@ import entidades.Inscripcion;
 import java.sql.Connection;
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
@@ -826,7 +827,6 @@ public class VistaInscripciones extends javax.swing.JFrame {
 
     private void btnSelectMatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectMatActionPerformed
         jcbMateria.setEnabled(true);
-        jcbMateria.removeAllItems();
         cargarComboMateriasActivas();
         btnSelectMat.setEnabled(false);
         chckMatPorNombre.setEnabled(true);
