@@ -257,6 +257,7 @@ public class InscripcionData {
                 Inscripcion inscripcion = new Inscripcion();
                 inscripcion.setAlumno(alumnoData.buscarAlumnoPorId(resultados.getInt("idAlumno")));
                 inscripcion.setMateria(materiaData.buscarMateriaPorId(resultados.getInt("idMateria")));
+                inscripcion.getMateria().setIdMateria(resultados.getInt("idMateria"));
                 inscripcion.getMateria().setNombre(resultados.getString("materia.nombre"));
                 inscripcion.getMateria().setAnioMateria(resultados.getInt("materia.año"));
                 inscripcion.setNota(resultados.getDouble("nota"));

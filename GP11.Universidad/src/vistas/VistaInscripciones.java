@@ -878,6 +878,7 @@ public class VistaInscripciones extends javax.swing.JFrame {
         
         for (Inscripcion materiasCursadas : listadoMaterias) {
             modelo.addRow(new Object[]{
+            materiasCursadas.getMateria().getIdMateria(),
             materiasCursadas.getMateria().getNombre(),
             materiasCursadas.getMateria().getAnioMateria(),
             materiasCursadas.getNota()
