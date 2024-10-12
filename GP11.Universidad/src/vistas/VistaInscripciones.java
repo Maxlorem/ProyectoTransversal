@@ -865,6 +865,7 @@ public class VistaInscripciones extends javax.swing.JFrame {
     }
     
     private void crearCabeceraInscriptasAlumnos() {
+        modelo.addColumn("ID Materia");
         modelo.addColumn("Materia");
         modelo.addColumn("Año");
         modelo.addColumn("Calificacion");
