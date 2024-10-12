@@ -247,7 +247,7 @@ public class InscripcionData {
         ArrayList<Inscripcion> inscripciones = new ArrayList<>();
         
         try {
-            String query = "SELECT materia.nombre, materia.año, inscripcion.nota FROM inscripcion JOIN materia WHERE inscripcion.idMateria = materia.idMateria AND inscripcion.idAlumno = ?";
+            String query = "SELECT inscripcion.idAlumno,inscripcion.idMateria,materia.nombre, materia.año, inscripcion.nota FROM inscripcion JOIN materia WHERE inscripcion.idMateria = materia.idMateria AND inscripcion.idAlumno = ?";
             
             PreparedStatement ps = conexion.prepareStatement(query);
             ps.setInt(1, id);

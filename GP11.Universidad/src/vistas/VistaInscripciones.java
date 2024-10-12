@@ -867,8 +867,11 @@ public class VistaInscripciones extends javax.swing.JFrame {
     }
 
     private void llenarTablaInscriptasAlumno(int idAlumno) {
-        List<Inscripcion> listadoMaterias = inscripcionData.obtenerInscripcionesPorAlumnoInfo(idAlumno);
+        List<Inscripcion> listadoMaterias = inscripcionData.AlumnoInfo(idAlumno);
         listadoMaterias = Herramientas.cambiarNotaDeNullACero(listadoMaterias);
+        for(Inscripcion inscripcion : listadoMaterias){
+            System.out.println(inscripcion.getMateria().getNombre());
+        }
         for (Inscripcion materiasCursadas : listadoMaterias) {
             modelo.addRow(new Object[]{
             materiasCursadas.getMateria().getNombre(),
