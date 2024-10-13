@@ -529,9 +529,9 @@ public class VistaInscripciones extends javax.swing.JFrame {
         chckLibres.setForeground(new java.awt.Color(0, 0, 0));
         chckLibres.setText("Mostrar Libres");
         chckLibres.setFocusable(false);
-        chckLibres.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                chckLibresStateChanged(evt);
+        chckLibres.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chckLibresActionPerformed(evt);
             }
         });
         jPanel2.add(chckLibres, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 40, -1, -1));
@@ -706,17 +706,6 @@ public class VistaInscripciones extends javax.swing.JFrame {
         this.setVisible(false);
         ventanaDeInicio.mostrarInicio();
     }//GEN-LAST:event_btnBackActionPerformed
-
-    private void chckLibresStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_chckLibresStateChanged
-        if (chckLibres.isSelected()) {
-            jcbAlumnos.removeAllItems();
-            cargarComboAlumnos();
-        }
-        if (!chckLibres.isSelected()) {
-            jcbAlumnos.removeAllItems();
-            cargarComboAlumnosReg();
-        }
-    }//GEN-LAST:event_chckLibresStateChanged
 
     private void btnElegirAluActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnElegirAluActionPerformed
         if (jcbAlumnos.getSelectedItem().toString().isEmpty()) {
@@ -976,6 +965,17 @@ public class VistaInscripciones extends javax.swing.JFrame {
          listarToggles();
          infoBox.setText("Ha seleccionado Mostrar No Inscriptas, para proceder presione MOSTRAR");
     }//GEN-LAST:event_radioMostrarNoInscriptasActionPerformed
+
+    private void chckLibresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chckLibresActionPerformed
+        if (chckLibres.isSelected()) {
+            jcbAlumnos.removeAllItems();
+            cargarComboAlumnos();
+        }
+        if (!chckLibres.isSelected()) {
+            jcbAlumnos.removeAllItems();
+            cargarComboAlumnosReg();
+        }
+    }//GEN-LAST:event_chckLibresActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
