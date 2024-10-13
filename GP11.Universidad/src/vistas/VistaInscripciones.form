@@ -1084,9 +1084,9 @@
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="jSpinner1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="spinCalificador" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="jButton3" pref="126" max="32767" attributes="0"/>
+                                      <Component id="btnAceptarCalificacion" pref="126" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
@@ -1102,8 +1102,8 @@
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="btnCalif" alignment="3" max="32767" attributes="0"/>
                                   <Component id="jLabel17" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jSpinner1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jButton3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="spinCalificador" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnAceptarCalificacion" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace pref="13" max="32767" attributes="0"/>
                           </Group>
@@ -1133,6 +1133,9 @@
                         <Property name="text" type="java.lang.String" value="Calificar"/>
                         <Property name="enabled" type="boolean" value="false"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCalifActionPerformed"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel17">
                       <Properties>
@@ -1148,16 +1151,22 @@
                         <Property name="text" type="java.lang.String" value="Nota:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JSpinner" name="jSpinner1">
+                    <Component class="javax.swing.JSpinner" name="spinCalificador">
                       <Properties>
                         <Property name="enabled" type="boolean" value="false"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="spinCalificadorStateChanged"/>
+                      </Events>
                     </Component>
-                    <Component class="javax.swing.JButton" name="jButton3">
+                    <Component class="javax.swing.JButton" name="btnAceptarCalificacion">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Aceptar"/>
                         <Property name="enabled" type="boolean" value="false"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAceptarCalificacionActionPerformed"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>

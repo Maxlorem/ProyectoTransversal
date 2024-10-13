@@ -34,7 +34,7 @@ public class VistaInscripciones extends javax.swing.JFrame {
         materiaData = new MateriaData(con);
         inscripcionData = new InscripcionData(con, alumnoData, materiaData);
         this.setLocationRelativeTo(null);
-        JOptionPane.showMessageDialog(null, "Para comenzar seleccione y elija un alumno, puede utilizar los filtros para Alumno en la esquina inferior izquierda. Si selecciona por DNI el campo de texto se habilita para filtrar letra a letra.", "Sistema Alumnos", HEIGHT);
+        infoBox.setText("Para comenzar seleccione y elija un alumno, puede utilizar los filtros para Alumno en la esquina inferior izquierda. Si selecciona por Apellido el campo de texto se habilita para filtrar letra a letra.");
         cargarComboAlumnosReg();
         cargarComboMateriasActivas();
         
@@ -45,7 +45,9 @@ public class VistaInscripciones extends javax.swing.JFrame {
                     int fila = tabGeneral.getSelectedRow();
                     if (fila != -1 && chckBorrar.isSelected()) {
                         txtIdMateria.setText((tabGeneral.getValueAt(fila, 0)).toString());
-                        
+                    }
+                    if(fila !=-1 && spinCalificador.isEnabled()) {
+                       txtIdMateria.setText((tabGeneral.getValueAt(fila, 0)).toString());
                     }
                 }
             }
@@ -123,8 +125,8 @@ public class VistaInscripciones extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         btnCalif = new javax.swing.JButton();
         jLabel17 = new javax.swing.JLabel();
-        jSpinner1 = new javax.swing.JSpinner();
-        jButton3 = new javax.swing.JButton();
+        spinCalificador = new javax.swing.JSpinner();
+        btnAceptarCalificacion = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
@@ -515,16 +517,31 @@ public class VistaInscripciones extends javax.swing.JFrame {
 
         btnCalif.setText("Calificar");
         btnCalif.setEnabled(false);
+        btnCalif.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCalifActionPerformed(evt);
+            }
+        });
 
         jLabel17.setBackground(new java.awt.Color(255, 204, 102));
         jLabel17.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(0, 0, 0));
         jLabel17.setText("Nota:");
 
-        jSpinner1.setEnabled(false);
+        spinCalificador.setEnabled(false);
+        spinCalificador.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                spinCalificadorStateChanged(evt);
+            }
+        });
 
-        jButton3.setText("Aceptar");
-        jButton3.setEnabled(false);
+        btnAceptarCalificacion.setText("Aceptar");
+        btnAceptarCalificacion.setEnabled(false);
+        btnAceptarCalificacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAceptarCalificacionActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -539,9 +556,9 @@ public class VistaInscripciones extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jLabel17)
                         .addGap(18, 18, 18)
-                        .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(spinCalificador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)))
+                        .addComponent(btnAceptarCalificacion, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel9Layout.setVerticalGroup(
@@ -553,8 +570,8 @@ public class VistaInscripciones extends javax.swing.JFrame {
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCalif, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel17)
-                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3))
+                    .addComponent(spinCalificador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAceptarCalificacion))
                 .addContainerGap(13, Short.MAX_VALUE))
         );
 
@@ -827,6 +844,7 @@ public class VistaInscripciones extends javax.swing.JFrame {
 
     private void btnSelectMatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectMatActionPerformed
         jcbMateria.setEnabled(true);
+        jcbMateria.removeAllItems();
         cargarComboMateriasActivas();
         btnSelectMat.setEnabled(false);
         chckMatPorNombre.setEnabled(true);
@@ -850,12 +868,37 @@ public class VistaInscripciones extends javax.swing.JFrame {
         crearCabeceraInscriptasAlumnos();
         llenarTablaInscriptasAlumno(Integer.parseInt(txtIdAlumno.getText()));
         btnInsc.setEnabled(false);
+        infoBox.setText("Para volver a empezar seleccione un alumno.");
+        jcbAlumnos.setEnabled(true);
+        jbElegirAlu.setEnabled(true);
         
     }//GEN-LAST:event_btnInscActionPerformed
+
+    private void btnCalifActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalifActionPerformed
+        infoBox.setText("Seleccione una materia de la tabla de materias en las que el alumno esta inscripto y desea calificar.");
+        tabGeneral.setEnabled(true);
+        spinCalificador.setEnabled(true);
+        btnCalif.setEnabled(false);
+        
+    }//GEN-LAST:event_btnCalifActionPerformed
+
+    private void btnAceptarCalificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarCalificacionActionPerformed
+        
+        inscripcionData.actualizarNota(Integer.parseInt(txtIdAlumno.getText()), Integer.parseInt(txtIdMateria.getText()), (int) spinCalificador.getValue());
+        modelo.setColumnCount(0);
+        crearCabeceraInscriptasAlumnos();
+        modelo.setRowCount(0);
+        llenarTablaInscriptasAlumno(Integer.parseInt(txtIdAlumno.getText()));
+    }//GEN-LAST:event_btnAceptarCalificacionActionPerformed
+
+    private void spinCalificadorStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_spinCalificadorStateChanged
+        btnAceptarCalificacion.setEnabled(true);
+    }//GEN-LAST:event_spinCalificadorStateChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup bgMat;
+    private javax.swing.JButton btnAceptarCalificacion;
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnCalif;
     private javax.swing.JButton btnEraseInsc;
@@ -869,7 +912,6 @@ public class VistaInscripciones extends javax.swing.JFrame {
     private javax.swing.JCheckBox chckMatPorNombre;
     private javax.swing.JTextArea infoBox;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
@@ -911,7 +953,6 @@ public class VistaInscripciones extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
-    private javax.swing.JSpinner jSpinner1;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JButton jbElegirAlu;
     private javax.swing.JButton jbElegirMat;
@@ -924,6 +965,7 @@ public class VistaInscripciones extends javax.swing.JFrame {
     private javax.swing.JPanel panelMaterias;
     private javax.swing.JPanel pnlSistemasInsc;
     private javax.swing.JPanel pnlSuperior;
+    private javax.swing.JSpinner spinCalificador;
     private javax.swing.JTable tabGeneral;
     private javax.swing.JTextField txtAlumnoData;
     private javax.swing.JTextField txtAlumnoFilter;
