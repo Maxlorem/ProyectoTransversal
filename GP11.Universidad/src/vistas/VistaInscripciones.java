@@ -830,9 +830,9 @@ public class VistaInscripciones extends javax.swing.JFrame {
         crearCabeceraInscriptasAlumnos();
         llenarTablaInscriptasAlumno(Integer.parseInt(txtIdAlumno.getText()));
         btnInsc.setEnabled(false);
-        infoBox.setText("Para volver a empezar seleccione un alumno.");
-        jcbAlumnos.setEnabled(true);
-        btnElegirAlu.setEnabled(true);
+        infoBox.setText("Para volver a comenzar presione Reinicar Todo.");
+        
+        
 
     }//GEN-LAST:event_btnInscActionPerformed
 
@@ -840,6 +840,7 @@ public class VistaInscripciones extends javax.swing.JFrame {
         infoBox.setText("Seleccione una materia de la tabla de materias en las que el alumno esta inscripto y desea calificar.");
         tabGeneral.setEnabled(true);
         btnCalif.setEnabled(false);
+        chckBorrar.setEnabled(false);
         
         
     }//GEN-LAST:event_btnCalifActionPerformed
@@ -851,6 +852,9 @@ public class VistaInscripciones extends javax.swing.JFrame {
         crearCabeceraInscriptasAlumnos();
         modelo.setRowCount(0);
         llenarTablaInscriptasAlumno(Integer.parseInt(txtIdAlumno.getText()));
+        spinCalificador.setEnabled(false);
+        tabGeneral.setEnabled(false);
+        infoBox.setText("Para volver a comezar presione Reinicar Todo.");
     }//GEN-LAST:event_btnAceptarCalificacionActionPerformed
 
     private void spinCalificadorStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_spinCalificadorStateChanged
