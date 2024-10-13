@@ -920,7 +920,9 @@ public class VistaInscripciones extends javax.swing.JFrame {
                 });
             }
             List<Materias> matNoInscriptas = inscripcionData.obtenerMateriasNOCursadasPorAlumno(Integer.parseInt(txtIdAlumno.getText()));
+            
             for (Materias matNoInsc : matNoInscriptas) {
+                
                 modelo.addRow(new Object[]{
                     matNoInsc.getNombre(),
                     matNoInsc.getAnioMateria(),

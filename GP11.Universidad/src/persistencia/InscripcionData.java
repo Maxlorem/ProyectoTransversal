@@ -132,15 +132,16 @@ public class InscripcionData {
         try {
             String query = " SELECT materia.idMateria, materia.nombre ,materia.año,materia.estado "
                     + "FROM materia "
-                    + "LEFT JOIN inscripcion ON materia.idMateria = inscripcion.idMateria "
-                    + "WHERE inscripcion.idAlumno IS NULL OR inscripcion.idAlumno <> ? "
-                    + "";
+                    +" WHERE NOT EXISTS (SELECT 1 " +
+                    "    FROM inscripcion " +
+                    "    WHERE inscripcion.idMateria = materia.idMateria " +
+                    "    AND inscripcion.idAlumno = ?)";
             PreparedStatement ps = conexion.prepareStatement(query);
             ps.setInt(1, id);
             
             ResultSet rs = ps.executeQuery();
             
-            ps.close();
+           
             while(rs.next()){     
                 Materias materias = new Materias();
                 materias.setIdMateria(rs.getInt("idMateria"));
@@ -150,8 +151,27 @@ public class InscripcionData {
                 materiasObtenidas.add(materias);
                 
             }
+            rs.close();
+            ps.close();
             if (!materiasObtenidas.isEmpty()) {
-                
+                for(Materias materiaG : materiasObtenidas){
+                    System.out.println("MateriaNoInscripta ANTES: " + materiaG.getNombre());
+                }
+                for(int i = 0; i < materiasObtenidas.size();i++){
+
+                    String nombreMateria = materiasObtenidas.get(i).getNombre();
+                    System.out.println("MateriaRevisada: " + nombreMateria);
+                    for(int j = i + 1; j < materiasObtenidas.size();j++){
+                        System.out.println("MateriaOcurrente: " + materiasObtenidas.get(j).getNombre());
+                        if(nombreMateria.equalsIgnoreCase(materiasObtenidas.get(j).getNombre())){
+                            materiasObtenidas.remove(j);
+                            j--;
+                        }
+                    }
+                }
+                for(Materias materiaG : materiasObtenidas){
+                    System.out.println("MateriaNoInscripta DESPUES: " + materiaG.getNombre());
+                }
                 System.out.println("Materias NO cursadas por el alumno enviadas");
             } else{
                 System.out.println("El alumno con ID: " + id
