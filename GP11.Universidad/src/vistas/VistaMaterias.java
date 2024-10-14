@@ -3,13 +3,10 @@ package vistas;
 import entidades.Conexion;
 import entidades.Herramientas;
 import entidades.Materias;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
-import javax.swing.SwingUtilities;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
@@ -816,7 +813,9 @@ public class VistaMaterias extends javax.swing.JFrame {
             }
 
             Materias nwMat = new Materias(nom.trim(), year, stat);
-            
+            txtName.setEditable(false);
+            txtYear.setEditable(false);
+            txtState.setEditable(false); 
             if(materiaData.guardarMateria(nwMat) == 1062){ //La base de datos devuelve ese valor, dicho valor significa que las materias son identicas, mirar log
                 JOptionPane.showMessageDialog(this, "No se puede guardar una materia que ya existe");
             }else{
