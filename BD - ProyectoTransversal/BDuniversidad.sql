@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-10-2024 a las 00:08:55
+-- Tiempo de generación: 14-10-2024 a las 19:19:07
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -36,16 +36,6 @@ CREATE TABLE `alumnos` (
   `estado` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Volcado de datos para la tabla `alumnos`
---
-
-INSERT INTO `alumnos` (`idAlumno`, `dni`, `apellido`, `nombre`, `fechaNacimiento`, `estado`) VALUES
-(1, 44642651, 'Quiroga', 'maximo', '2002-11-08', 1),
-(2, 44642652, 'Pestchanker', 'Andres', '1984-10-01', 1),
-(4, 3232323, 'Sosa ', 'Marcos Antonio', '2006-05-30', 1),
-(5, 3232322, 'Sosa ', 'Marcos Antonio', '2006-05-30', 1);
-
 -- --------------------------------------------------------
 
 --
@@ -59,16 +49,6 @@ CREATE TABLE `inscripcion` (
   `idMateria` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Volcado de datos para la tabla `inscripcion`
---
-
-INSERT INTO `inscripcion` (`idInscripcion`, `nota`, `idAlumno`, `idMateria`) VALUES
-(14, NULL, 1, 6),
-(15, NULL, 1, 5),
-(16, NULL, 1, 5),
-(18, NULL, 4, 5);
-
 -- --------------------------------------------------------
 
 --
@@ -81,19 +61,6 @@ CREATE TABLE `materia` (
   `año` int(11) NOT NULL,
   `estado` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `materia`
---
-
-INSERT INTO `materia` (`idMateria`, `nombre`, `año`, `estado`) VALUES
-(1, 'Matematica 1 ', 1, 1),
-(2, 'Ingles 1 ', 1, 1),
-(4, 'Laboratorio de Programacion 1 ', 1, 1),
-(5, 'Desarrollo Web ', 1, 1),
-(6, 'Administracion de Bases de Datos 2', 1, 1),
-(7, 'Administracion de Bases de Datos ', 1, 1),
-(8, 'EDA', 1, 0);
 
 --
 -- Índices para tablas volcadas
@@ -129,19 +96,19 @@ ALTER TABLE `materia`
 -- AUTO_INCREMENT de la tabla `alumnos`
 --
 ALTER TABLE `alumnos`
-  MODIFY `idAlumno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `idAlumno` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `inscripcion`
 --
 ALTER TABLE `inscripcion`
-  MODIFY `idInscripcion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `idInscripcion` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `materia`
 --
 ALTER TABLE `materia`
-  MODIFY `idMateria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `idMateria` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Restricciones para tablas volcadas
@@ -151,8 +118,8 @@ ALTER TABLE `materia`
 -- Filtros para la tabla `inscripcion`
 --
 ALTER TABLE `inscripcion`
-  ADD CONSTRAINT `inscripcion_ibfk_3` FOREIGN KEY (`idAlumno`) REFERENCES `alumnos` (`idAlumno`) ON DELETE CASCADE,
-  ADD CONSTRAINT `inscripcion_ibfk_4` FOREIGN KEY (`idMateria`) REFERENCES `materia` (`idMateria`) ON DELETE CASCADE;
+  ADD CONSTRAINT `inscripcion_ibfk_1` FOREIGN KEY (`idMateria`) REFERENCES `materia` (`idMateria`) ON DELETE CASCADE,
+  ADD CONSTRAINT `inscripcion_ibfk_2` FOREIGN KEY (`idAlumno`) REFERENCES `alumnos` (`idAlumno`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
